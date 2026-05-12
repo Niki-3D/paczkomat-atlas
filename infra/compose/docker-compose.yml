@@ -1,3 +1,5 @@
+name: paczkomat-atlas
+
 services:
   db:
     image: timescale/timescaledb-ha:pg16.6-ts2.17.2-all
