@@ -1,0 +1,87 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/GB/UK00000146",
+  "country": "GB",
+  "name": "UK00000146",
+  "type": [
+    "parcel_locker"
+  ],
+  "status": "Operating",
+  "location": {
+    "longitude": -2.43679,
+    "latitude": 51.37677
+  },
+  "location_type": "Outdoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": "Next to the Student hub",
+  "location_description_1": null,
+  "location_description_2": null,
+  "distance": null,
+  "opening_hours": "24/7",
+  "address": {
+    "line1": "Newton St Loe 24/7 InPost Locker - Bath Spa University",
+    "line2": "BA2 9BN Bath"
+  },
+  "address_details": {
+    "city": "Bath",
+    "province": "South West",
+    "post_code": "BA2 9BN",
+    "street": "Newton St Loe",
+    "building_number": "24/7 InPost Locker - Bath Spa University",
+    "flat_number": null
+  },
+  "phone_number": null,
+  "payment_point_descr": null,
+  "functions": [
+    "parcel",
+    "parcel_collect",
+    "parcel_send"
+  ],
+  "partner_id": 0,
+  "is_next": false,
+  "payment_available": true,
+  "payment_type": {
+    "3": "Payment by cash and card"
+  },
+  "virtual": "0",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": true,
+  "operating_hours_extended": {
+    "customer": null
+  },
+  "agency": "7276",
+  "agencies_extended": [
+    {
+      "name": "7276"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/gb/images/UK00000146.jpg",
+  "easy_access_zone": true,
+  "air_index_level": null,
+  "physical_type": "newfm",
+  "physical_type_mapped": "004",
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": false,
+  "in_mobile_send_excluded": true,
+  "in_mobile_return_excluded": true,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NORMAL",
+    "details": {
+      "A": "NORMAL",
+      "B": "NORMAL",
+      "C": "NORMAL"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}

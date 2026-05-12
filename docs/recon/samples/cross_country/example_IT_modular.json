@@ -1,0 +1,87 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/IT/DGMTESTMODULAR",
+  "country": "IT",
+  "name": "DGMTESTMODULAR",
+  "type": [
+    "parcel_locker"
+  ],
+  "status": "Created",
+  "location": {
+    "longitude": 10.69273,
+    "latitude": 43.82296
+  },
+  "location_type": "Outdoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": "test machine",
+  "location_description_1": "additional location description 1",
+  "location_description_2": "additional location description 1",
+  "distance": null,
+  "opening_hours": null,
+  "address": {
+    "line1": "via dei Sadroni 45/0",
+    "line2": "55011 Altopascio"
+  },
+  "address_details": {
+    "city": "Altopascio",
+    "province": "FI",
+    "post_code": "55011",
+    "street": "via dei Sadroni",
+    "building_number": "45",
+    "flat_number": "0"
+  },
+  "phone_number": null,
+  "payment_point_descr": null,
+  "functions": [
+    "cross_network_parcel_collect",
+    "cross_network_parcel_send",
+    "parcel"
+  ],
+  "partner_id": 0,
+  "is_next": false,
+  "payment_available": false,
+  "payment_type": {
+    "0": "Payments are not supported"
+  },
+  "virtual": "0",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": false,
+  "operating_hours_extended": {
+    "customer": null
+  },
+  "agency": "CAR",
+  "agencies_extended": [
+    {
+      "name": "CAR"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/it/images/DGMTESTMODULAR.jpg",
+  "easy_access_zone": true,
+  "air_index_level": null,
+  "physical_type": "modular",
+  "physical_type_mapped": "003",
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": null,
+  "in_mobile_send_excluded": null,
+  "in_mobile_return_excluded": null,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NO_DATA",
+    "details": {
+      "A": "NO_DATA",
+      "B": "NO_DATA",
+      "C": "NO_DATA"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}

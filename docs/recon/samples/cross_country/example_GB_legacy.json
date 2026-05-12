@@ -1,0 +1,85 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/GB/UK00000240",
+  "country": "GB",
+  "name": "UK00000240",
+  "type": [
+    "parcel_locker"
+  ],
+  "status": "Created",
+  "location": {
+    "longitude": 0.0,
+    "latitude": 0.0
+  },
+  "location_type": "Outdoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": null,
+  "location_description_1": null,
+  "location_description_2": null,
+  "distance": null,
+  "opening_hours": "24/7",
+  "address": {
+    "line1": "UWE Bristol - Frenchay Campus, Coldharbour Ln 24/7 InPost Locker - University of the West of England",
+    "line2": "BS16 1QY Bristol"
+  },
+  "address_details": {
+    "city": "Bristol",
+    "province": "South West",
+    "post_code": "BS16 1QY",
+    "street": "UWE Bristol - Frenchay Campus, Coldharbour Ln",
+    "building_number": "24/7 InPost Locker - University of the West of England",
+    "flat_number": null
+  },
+  "phone_number": null,
+  "payment_point_descr": null,
+  "functions": [
+    "parcel"
+  ],
+  "partner_id": 0,
+  "is_next": false,
+  "payment_available": true,
+  "payment_type": {
+    "3": "Payment by cash and card"
+  },
+  "virtual": "0",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": true,
+  "operating_hours_extended": {
+    "customer": null
+  },
+  "agency": "7276",
+  "agencies_extended": [
+    {
+      "name": "7276"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/gb/images/UK00000240.jpg",
+  "easy_access_zone": true,
+  "air_index_level": null,
+  "physical_type": "legacy",
+  "physical_type_mapped": "001",
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": true,
+  "in_mobile_send_excluded": true,
+  "in_mobile_return_excluded": true,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NORMAL",
+    "details": {
+      "A": "NORMAL",
+      "B": "NORMAL",
+      "C": "NORMAL"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}
