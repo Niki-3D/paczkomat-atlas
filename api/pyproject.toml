@@ -13,6 +13,8 @@ dependencies = [
     "httpx>=0.27",
     "structlog>=24.0",
     "alembic>=1.13",
+    "geoalchemy2>=0.20.0",
+    "alembic-postgresql-enum>=1.10.0",
 ]
 
 [project.optional-dependencies]
