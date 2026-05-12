@@ -1,30 +1,71 @@
 services:
   db:
-    image: postgis/postgis:16-3.5
+    image: timescale/timescaledb-ha:pg16.6-ts2.17.2-all
+    container_name: paczkomat-db
     environment:
+      POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      TIMESCALEDB_TELEMETRY: "off"
+      # pg_cron requires this in shared_preload_libraries (image already loads timescaledb)
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    command:
+      - postgres
+      - -c
+      - shared_preload_libraries=timescaledb,pg_cron,pg_stat_statements
+      - -c
+      - cron.database_name=${POSTGRES_DB}
+      - -c
+      - cron.timezone=Europe/Warsaw
+      - -c
+      - max_connections=200
+      - -c
+      - shared_buffers=512MB
+      - -c
+      - effective_cache_size=2GB
+      - -c
+      - work_mem=16MB
+      - -c
+      - maintenance_work_mem=128MB
+      - -c
+      - wal_compression=on
     ports:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    shm_size: 1gb
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 20
+      start_period: 30s
 
-  api:
-    build:
-      context: ../../api
+  pgbouncer:
+    image: edoburu/pgbouncer:v1.23.1-p3
+    container_name: paczkomat-pgbouncer
     environment:
-      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
+      POOL_MODE: transaction
+      MAX_CLIENT_CONN: "200"
+      DEFAULT_POOL_SIZE: "25"
+      ADMIN_USERS: ${POSTGRES_USER}
+      AUTH_TYPE: scram-sha-256
     ports:
-      - "8000:8000"
+      - "6432:5432"
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "localhost", "-U", "${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
 volumes:
   db_data:
