@@ -57,22 +57,14 @@ GUS_DIR="data/raw/gus"
 GUS_OUT="$GUS_DIR/population_gmina_2024.json"
 if [ ! -f "$GUS_OUT" ]; then
   echo "Downloading GUS BDL population (paginated)..."
-  page=0
-  while true; do
-    file="$GUS_DIR/page_${page}.json"
-    curl -fL --retry 3 -o "$file" \
-      "https://bdl.stat.gov.pl/api/v1/data/by-variable/72305?format=json&year=2024&page-size=100&page=${page}"
-    has_next=$(jq -r '.links.next // empty' "$file")
-    if [ -z "$has_next" ]; then
-      break
-    fi
-    page=$((page + 1))
-    sleep 1  # be polite
-  done
-  # Combine pages
-  jq -s '[.[] | .results[]] | flatten' "$GUS_DIR"/page_*.json > "$GUS_OUT"
-  rm "$GUS_DIR"/page_*.json
-  echo "GUS BDL: $(jq 'length' "$GUS_OUT") gminy fetched"
+  # Use a stand-alone Python helper instead of curl+jq — the data endpoint
+  # returns ~45 pages of mixed unit-level records (country/voj/powiat/gmina);
+  # the bdl_loader.py filters to gmina at load time via len(teryt)==7.
+  # `uv run --no-project python` works on both Linux (project canonical) and
+  # Windows (bare `python` is intercepted by the MS Store stub).
+  uv run --no-project python scripts/download_bdl.py "$GUS_OUT"
+  # Clean up any leftover page files from previous bash+curl attempts
+  rm -f "$GUS_DIR"/page_*.json
 else
   echo "GUS BDL already present, skipping."
 fi
