@@ -65,6 +65,12 @@ async def _main() -> None:
         log.info("cli.prg_done", merged=merged, areas=areas)
         return
 
+    if args.load_population:
+        from paczkomat_atlas_api.ingest.bdl_loader import load_population_gmina
+        bdl = await load_population_gmina()
+        log.info("cli.population_loaded", bdl=bdl)
+        return
+
     if args.refresh_only:
         await refresh_materialized_views()
     elif args.snapshot_only:
