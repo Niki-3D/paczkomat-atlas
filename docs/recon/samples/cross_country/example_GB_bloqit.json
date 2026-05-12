@@ -1,0 +1,87 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/GB/UK00000228",
+  "country": "GB",
+  "name": "UK00000228",
+  "type": [
+    "parcel_locker"
+  ],
+  "status": "Operating",
+  "location": {
+    "longitude": -0.36631,
+    "latitude": 53.77257
+  },
+  "location_type": "Outdoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": "At side of bin store facing away from road",
+  "location_description_1": "///link.owner.overnight",
+  "location_description_2": null,
+  "distance": null,
+  "opening_hours": "24/7",
+  "address": {
+    "line1": "Cottingham Rd 24/7 InPost Locker - University of Hull - The Courtyard",
+    "line2": "HU6 7RX Hull"
+  },
+  "address_details": {
+    "city": "Hull",
+    "province": "Yorkshire and The Humber",
+    "post_code": "HU6 7RX",
+    "street": "Cottingham Rd",
+    "building_number": "24/7 InPost Locker - University of Hull - The Courtyard",
+    "flat_number": null
+  },
+  "phone_number": null,
+  "payment_point_descr": null,
+  "functions": [
+    "parcel",
+    "parcel_collect",
+    "parcel_send"
+  ],
+  "partner_id": 0,
+  "is_next": false,
+  "payment_available": true,
+  "payment_type": {
+    "3": "Payment by cash and card"
+  },
+  "virtual": "0",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": true,
+  "operating_hours_extended": {
+    "customer": null
+  },
+  "agency": "7613",
+  "agencies_extended": [
+    {
+      "name": "7613"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/gb/images/UK00000228.jpg",
+  "easy_access_zone": true,
+  "air_index_level": null,
+  "physical_type": "bloqit",
+  "physical_type_mapped": null,
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": null,
+  "in_mobile_send_excluded": null,
+  "in_mobile_return_excluded": null,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NORMAL",
+    "details": {
+      "A": "NORMAL",
+      "B": "NORMAL",
+      "C": "NORMAL"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}

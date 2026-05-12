@@ -1,0 +1,130 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/GB/UK00001086",
+  "country": "GB",
+  "name": "UK00001086",
+  "type": [
+    "pok",
+    "pop"
+  ],
+  "status": "Disabled",
+  "location": {
+    "longitude": -0.14181,
+    "latitude": 51.41301
+  },
+  "location_type": "Indoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": null,
+  "location_description_1": null,
+  "location_description_2": null,
+  "distance": null,
+  "opening_hours": "24/7",
+  "address": {
+    "line1": "1 Greyhound Terrace, Mitcham InPost Shop - Chimes News",
+    "line2": "SW16 5SX London"
+  },
+  "address_details": {
+    "city": "London",
+    "province": "London",
+    "post_code": "SW16 5SX",
+    "street": "1 Greyhound Terrace, Mitcham",
+    "building_number": "InPost Shop - Chimes News",
+    "flat_number": null
+  },
+  "phone_number": null,
+  "payment_point_descr": null,
+  "functions": [
+    "parcel",
+    "parcel_collect"
+  ],
+  "partner_id": 1086,
+  "is_next": false,
+  "payment_available": true,
+  "payment_type": {
+    "3": "Payment by cash and card"
+  },
+  "virtual": "3",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": false,
+  "operating_hours_extended": {
+    "customer": {
+      "monday": [
+        {
+          "start": 420,
+          "end": 1320
+        }
+      ],
+      "tuesday": [
+        {
+          "start": 420,
+          "end": 1320
+        }
+      ],
+      "wednesday": [
+        {
+          "start": 420,
+          "end": 1320
+        }
+      ],
+      "thursday": [
+        {
+          "start": 420,
+          "end": 1320
+        }
+      ],
+      "friday": [
+        {
+          "start": 420,
+          "end": 1320
+        }
+      ],
+      "saturday": [
+        {
+          "start": 450,
+          "end": 1320
+        }
+      ],
+      "sunday": [
+        {
+          "start": 450,
+          "end": 1320
+        }
+      ]
+    }
+  },
+  "agency": "7170",
+  "agencies_extended": [
+    {
+      "name": "7170"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/gb/images/UK00001086.jpg",
+  "easy_access_zone": false,
+  "air_index_level": null,
+  "physical_type": null,
+  "physical_type_mapped": null,
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": null,
+  "in_mobile_send_excluded": null,
+  "in_mobile_return_excluded": null,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NO_DATA",
+    "details": {
+      "A": "NO_DATA",
+      "B": "NO_DATA",
+      "C": "NO_DATA"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}

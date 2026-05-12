@@ -1,0 +1,109 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/FR/FR000001",
+  "country": "FR",
+  "name": "FR000001",
+  "type": [
+    "parcel_locker"
+  ],
+  "status": "Overloaded",
+  "location": {
+    "longitude": 2.80613,
+    "latitude": 47.92362
+  },
+  "location_type": "Indoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": "Offre START",
+  "location_description_1": null,
+  "location_description_2": null,
+  "distance": null,
+  "opening_hours": "24/7",
+  "address": {
+    "line1": "PLEASE DO NOT REMOVE ZAC du centre-ville - Cellule A2/APM TEST RETAILROBOTICS",
+    "line2": "91350 GRIGNY"
+  },
+  "address_details": {
+    "city": "GRIGNY",
+    "province": "NORD IDF",
+    "post_code": "91350",
+    "street": "PLEASE DO NOT REMOVE",
+    "building_number": "ZAC du centre-ville - Cellule A2",
+    "flat_number": "APM TEST RETAILROBOTICS"
+  },
+  "phone_number": null,
+  "payment_point_descr": "PLEASE DO NOT REMOVE",
+  "functions": [
+    "cross_network_parcel_collect",
+    "cross_network_parcel_send",
+    "parcel",
+    "parcel_collect",
+    "parcel_reverse_return_send",
+    "parcel_send",
+    "standard_courier_collect",
+    "standard_courier_reverse_return_send",
+    "standard_courier_send",
+    "standard_letter_collect",
+    "standard_letter_send"
+  ],
+  "partner_id": 0,
+  "is_next": false,
+  "payment_available": false,
+  "payment_type": {
+    "0": "Payments are not supported"
+  },
+  "virtual": "0",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": false,
+  "operating_hours_extended": {
+    "customer": {
+      "monday": [
+        {
+          "start": 360,
+          "end": 1320
+        }
+      ],
+      "tuesday": [],
+      "wednesday": [],
+      "thursday": [
+        {
+          "start": 360,
+          "end": 1320
+        }
+      ],
+      "friday": [],
+      "saturday": [],
+      "sunday": []
+    }
+  },
+  "agency": null,
+  "agencies_extended": null,
+  "image_url": "https://static.easypack24.net/points/fr/images/FR000001.jpg",
+  "easy_access_zone": true,
+  "air_index_level": null,
+  "physical_type": "newfm",
+  "physical_type_mapped": "004",
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": null,
+  "in_mobile_send_excluded": null,
+  "in_mobile_return_excluded": null,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NO_DATA",
+    "details": {
+      "A": "NO_DATA",
+      "B": "NO_DATA",
+      "C": "NO_DATA"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}

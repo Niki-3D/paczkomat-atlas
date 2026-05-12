@@ -1,0 +1,134 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/IT/ITAAQ01855P",
+  "country": "IT",
+  "name": "ITAAQ01855P",
+  "type": [
+    "pok",
+    "pop"
+  ],
+  "status": "Operating",
+  "location": {
+    "longitude": 13.42781,
+    "latitude": 42.03889
+  },
+  "location_type": "Indoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": "presso Rt.Com Services",
+  "location_description_1": null,
+  "location_description_2": "InPost Point",
+  "distance": null,
+  "opening_hours": "Lun-ven : 09:00 - 20:30 Sab: 09:00 - 14:00 - 16:00 - 20:30",
+  "address": {
+    "line1": "Via Montello 5",
+    "line2": "67051 Avezzano"
+  },
+  "address_details": {
+    "city": "Avezzano",
+    "province": "AQ",
+    "post_code": "67051",
+    "street": "Via Montello",
+    "building_number": "5",
+    "flat_number": null
+  },
+  "phone_number": null,
+  "payment_point_descr": null,
+  "functions": [
+    "cross_network_parcel_collect",
+    "cross_network_parcel_send",
+    "parcel",
+    "parcel_collect",
+    "parcel_reverse_return_send",
+    "parcel_send",
+    "standard_courier_send"
+  ],
+  "partner_id": 1,
+  "is_next": false,
+  "payment_available": true,
+  "payment_type": {
+    "3": "Payment by cash and card"
+  },
+  "virtual": "3",
+  "recommended_low_interest_box_machines_list": null,
+  "apm_doubled": null,
+  "location_247": false,
+  "operating_hours_extended": {
+    "customer": {
+      "monday": [
+        {
+          "start": 540,
+          "end": 1230
+        }
+      ],
+      "tuesday": [
+        {
+          "start": 540,
+          "end": 1230
+        }
+      ],
+      "wednesday": [
+        {
+          "start": 540,
+          "end": 1230
+        }
+      ],
+      "thursday": [
+        {
+          "start": 540,
+          "end": 1230
+        }
+      ],
+      "friday": [
+        {
+          "start": 540,
+          "end": 1230
+        }
+      ],
+      "saturday": [
+        {
+          "start": 540,
+          "end": 840
+        },
+        {
+          "start": 960,
+          "end": 1230
+        }
+      ],
+      "sunday": []
+    }
+  },
+  "agency": "PES",
+  "agencies_extended": [
+    {
+      "name": "PES"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/it/images/ITAAQ01855P.jpg",
+  "easy_access_zone": false,
+  "air_index_level": null,
+  "physical_type": null,
+  "physical_type_mapped": null,
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": null,
+  "in_mobile_send_excluded": null,
+  "in_mobile_return_excluded": null,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": "PE33",
+  "micro_area_id": "9",
+  "agency_code": "PES",
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NO_DATA",
+    "details": {
+      "A": "NO_DATA",
+      "B": "NO_DATA",
+      "C": "NO_DATA"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": [],
+  "mondial_relay_id": "01576",
+  "print_in_store": null
+}
