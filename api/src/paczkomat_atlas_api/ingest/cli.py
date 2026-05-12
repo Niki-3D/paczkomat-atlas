@@ -65,10 +65,18 @@ async def _main() -> None:
         log.info("cli.prg_done", merged=merged, areas=areas)
         return
 
+    if args.load_nuts2:
+        from paczkomat_atlas_api.ingest.eurostat_loader import load_nuts2_boundaries
+        n = await load_nuts2_boundaries()
+        log.info("cli.nuts2_loaded", rows=n)
+        return
+
     if args.load_population:
         from paczkomat_atlas_api.ingest.bdl_loader import load_population_gmina
+        from paczkomat_atlas_api.ingest.eurostat_loader import load_nuts2_population
         bdl = await load_population_gmina()
-        log.info("cli.population_loaded", bdl=bdl)
+        euro = await load_nuts2_population()
+        log.info("cli.population_loaded", bdl=bdl, eurostat_nuts2=euro)
         return
 
     if args.refresh_only:
