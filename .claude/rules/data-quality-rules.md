@@ -25,9 +25,10 @@ Hard filters applied at ingest. NEVER trust raw API response.
 ## Parse with caution
 - `opening_hours`: free-text Polish string. Truth is `location_247` boolean for 24/7. Parser is best-effort.
 - `operating_hours_extended.customer`: structured but ~2% populated. Minutes-from-midnight encoding.
-- `physical_type`: 7 known values across all countries:
-  - PL: `newfm`, `screenless`, `next`, `modular`, `classic`
-  - GB also has: `legacy`, `bloqit`
+- `physical_type`: 8+ known values across all countries:
+  - PL: `newfm` (~60%), `screenless` (~21%), `next` (~9%), `modular` (~7%), `classic` (~2%)
+  - PL also has: `legacy` (~33 rows), `bankopaczkomaty` (~30 rows, PKO BP partnership)
+  - GB also has: `bloqit`
   - Unknown values → warn, store raw, do not exclude
 
 ## Two networks in one feed
@@ -40,17 +41,26 @@ Hard filters applied at ingest. NEVER trust raw API response.
 - 14 active: PL, FR, GB, DE, ES, IT, AT, SE, PT, HU, DK, FI, BE, NL
 - ISO 3166-1 alpha-2. GB not UK.
 
-### Network composition per country (from recon, page-1 sample n=500)
+### Network composition per country (from full ingest, Phase 3 — n = real)
 
-| Country | Locker‑heavy | PUDO‑heavy | Notes |
-|---|---|---|---|
-| PL | 100% | 0% | Saturated machine network |
-| GB | ~98% | ~2% | Locker-first market |
-| IT | ~77% | ~23% | Mixed |
-| FR | ~0.4% | ~99.6% | PUDO-dominant, machines growing |
-| DE | ~0% (in sample) | ~100% (in sample) | PUDO-first via Mondial Relay |
+| Country | Lockers | PUDOs | Operating % | Notes |
+|---|---:|---:|---:|---|
+| PL | 32,853 | 526 | 96% | Saturated locker-first network |
+| GB | 15,065 | 9,153 | 76% | Locker-first; partly via `bloqit` and `legacy` hardware partners |
+| FR | 11,959 | 14,618 | 66% | Mondial Relay heavy; growing InPost locker presence |
+| IT | 5,848 | 5,272 | 89% | Mixed |
+| ES | 4,286 | 10,414 | 75% | Mondial Relay dominant |
+| AT | 1,654 | 3,131 | 68% | Mixed |
+| HU | 1,283 | 1,436 | 100% | Mixed, fully operational |
+| BE | 562 | 1,234 | 77% | Mixed |
+| PT | 492 | 2,699 | 73% | PUDO-dominant |
+| DE | 0 | 17,460 | 98% | PUDO-only via Mondial Relay (confirmed full ingest) |
+| NL | 44 | 1,406 | 69% | PUDO-dominant via Mondial Relay |
+| **SE / DK / FI** | **0** | **0** | **0%** | **Pre-launch / decommissioned legacy** — see below |
 
-Sample biased by API ordering — verify with full ingest. The locker/PUDO classification function `is_locker_type()` works correctly across all countries.
+**SE / DK / FI special case**: 100% of records in these three countries are `Disabled` with `partner_id=99` (Mondial Relay) and a populated `mondial_relay_id`. The entire Nordic footprint is the dormant catalog of the post-acquisition Mondial Relay network; no active InPost-branded points exist in these markets as of 2026. See `docs/recon/05-nordic-status.md` for the investigation. Treat as zero operational reach for KPI purposes; surface the legacy catalog separately if relevant.
+
+The locker/PUDO classification function `is_locker_type()` works correctly across all countries.
 
 ## Address fields — country-specific semantics
 
