@@ -48,6 +48,17 @@ else
   echo "Eurostat pop already present, skipping."
 fi
 
+# === GUS BDL: gmina units list (BDL_ID → TERYT mapping) ===
+# The /units endpoint at level=6 returns gmina admin units with their TERYT.
+# Required because the /data endpoint returns BDL internal IDs only.
+GUS_UNITS_OUT="data/raw/gus/units_gmina.json"
+if [ ! -f "$GUS_UNITS_OUT" ]; then
+  echo "Downloading GUS BDL gmina units (level=6)..."
+  uv run --no-project python scripts/download_bdl_units.py "$GUS_UNITS_OUT"
+else
+  echo "GUS BDL units already present, skipping."
+fi
+
 # === GUS BDL: PL gmina population ===
 # Variable 72305 = "ludność ogółem, stan na 31 XII". The variable already
 # declares level=6 (gmina) in its own metadata; passing unit-level=6 as a
