@@ -32,11 +32,18 @@ config.set_main_option("sqlalchemy.url", settings.database_url)
 target_metadata = Base.metadata
 
 
+_EXCLUDED_SCHEMAS = {"tiger", "tiger_data", "topology", "_timescaledb_internal", "_timescaledb_catalog", "_timescaledb_config", "_timescaledb_cache", "timescaledb_information", "timescaledb_experimental"}
+
+
 def include_object(object_, name, type_, reflected, compare_to):
     """Exclude PostGIS/TimescaleDB internal tables from autogenerate."""
-    if type_ == "table" and name.startswith(("spatial_ref_sys", "_timescaledb_", "topology")):
-        return False
-    if type_ == "schema" and name in ("tiger", "topology", "_timescaledb_internal", "_timescaledb_catalog"):
+    if type_ == "table":
+        schema = getattr(object_, "schema", None)
+        if schema in _EXCLUDED_SCHEMAS:
+            return False
+        if name in ("spatial_ref_sys", "layer", "topology") or name.startswith("_timescaledb_"):
+            return False
+    if type_ == "schema" and name in _EXCLUDED_SCHEMAS:
         return False
     return True
 
