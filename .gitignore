@@ -35,8 +35,10 @@ __pycache__/
 *.dbf
 *.prj
 *.cpg
-data/raw/
-data/processed/
+data/raw/*
+data/processed/*
+!data/raw/README.md
+!data/processed/README.md
 
 # OS
 .DS_Store
