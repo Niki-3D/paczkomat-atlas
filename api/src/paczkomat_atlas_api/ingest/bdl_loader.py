@@ -28,6 +28,20 @@ log = get_logger("ingest.bdl")
 BDL_DATA_FILE = Path("data/raw/gus/population_gmina_2024.json")
 BDL_UNITS_FILE = Path("data/raw/gus/units_gmina.json")
 
+# Polish letters that NFKD doesn't decompose (atomic codepoints) — map
+# explicitly before normalization so e.g. 'słupsk' becomes 'slupsk', not 'supsk'.
+_PL_DIACRITIC_MAP = str.maketrans({
+    "ł": "l", "Ł": "l",
+    "ą": "a", "Ą": "a",
+    "ć": "c", "Ć": "c",
+    "ę": "e", "Ę": "e",
+    "ń": "n", "Ń": "n",
+    "ó": "o", "Ó": "o",
+    "ś": "s", "Ś": "s",
+    "ź": "z", "Ź": "z",
+    "ż": "z", "Ż": "z",
+})
+
 # PRG rodzaj → preferred BDL kind chain (first match wins).
 # For converted gminas (e.g. rural in PRG, mixed in BDL), the fallback
 # keeps coverage high without misclassifying.
@@ -51,6 +65,16 @@ def normalize_name(name: str) -> str:
     for suffix in (" - miasto", " - obszar wiejski"):
         if name.endswith(suffix):
             name = name[: -len(suffix)]
+    # BDL prefixes Warsaw with "M.st." (miasto stołeczne) and appends
+    # version suffixes like " od 2002" / " do 2001" when admin geometry changes.
+    if name.startswith("M.st."):
+        name = name[len("M.st."):].lstrip(".").strip()
+    for marker in (" do 20", " do 19", " od 20", " od 19"):
+        idx = name.find(marker)
+        if idx > 0:
+            name = name[:idx].strip()
+            break
+    name = name.translate(_PL_DIACRITIC_MAP)
     nfkd = unicodedata.normalize("NFKD", name)
     ascii_form = nfkd.encode("ASCII", "ignore").decode("ASCII")
     return ascii_form.lower().strip()
@@ -125,6 +149,17 @@ async def load_population_gmina() -> dict[str, float | int]:
             if key in bdl_index:
                 found_bdl_id = bdl_index[key]
                 break
+        if not found_bdl_id:
+            # Name-only fallback: ignore rodzaj/kind, accept if (voj, name) is unique
+            # in BDL. Handles miasta na prawach powiatu and other classification
+            # mismatches between PRG and BDL.
+            candidates = [
+                bid for (v, n, _k), bid in bdl_index.items()
+                if v == voj and n == name_norm
+            ]
+            if len(set(candidates)) == 1:
+                found_bdl_id = candidates[0]
+                log.info("bdl.matched_name_only", teryt=teryt, name=name_norm, voj=voj)
         if not found_bdl_id:
             if len(unmatched_examples) < 10:
                 unmatched_examples.append(
