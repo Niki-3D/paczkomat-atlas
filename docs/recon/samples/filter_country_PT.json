@@ -1,0 +1,171 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 3192,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 3192,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PT/PT000001",
+      "country": "PT",
+      "name": "PT000001",
+      "type": [
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": -9.25964,
+        "latitude": 38.71943
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": null,
+      "location_description_1": "LAVANDARIA ENGOMARTINS",
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "L/Ma/Me/J/V 9-19,S 9-13",
+      "address": {
+        "line1": "R. ANTONIO FELICIANO DE -",
+        "line2": "2790-307 QUEIJAS"
+      },
+      "address_details": {
+        "city": "QUEIJAS",
+        "province": null,
+        "post_code": "2790-307",
+        "street": "R. ANTONIO FELICIANO DE -",
+        "building_number": null,
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Payment unavailable",
+      "functions": [
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_collect",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_collect",
+        "standard_letter_send"
+      ],
+      "partner_id": 99,
+      "is_next": false,
+      "payment_available": false,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 540,
+              "end": 1140
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 540,
+              "end": 1140
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 540,
+              "end": 1140
+            }
+          ],
+          "thursday": [
+            {
+              "start": 540,
+              "end": 1140
+            }
+          ],
+          "friday": [
+            {
+              "start": 540,
+              "end": 1140
+            }
+          ],
+          "saturday": [
+            {
+              "start": 540,
+              "end": 780
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "3011",
+      "agencies_extended": [
+        {
+          "name": "3011"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pt/images/PT000001.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": "3011",
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [
+        {
+          "start_time": "2025-12-01T00:00:00Z",
+          "end_time": "2025-12-02T00:00:00Z"
+        },
+        {
+          "start_time": "2025-12-08T00:00:00Z",
+          "end_time": "2025-12-09T00:00:00Z"
+        },
+        {
+          "start_time": "2025-12-24T00:00:00Z",
+          "end_time": "2025-12-25T00:00:00Z"
+        },
+        {
+          "start_time": "2026-01-03T00:00:00Z",
+          "end_time": "2026-01-04T00:00:00Z"
+        },
+        {
+          "start_time": "2026-06-06T23:00:00Z",
+          "end_time": "2026-06-07T23:00:00Z"
+        }
+      ],
+      "mondial_relay_id": "00001",
+      "print_in_store": true
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 3192,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 3192
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 2719,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 2719,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/HU/HU981B58B",
+      "country": "HU",
+      "name": "HU981B58B",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.17087,
+        "latitude": 47.43808
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Budapest XVIII. - Havanna telep (Penny)",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": null,
+      "address": {
+        "line1": "BAROSS U. 54",
+        "line2": "1181 Budapest"
+      },
+      "address_details": {
+        "city": "Budapest",
+        "province": null,
+        "post_code": "1181",
+        "street": "BAROSS U. 54",
+        "building_number": null,
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": null,
+      "functions": [
+        "parcel",
+        "parcel_collect",
+        "parcel_send"
+      ],
+      "partner_id": 98,
+      "is_next": false,
+      "payment_available": false,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "APH",
+      "agencies_extended": [
+        {
+          "name": "APH"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/hu/images/HU981B58B.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "legacy",
+      "physical_type_mapped": "001",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": true,
+      "in_mobile_send_excluded": true,
+      "in_mobile_return_excluded": true,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 2719,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 2719
+  }
+}

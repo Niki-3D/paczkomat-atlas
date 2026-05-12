@@ -1,0 +1,114 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 1653,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 1653,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AGS01M",
+      "country": "PL",
+      "name": "AGS01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Created",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": null,
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24//7",
+      "address": {
+        "line1": "DO WYKORZYSTANIA 0/0",
+        "line2": "00-000 TEST"
+      },
+      "address_details": {
+        "city": "TEST",
+        "province": "test",
+        "post_code": "00-000",
+        "street": "DO WYKORZYSTANIA",
+        "building_number": "0",
+        "flat_number": "0"
+      },
+      "phone_number": null,
+      "payment_point_descr": null,
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AGS01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "00400",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 1653,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 1653
+  }
+}

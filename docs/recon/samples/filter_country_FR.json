@@ -1,0 +1,110 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 26718,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 26718,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/FR/FR000000",
+      "country": "FR",
+      "name": "FR000000",
+      "type": [
+        "pok",
+        "pop"
+      ],
+      "status": "Disabled",
+      "location": {
+        "longitude": 2.36967,
+        "latitude": 43.2359
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": null,
+      "location_description_1": "H&M - HM CARREFOUR PONT ROUGE FR0258",
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": null,
+      "address": {
+        "line1": "CENTRE COMMERCIAL CARREFOUR ZI PONT ROU",
+        "line2": "11000 CARCASSONNE"
+      },
+      "address_details": {
+        "city": "CARCASSONNE",
+        "province": null,
+        "post_code": "11000",
+        "street": "CENTRE COMMERCIAL CARREFOUR ZI PONT ROU",
+        "building_number": null,
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Payment unavailable",
+      "functions": [
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_collect",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_collect",
+        "standard_letter_send"
+      ],
+      "partner_id": 99,
+      "is_next": false,
+      "payment_available": false,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "718",
+      "agencies_extended": [
+        {
+          "name": "718"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/fr/images/FR000000.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "00000",
+      "print_in_store": true
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 26718,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 26718
+  }
+}

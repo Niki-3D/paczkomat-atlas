@@ -1,0 +1,94 @@
+[
+  {
+    "name": "parcel",
+    "en-US": "Send and collect standard parcel"
+  },
+  {
+    "name": "parcel_send",
+    "en-US": "Standard parcel send"
+  },
+  {
+    "name": "parcel_collect",
+    "en-US": "Standard parcel collect"
+  },
+  {
+    "name": "parcel_reverse_return_send",
+    "en-US": "Standard parcel reverse return to sender"
+  },
+  {
+    "name": "standard_letter_collect",
+    "en-US": "Standard letter collect"
+  },
+  {
+    "name": "standard_letter_send",
+    "en-US": "Standard letter send"
+  },
+  {
+    "name": "allegro_parcel_collect",
+    "en-US": "Allegro parcel collect"
+  },
+  {
+    "name": "allegro_parcel_send",
+    "en-US": "Allegro parcel send"
+  },
+  {
+    "name": "allegro_parcel_reverse_return_send",
+    "en-US": "Allegro parcel return to sender"
+  },
+  {
+    "name": "allegro_letter_collect",
+    "en-US": "Allegro letter collect"
+  },
+  {
+    "name": "allegro_letter_send",
+    "en-US": "Allegro letter send"
+  },
+  {
+    "name": "allegro_letter_reverse_return_send",
+    "en-US": "Allegro letter return to sender"
+  },
+  {
+    "name": "allegro_courier_collect",
+    "en-US": "Allegro courier parcel collect"
+  },
+  {
+    "name": "allegro_courier_send",
+    "en-US": "Allegro courier parcel send"
+  },
+  {
+    "name": "allegro_courier_reverse_return_send",
+    "en-US": "Allegro courier parcel return to sender"
+  },
+  {
+    "name": "standard_courier_collect",
+    "en-US": "Courier parcel collect"
+  },
+  {
+    "name": "standard_courier_send",
+    "en-US": "Courier parcel send"
+  },
+  {
+    "name": "standard_courier_reverse_return_send",
+    "en-US": "Courier parcel return to sender"
+  },
+  {
+    "name": "air_on_airport",
+    "en-US": "Send and collect baggage from machine on airport"
+  },
+  {
+    "name": "air_outside_airport",
+    "en-US": "Send and collect baggage from machine outside of airport"
+  },
+  {
+    "name": "cool_parcel_collect",
+    "en-US": "Reservation collect from cooling machine"
+  },
+  {
+    "name": "laundry",
+    "en-US": "Send and collect laundry"
+  },
+  {
+    "name": "avizo",
+    "en-US": "Avizo collect"
+  }
+]

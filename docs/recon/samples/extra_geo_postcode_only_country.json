@@ -1,0 +1,1156 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 25,
+  "page": 1,
+  "per_page": 10,
+  "total_pages": 3,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW25M",
+      "country": "PL",
+      "name": "WAW25M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Created",
+      "location": {
+        "longitude": 21.01422,
+        "latitude": 52.23453
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Hotel Gromada",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 263,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Pl. Powstańców Warszawy 2",
+        "line2": "00-030 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-030",
+        "street": "Pl. Powstańców Warszawy",
+        "building_number": "2",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność internetowa PayByLink oraz Blik",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW25M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "41253",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW94M",
+      "country": "PL",
+      "name": "WAW94M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Created",
+      "location": {
+        "longitude": 21.01422,
+        "latitude": 52.23453
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy hotelu Gromada",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 263,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Pl. Powstańców Warszawy 2",
+        "line2": "00-030 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-030",
+        "street": "Pl. Powstańców Warszawy",
+        "building_number": "2",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność internetowa PayByLink oraz Blik",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW94M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "00413",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW171M",
+      "country": "PL",
+      "name": "WAW171M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.01422,
+        "latitude": 52.23453
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Hotel Gromada",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 263,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "pl. Powstańców Warszawy 2A",
+        "line2": "00-030 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-030",
+        "street": "pl. Powstańców Warszawy",
+        "building_number": "2A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "WAW78H",
+        "WAW66BAPP",
+        "WAW309M",
+        "WAW112M",
+        "WAW405M"
+      ],
+      "apm_doubled": "WAW78H",
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW171M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "F65",
+      "micro_area_id": "F65A",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S10",
+      "d2d_courier_micro_area": "S10H",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "29759",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW78H",
+      "country": "PL",
+      "name": "WAW78H",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.0157,
+        "latitude": 52.23496
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "w lokalu użytkowym",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 346,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Warecka 11",
+        "line2": "00-034 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-034",
+        "street": "Warecka",
+        "building_number": "11",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "WAW66BAPP",
+        "WAW309M",
+        "WAW112M",
+        "WAW405M",
+        "WAW444M"
+      ],
+      "apm_doubled": "WAW171M",
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW78H.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "G32",
+      "micro_area_id": "G32A",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S10",
+      "d2d_courier_micro_area": "S10L",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "30551",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW287M",
+      "country": "PL",
+      "name": "WAW287M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.0056,
+        "latitude": 52.2365
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "We wnęce budynku Próżna 5",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 364,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Próżna 5",
+        "line2": "00-107 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-107",
+        "street": "Próżna",
+        "building_number": "5",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "WAW405M",
+        "WAW309M",
+        "WAW112M",
+        "WAW257M",
+        "WAW04A"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW287M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "F31",
+      "micro_area_id": "F31A",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S51",
+      "d2d_courier_micro_area": "S51D",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "29949",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW96HP",
+      "country": "PL",
+      "name": "WAW96HP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.00501,
+        "latitude": 52.23475
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Po prawej stronie wejścia do sklepu u Doroty",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 398,
+      "opening_hours": "PN-SB 07-22",
+      "address": {
+        "line1": "Świętokrzyska 30",
+        "line2": "00-116 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-116",
+        "street": "Świętokrzyska",
+        "building_number": "30",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 420,
+              "end": 1320
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 420,
+              "end": 1320
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 420,
+              "end": 1320
+            }
+          ],
+          "thursday": [
+            {
+              "start": 420,
+              "end": 1320
+            }
+          ],
+          "friday": [
+            {
+              "start": 420,
+              "end": 1320
+            }
+          ],
+          "saturday": [
+            {
+              "start": 420,
+              "end": 1320
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW96HP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "F37",
+      "micro_area_id": "F37A",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S51",
+      "d2d_courier_micro_area": "S51B",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "41817",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-WAW708",
+      "country": "PL",
+      "name": "POP-WAW708",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.01712,
+        "latitude": 52.23679
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "PAKERSI- METRO NOWY ŚWIAT-UNIWERSYTET- U BUCHA",
+      "location_description_1": "Punkt",
+      "location_description_2": null,
+      "distance": 458,
+      "opening_hours": "PN-SB 10-20",
+      "address": {
+        "line1": "Nowy Świat 0/POZ.-1 L.U1012",
+        "line2": "00-046 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-046",
+        "street": "Nowy Świat",
+        "building_number": "0",
+        "flat_number": "POZ.-1 L.U1012"
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność kartą w Paczkomacie",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 600,
+              "end": 1200
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 600,
+              "end": 1200
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 600,
+              "end": 1200
+            }
+          ],
+          "thursday": [
+            {
+              "start": 600,
+              "end": 1200
+            }
+          ],
+          "friday": [
+            {
+              "start": 600,
+              "end": 1200
+            }
+          ],
+          "saturday": [
+            {
+              "start": 600,
+              "end": 1200
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-WAW708.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "S10",
+      "micro_area_id": "S10E",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S10",
+      "d2d_courier_micro_area": "S10F",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "38558",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-WAW722",
+      "country": "PL",
+      "name": "POP-WAW722",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.01355,
+        "latitude": 52.23083
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "PAKERSI- TRADYCYJNA PASMANTERIA",
+      "location_description_1": "Punkt",
+      "location_description_2": null,
+      "distance": 558,
+      "opening_hours": "PN-PT 11-19 SB 11-15",
+      "address": {
+        "line1": "Widok 22",
+        "line2": "00-023 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-023",
+        "street": "Widok",
+        "building_number": "22",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność kartą w Paczkomacie",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 660,
+              "end": 1140
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 660,
+              "end": 1140
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 660,
+              "end": 1140
+            }
+          ],
+          "thursday": [
+            {
+              "start": 660,
+              "end": 1140
+            }
+          ],
+          "friday": [
+            {
+              "start": 660,
+              "end": 1140
+            }
+          ],
+          "saturday": [
+            {
+              "start": 660,
+              "end": 900
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-WAW722.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "S12",
+      "micro_area_id": "S12J",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S12",
+      "d2d_courier_micro_area": "S12M",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "39048",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW110BAPP",
+      "country": "PL",
+      "name": "WAW110BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.00275,
+        "latitude": 52.23893
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Szczyt budynku Graniczna 4, przy rzeźbie syrenki warszawskiej",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 661,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Graniczna 4",
+        "line2": "00-130 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-130",
+        "street": "Graniczna",
+        "building_number": "4",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW110BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "F34",
+      "micro_area_id": "F34A",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S50",
+      "d2d_courier_micro_area": "S50B",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "41944",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/WAW747M",
+      "country": "PL",
+      "name": "WAW747M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.02041,
+        "latitude": 52.23804
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Paczkomat znajduje się przy budynku OPZZ",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 717,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Mikołaja Kopernika 36/40",
+        "line2": "00-328 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "00-328",
+        "street": "Mikołaja Kopernika",
+        "building_number": "36/40",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "WAW78H",
+        "WAW444M",
+        "WAW249M",
+        "WAW07HO",
+        "WAW514M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/WAW747M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "F83",
+      "micro_area_id": "F83A",
+      "agency_code": "WAW",
+      "d2d_courier_area": "S62",
+      "d2d_courier_micro_area": "S62H",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "30528",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 25,
+    "page": 1,
+    "per_page": 10,
+    "total_pages": 3
+  }
+}

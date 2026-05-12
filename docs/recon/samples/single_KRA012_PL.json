@@ -1,0 +1,103 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points/PL/KRA012",
+  "country": "PL",
+  "name": "KRA012",
+  "type": [],
+  "status": "Removed",
+  "location": {
+    "longitude": 20.00399,
+    "latitude": 50.08913
+  },
+  "location_type": "Outdoor",
+  "location_category": "Generic",
+  "location_date": null,
+  "location_description": "Stacja paliw MOL",
+  "location_description_1": null,
+  "location_description_2": "MOL",
+  "distance": null,
+  "opening_hours": "24/7",
+  "address": {
+    "line1": "Os. Kombatantów 20/ZDEMONTOWANY",
+    "line2": "31-630 Kraków"
+  },
+  "address_details": {
+    "city": "Kraków",
+    "province": "małopolskie",
+    "post_code": "31-630",
+    "street": "Os. Kombatantów",
+    "building_number": "20",
+    "flat_number": "ZDEMONTOWANY"
+  },
+  "phone_number": null,
+  "payment_point_descr": "Płatność internetowa aplikacją InPost Mobile oraz PayByLink",
+  "functions": [
+    "allegro_courier_collect",
+    "allegro_courier_reverse_return_send",
+    "allegro_courier_send",
+    "allegro_letter_send",
+    "allegro_parcel_collect",
+    "allegro_parcel_reverse_return_send",
+    "allegro_parcel_send",
+    "cross_network_parcel_collect",
+    "cross_network_parcel_send",
+    "parcel",
+    "parcel_collect",
+    "parcel_reverse_return_send",
+    "parcel_send",
+    "standard_courier_reverse_return_send",
+    "standard_courier_send"
+  ],
+  "partner_id": 0,
+  "is_next": false,
+  "payment_available": true,
+  "payment_type": {
+    "0": "Payments are not supported"
+  },
+  "virtual": "0",
+  "recommended_low_interest_box_machines_list": [
+    "KRA14A",
+    "KRA273M",
+    "KRA175M",
+    "KRA39A",
+    "KRA301M"
+  ],
+  "apm_doubled": null,
+  "location_247": true,
+  "operating_hours_extended": {
+    "customer": null
+  },
+  "agency": "KRA",
+  "agencies_extended": [
+    {
+      "name": "KRA"
+    }
+  ],
+  "image_url": "https://static.easypack24.net/points/pl/images/KRA012.jpg",
+  "easy_access_zone": false,
+  "air_index_level": null,
+  "physical_type": "legacy",
+  "physical_type_mapped": "001",
+  "physical_type_description": null,
+  "in_mobile_collect_excluded": true,
+  "in_mobile_send_excluded": true,
+  "in_mobile_return_excluded": true,
+  "express_delivery_send": false,
+  "express_delivery_collect": false,
+  "delivery_area_id": null,
+  "micro_area_id": null,
+  "agency_code": null,
+  "d2d_courier_area": null,
+  "d2d_courier_micro_area": null,
+  "locker_availability": {
+    "status": "NO_DATA",
+    "details": {
+      "A": "NO_DATA",
+      "B": "NO_DATA",
+      "C": "NO_DATA"
+    }
+  },
+  "supported_locker_temperatures": null,
+  "unavailability_periods": null,
+  "mondial_relay_id": "",
+  "print_in_store": null
+}

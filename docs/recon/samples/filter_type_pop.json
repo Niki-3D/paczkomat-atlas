@@ -1,0 +1,157 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 3098,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 3098,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-ALA1",
+      "country": "PL",
+      "name": "POP-ALA1",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.85435,
+        "latitude": 50.47174
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "FURGONETKA-SKLEP BOROWIEC",
+      "location_description_1": "Punkt",
+      "location_description_2": "Punkt",
+      "distance": null,
+      "opening_hours": "PN-PT 08-18 SB 08-17",
+      "address": {
+        "line1": "Aleksandrów 590",
+        "line2": "23-408 Aleksandrów"
+      },
+      "address_details": {
+        "city": "Aleksandrów",
+        "province": "lubelskie",
+        "post_code": "23-408",
+        "street": "Aleksandrów",
+        "building_number": "590",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność kartą w Paczkomacie",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 480,
+              "end": 1080
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 480,
+              "end": 1080
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 480,
+              "end": 1080
+            }
+          ],
+          "thursday": [
+            {
+              "start": 480,
+              "end": 1080
+            }
+          ],
+          "friday": [
+            {
+              "start": 480,
+              "end": 1080
+            }
+          ],
+          "saturday": [
+            {
+              "start": 480,
+              "end": 1020
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "ZAM",
+      "agencies_extended": [
+        {
+          "name": "ZAM"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-ALA1.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "D1R",
+      "micro_area_id": "D1RJ",
+      "agency_code": "ZAM",
+      "d2d_courier_area": "D1K",
+      "d2d_courier_micro_area": "D1KD",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "35569",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 3098,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 3098
+  }
+}

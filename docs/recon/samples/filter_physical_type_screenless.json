@@ -1,0 +1,116 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 6219,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 6219,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADZ01BAPP",
+      "country": "PL",
+      "name": "ADZ01BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.43607,
+        "latitude": 50.76041
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy OSP",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Andrzejów 38",
+        "line2": "23-302 Andrzejów"
+      },
+      "address_details": {
+        "city": "Andrzejów",
+        "province": "lubelskie",
+        "post_code": "23-302",
+        "street": "Andrzejów",
+        "building_number": "38",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "TNG",
+      "agencies_extended": [
+        {
+          "name": "TNG"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADZ01BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "C02",
+      "micro_area_id": "C02A",
+      "agency_code": "TNG",
+      "d2d_courier_area": "A02",
+      "d2d_courier_micro_area": "A02C",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "03810",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 6219,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 6219
+  }
+}

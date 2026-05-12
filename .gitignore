@@ -1,0 +1,59 @@
+# Env / secrets
+.env
+.env.*
+!.env.example
+**/secrets/
+
+# Claude
+.claude/settings.local.json
+.claude/.cache/
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.uv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Data / build artifacts
+*.parquet
+*.pmtiles
+*.pbf
+*.osm.pbf
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+data/raw/
+data/processed/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+.idea/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
+
+# Docker
+**/data/postgres/

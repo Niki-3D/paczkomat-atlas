@@ -1,0 +1,2568 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 153603,
+  "page": 1,
+  "per_page": 25,
+  "total_pages": 6145,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADA01M",
+      "country": "PL",
+      "name": "ADA01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.26405,
+        "latitude": 51.73834
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy sklepie Lewiatan",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Kościuszki 27",
+        "line2": "21-412 Adamów"
+      },
+      "address_details": {
+        "city": "Adamów",
+        "province": "lubelskie",
+        "post_code": "21-412",
+        "street": "Kościuszki",
+        "building_number": "27",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADA01N"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "SDL",
+      "agencies_extended": [
+        {
+          "name": "SDL"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADA01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "OOO",
+      "micro_area_id": "OOOE",
+      "agency_code": "SDL",
+      "d2d_courier_area": "O04",
+      "d2d_courier_micro_area": "O04F",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "00001",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADA01N",
+      "country": "PL",
+      "name": "ADA01N",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.25875,
+        "latitude": 51.7444
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy sklepie Groszek",
+      "location_description_1": null,
+      "location_description_2": "Groszek",
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Kleeberga 5B",
+        "line2": "21-412 Adamów"
+      },
+      "address_details": {
+        "city": "Adamów",
+        "province": "lubelskie",
+        "post_code": "21-412",
+        "street": "Kleeberga",
+        "building_number": "5B",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": true,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADA01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "SDL",
+      "agencies_extended": [
+        {
+          "name": "SDL"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADA01N.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "next",
+      "physical_type_mapped": "005",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "OOO",
+      "micro_area_id": "OOOF",
+      "agency_code": "SDL",
+      "d2d_courier_area": "O04",
+      "d2d_courier_micro_area": "O04B",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "00010",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADAM01N",
+      "country": "PL",
+      "name": "ADAM01N",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 18.08788,
+        "latitude": 52.26299
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Sklep ABC",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Adamów 45",
+        "line2": "62-590 Adamów"
+      },
+      "address_details": {
+        "city": "Adamów",
+        "province": "wielkopolskie",
+        "post_code": "62-590",
+        "street": "Adamów",
+        "building_number": "45",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": true,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "GLN01M",
+        "GLN03M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "KON",
+      "agencies_extended": [
+        {
+          "name": "KON"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADAM01N.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "next",
+      "physical_type_mapped": "005",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "GK6",
+      "micro_area_id": "GK6A",
+      "agency_code": "KON",
+      "d2d_courier_area": "GI4",
+      "d2d_courier_micro_area": "GI4J",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "00100",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADK01M",
+      "country": "PL",
+      "name": "ADK01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.69906,
+        "latitude": 50.25873
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Parking z lewej strony",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Adamówka 4A",
+        "line2": "37-534 Adamówka"
+      },
+      "address_details": {
+        "city": "Adamówka",
+        "province": "podkarpackie",
+        "post_code": "37-534",
+        "street": "Adamówka",
+        "building_number": "4A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "RZ2",
+      "agencies_extended": [
+        {
+          "name": "RZ2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADK01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "E11",
+      "micro_area_id": "E11A",
+      "agency_code": "RZ2",
+      "d2d_courier_area": "AK3",
+      "d2d_courier_micro_area": "AK3K",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "01000",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADM01A",
+      "country": "PL",
+      "name": "ADM01A",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Disabled",
+      "location": {
+        "longitude": 20.63541,
+        "latitude": 52.06923
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy skrzyżowaniu z ulicą Łosią",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Osowiecka 58",
+        "line2": "05-825 Adamowizna"
+      },
+      "address_details": {
+        "city": "Adamowizna",
+        "province": "mazowieckie",
+        "post_code": "05-825",
+        "street": "Osowiecka",
+        "building_number": "58",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADM03M",
+        "ADM02M",
+        "ADM01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA4",
+      "agencies_extended": [
+        {
+          "name": "WA4"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADM01A.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "modular",
+      "physical_type_mapped": "003",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "10000",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADM01M",
+      "country": "PL",
+      "name": "ADM01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 20.61316,
+        "latitude": 52.07675
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy wejściu do sklepu",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Niedźwiedzia 18",
+        "line2": "05-825 Adamowizna"
+      },
+      "address_details": {
+        "city": "Adamowizna",
+        "province": "mazowieckie",
+        "post_code": "05-825",
+        "street": "Niedźwiedzia",
+        "building_number": "18",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADM02M",
+        "ADM03M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA4",
+      "agencies_extended": [
+        {
+          "name": "WA4"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADM01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L02",
+      "micro_area_id": "L02A",
+      "agency_code": "WA4",
+      "d2d_courier_area": "YD4",
+      "d2d_courier_micro_area": "YD4O",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "10001",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADM02M",
+      "country": "PL",
+      "name": "ADM02M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 20.62871,
+        "latitude": 52.07763
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy Fantastyczne Miejsce dla Małych i Dużych",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Promienna 4",
+        "line2": "05-825 Adamowizna"
+      },
+      "address_details": {
+        "city": "Adamowizna",
+        "province": "mazowieckie",
+        "post_code": "05-825",
+        "street": "Promienna",
+        "building_number": "4",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADM03M",
+        "ADM01M",
+        "ODW01M"
+      ],
+      "apm_doubled": "ADM03M",
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA4",
+      "agencies_extended": [
+        {
+          "name": "WA4"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADM02M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L01",
+      "micro_area_id": "L01A",
+      "agency_code": "WA4",
+      "d2d_courier_area": "YD4",
+      "d2d_courier_micro_area": "YD4N",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "10002",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADM03M",
+      "country": "PL",
+      "name": "ADM03M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 20.62984,
+        "latitude": 52.07714
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Market Dino",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Osowiecka 100",
+        "line2": "05-825 Adamowizna"
+      },
+      "address_details": {
+        "city": "Adamowizna",
+        "province": "mazowieckie",
+        "post_code": "05-825",
+        "street": "Osowiecka",
+        "building_number": "100",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADM02M",
+        "ADM01M",
+        "ODW01M"
+      ],
+      "apm_doubled": "ADM02M",
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA4",
+      "agencies_extended": [
+        {
+          "name": "WA4"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADM03M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L01",
+      "micro_area_id": "L01B",
+      "agency_code": "WA4",
+      "d2d_courier_area": "YD4",
+      "d2d_courier_micro_area": "YD4N",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "33858",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADOL01M",
+      "country": "PL",
+      "name": "ADOL01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.3654,
+        "latitude": 51.9257
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Sklep Spożywczy \"u WIKTORA\"",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Podgórna 17",
+        "line2": "95-100 Adolfów"
+      },
+      "address_details": {
+        "city": "Adolfów",
+        "province": "łódzkie",
+        "post_code": "95-100",
+        "street": "Podgórna",
+        "building_number": "17",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "SVX01G",
+        "KIG02M",
+        "EMIL01BAPP"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "LDZ",
+      "agencies_extended": [
+        {
+          "name": "LDZ"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADOL01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "H36",
+      "micro_area_id": "H36A",
+      "agency_code": "LDZ",
+      "d2d_courier_area": "R43",
+      "d2d_courier_micro_area": "R43D",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "33515",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADR01M",
+      "country": "PL",
+      "name": "ADR01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.53957,
+        "latitude": 51.57092
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy Stokrotkce",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Główna 23",
+        "line2": "26-900 Aleksandrówka"
+      },
+      "address_details": {
+        "city": "Aleksandrówka",
+        "province": "mazowieckie",
+        "post_code": "26-900",
+        "street": "Główna",
+        "building_number": "23",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "NOV01M",
+        "KZC01M",
+        "KZN01N",
+        "KZC03M",
+        "KZC02G"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "RDM",
+      "agencies_extended": [
+        {
+          "name": "RDM"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADR01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "V24",
+      "micro_area_id": "V24B",
+      "agency_code": "RDM",
+      "d2d_courier_area": "B43",
+      "d2d_courier_micro_area": "B43C",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "10003",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADV01M",
+      "country": "PL",
+      "name": "ADV01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.14909,
+        "latitude": 51.02264
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "sklep Kubuś",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Górna 94",
+        "line2": "27-230 Adamów"
+      },
+      "address_details": {
+        "city": "Adamów",
+        "province": "świętokrzyskie",
+        "post_code": "27-230",
+        "street": "Górna",
+        "building_number": "94",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "DUR01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "RDX",
+      "agencies_extended": [
+        {
+          "name": "RDX"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADV01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "M44",
+      "micro_area_id": "M44C",
+      "agency_code": "RDX",
+      "d2d_courier_area": "X12",
+      "d2d_courier_micro_area": "X12J",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "10004",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADW01M",
+      "country": "PL",
+      "name": "ADW01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 18.33391,
+        "latitude": 50.13038
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przed sklepem spożywczym",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Rybnicka 55A",
+        "line2": "47-435 Adamowice"
+      },
+      "address_details": {
+        "city": "Adamowice",
+        "province": "śląskie",
+        "post_code": "47-435",
+        "street": "Rybnicka",
+        "building_number": "55A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "SZMC02BAPP"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "KT2",
+      "agencies_extended": [
+        {
+          "name": "KT2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADW01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "H41",
+      "micro_area_id": "H41B",
+      "agency_code": "KT2",
+      "d2d_courier_area": "AO2",
+      "d2d_courier_micro_area": "AO2K",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "10005",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADXM01M",
+      "country": "PL",
+      "name": "ADXM01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.30927,
+        "latitude": 52.23433
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Stacja Benzynowa Pieprzyk",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Adamowice 1A",
+        "line2": "99-300 Adamowice"
+      },
+      "address_details": {
+        "city": "Adamowice",
+        "province": "łódzkie",
+        "post_code": "99-300",
+        "street": "Adamowice",
+        "building_number": "1A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "KUT02BAPP"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "PLC",
+      "agencies_extended": [
+        {
+          "name": "PLC"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADXM01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "E24",
+      "micro_area_id": "E24A",
+      "agency_code": "PLC",
+      "d2d_courier_area": "J5B",
+      "d2d_courier_micro_area": "J5BB",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "33309",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADZ01BAPP",
+      "country": "PL",
+      "name": "ADZ01BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.43607,
+        "latitude": 50.76041
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy OSP",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Andrzejów 38",
+        "line2": "23-302 Andrzejów"
+      },
+      "address_details": {
+        "city": "Andrzejów",
+        "province": "lubelskie",
+        "post_code": "23-302",
+        "street": "Andrzejów",
+        "building_number": "38",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "TNG",
+      "agencies_extended": [
+        {
+          "name": "TNG"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADZ01BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "C02",
+      "micro_area_id": "C02A",
+      "agency_code": "TNG",
+      "d2d_courier_area": "A02",
+      "d2d_courier_micro_area": "A02C",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "03810",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AEX01M",
+      "country": "PL",
+      "name": "AEX01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.97524,
+        "latitude": 51.26625
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Market Dino",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Aleksandrów 43a",
+        "line2": "26-337 Aleksandrów"
+      },
+      "address_details": {
+        "city": "Aleksandrów",
+        "province": "łódzkie",
+        "post_code": "26-337",
+        "street": "Aleksandrów",
+        "building_number": "43a",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "PTR",
+      "agencies_extended": [
+        {
+          "name": "PTR"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AEX01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L17",
+      "micro_area_id": "L17A",
+      "agency_code": "PTR",
+      "d2d_courier_area": "D15",
+      "d2d_courier_micro_area": "D15M",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "10006",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AFD01BAPP",
+      "country": "PL",
+      "name": "AFD01BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.75659,
+        "latitude": 50.46696
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy sklepie",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Alfredówka 204",
+        "line2": "39-460 Alfredówka"
+      },
+      "address_details": {
+        "city": "Alfredówka",
+        "province": "podkarpackie",
+        "post_code": "39-460",
+        "street": "Alfredówka",
+        "building_number": "204",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "TKW01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "TNG",
+      "agencies_extended": [
+        {
+          "name": "TNG"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AFD01BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "D07",
+      "micro_area_id": "D07C",
+      "agency_code": "TNG",
+      "d2d_courier_area": "A30",
+      "d2d_courier_micro_area": "A30P",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "38357",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AGS01M",
+      "country": "PL",
+      "name": "AGS01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Created",
+      "location": {
+        "longitude": 0.0,
+        "latitude": 0.0
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": null,
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24//7",
+      "address": {
+        "line1": "DO WYKORZYSTANIA 0/0",
+        "line2": "00-000 TEST"
+      },
+      "address_details": {
+        "city": "TEST",
+        "province": "test",
+        "post_code": "00-000",
+        "street": "DO WYKORZYSTANIA",
+        "building_number": "0",
+        "flat_number": "0"
+      },
+      "phone_number": null,
+      "payment_point_descr": null,
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WAW",
+      "agencies_extended": [
+        {
+          "name": "WAW"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AGS01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "00400",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AGST01M",
+      "country": "PL",
+      "name": "AGST01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.03997,
+        "latitude": 51.34791
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Market Dino",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Augustów 58A",
+        "line2": "26-624 Augustów"
+      },
+      "address_details": {
+        "city": "Augustów",
+        "province": "mazowieckie",
+        "post_code": "26-624",
+        "street": "Augustów",
+        "building_number": "58A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "MDM01M",
+        "KOSO01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "RDM",
+      "agencies_extended": [
+        {
+          "name": "RDM"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AGST01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "M61",
+      "micro_area_id": "M61B",
+      "agency_code": "RDM",
+      "d2d_courier_area": "Q32",
+      "d2d_courier_micro_area": "Q32N",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "33792",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AGT01BAPP",
+      "country": "PL",
+      "name": "AGT01BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.00838,
+        "latitude": 50.61085
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "market Dino",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Sandomierska 34",
+        "line2": "37-450 Agatówka"
+      },
+      "address_details": {
+        "city": "Agatówka",
+        "province": "podkarpackie",
+        "post_code": "37-450",
+        "street": "Sandomierska",
+        "building_number": "34",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "OBN01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "TNG",
+      "agencies_extended": [
+        {
+          "name": "TNG"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AGT01BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "E41",
+      "micro_area_id": "E41H",
+      "agency_code": "TNG",
+      "d2d_courier_area": "A14",
+      "d2d_courier_micro_area": "A14D",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "38791",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AGU01M",
+      "country": "PL",
+      "name": "AGU01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 21.5005,
+        "latitude": 51.98629
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "przy sklepie",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Kolejowa 47A",
+        "line2": "08-445 Augustówka"
+      },
+      "address_details": {
+        "city": "Augustówka",
+        "province": "mazowieckie",
+        "post_code": "08-445",
+        "street": "Kolejowa",
+        "building_number": "47A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA5",
+      "agencies_extended": [
+        {
+          "name": "WA5"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AGU01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "G47",
+      "micro_area_id": "G47B",
+      "agency_code": "WA5",
+      "d2d_courier_area": "S80",
+      "d2d_courier_micro_area": "S80H",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "10007",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AJE01BAPP",
+      "country": "PL",
+      "name": "AJE01BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.20968,
+        "latitude": 52.83679
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Market Dino",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Warszawska 62A",
+        "line2": "07-305 Andrzejewo"
+      },
+      "address_details": {
+        "city": "Andrzejewo",
+        "province": "mazowieckie",
+        "post_code": "07-305",
+        "street": "Warszawska",
+        "building_number": "62A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "OST",
+      "agencies_extended": [
+        {
+          "name": "OST"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AJE01BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "GOOD",
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "M14",
+      "micro_area_id": "M14A",
+      "agency_code": "OST",
+      "d2d_courier_area": "AF4",
+      "d2d_courier_micro_area": "AF4G",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "34239",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AJE01M",
+      "country": "PL",
+      "name": "AJE01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.20061,
+        "latitude": 52.83045
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Na parkingu Urzędu Gminy",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Warszawska 36",
+        "line2": "07-305 Andrzejewo"
+      },
+      "address_details": {
+        "city": "Andrzejewo",
+        "province": "mazowieckie",
+        "post_code": "07-305",
+        "street": "Warszawska",
+        "building_number": "36",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "AJE01BAPP"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "OST",
+      "agencies_extended": [
+        {
+          "name": "OST"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AJE01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "M15",
+      "micro_area_id": "M15A",
+      "agency_code": "OST",
+      "d2d_courier_area": "AF4",
+      "d2d_courier_micro_area": "AF4G",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "10008",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AKS01A",
+      "country": "PL",
+      "name": "AKS01A",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 18.955,
+        "latitude": 50.73601
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Obok Żabki",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Gościnna 158",
+        "line2": "42-274 Aleksandria"
+      },
+      "address_details": {
+        "city": "Aleksandria",
+        "province": "śląskie",
+        "post_code": "42-274",
+        "street": "Gościnna",
+        "building_number": "158",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "AKS01M",
+        "AKS02M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "CZS",
+      "agencies_extended": [
+        {
+          "name": "CZS"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AKS01A.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "modular",
+      "physical_type_mapped": "003",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L54",
+      "micro_area_id": "L54A",
+      "agency_code": "CZS",
+      "d2d_courier_area": "A42",
+      "d2d_courier_micro_area": "A42C",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "10009",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AKS01M",
+      "country": "PL",
+      "name": "AKS01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 18.95809,
+        "latitude": 50.72639
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Market Dino",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Gościnna 265",
+        "line2": "42-274 Aleksandria"
+      },
+      "address_details": {
+        "city": "Aleksandria",
+        "province": "śląskie",
+        "post_code": "42-274",
+        "street": "Gościnna",
+        "building_number": "265",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "AKS01A"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "CZS",
+      "agencies_extended": [
+        {
+          "name": "CZS"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AKS01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L53",
+      "micro_area_id": "L53B",
+      "agency_code": "CZS",
+      "d2d_courier_area": "A42",
+      "d2d_courier_micro_area": "A42D",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "01001",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/AKS02M",
+      "country": "PL",
+      "name": "AKS02M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 18.94768,
+        "latitude": 50.75152
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Sklep Lewiatan",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Gościnna 46",
+        "line2": "42-274 Aleksandria"
+      },
+      "address_details": {
+        "city": "Aleksandria",
+        "province": "śląskie",
+        "post_code": "42-274",
+        "street": "Gościnna",
+        "building_number": "46",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "AKS01A"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "CZS",
+      "agencies_extended": [
+        {
+          "name": "CZS"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/AKS02M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L53",
+      "micro_area_id": "L53A",
+      "agency_code": "CZS",
+      "d2d_courier_area": "A42",
+      "d2d_courier_micro_area": "A42C",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "33820",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 153603,
+    "page": 1,
+    "per_page": 25,
+    "total_pages": 6145
+  }
+}

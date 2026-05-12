@@ -1,0 +1,155 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 1809,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 1809,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/BE/BE000106",
+      "country": "BE",
+      "name": "BE000106",
+      "type": [
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 4.2167,
+        "latitude": 50.50262
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": null,
+      "location_description_1": "SUPERETTE DE LA PLACE",
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "L/Ma/Me/J/V/S/D 9-20",
+      "address": {
+        "line1": "PLACE ROI BAUDOUIN 12A",
+        "line2": "7170 BOIS D''HAINE"
+      },
+      "address_details": {
+        "city": "BOIS D''HAINE",
+        "province": null,
+        "post_code": "7170",
+        "street": "PLACE ROI BAUDOUIN 12A",
+        "building_number": null,
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Payment unavailable",
+      "functions": [
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_collect",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_collect",
+        "standard_letter_send"
+      ],
+      "partner_id": 99,
+      "is_next": false,
+      "payment_available": false,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ],
+          "thursday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ],
+          "friday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ],
+          "saturday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ],
+          "sunday": [
+            {
+              "start": 540,
+              "end": 1200
+            }
+          ]
+        }
+      },
+      "agency": "5210",
+      "agencies_extended": [
+        {
+          "name": "5210"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/be/images/BE000106.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": "5210",
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "00106",
+      "print_in_store": true
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 1809,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 1809
+  }
+}

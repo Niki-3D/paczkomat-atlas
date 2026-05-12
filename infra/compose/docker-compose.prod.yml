@@ -1,0 +1,23 @@
+services:
+  db:
+    restart: unless-stopped
+    ports: []
+    volumes:
+      - /opt/paczkomat/db:/var/lib/postgresql/data
+
+  api:
+    restart: unless-stopped
+    ports: []
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /opt/paczkomat/caddy-data:/data
+      - /opt/paczkomat/caddy-config:/config
+    depends_on:
+      - api

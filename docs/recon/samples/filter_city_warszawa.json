@@ -1,0 +1,122 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 1760,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 1760,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/PNET0900",
+      "country": "PL",
+      "name": "PNET0900",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 20.9238,
+        "latitude": 52.24851
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy salonie Perfect Lashes",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Rosy Bailly 1B",
+        "line2": "01-494 Warszawa"
+      },
+      "address_details": {
+        "city": "Warszawa",
+        "province": "mazowieckie",
+        "post_code": "01-494",
+        "street": "Rosy Bailly",
+        "building_number": "1B",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "WAW645M",
+        "WAW346M",
+        "WAW43N",
+        "WAW149A",
+        "WAW353M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA3",
+      "agencies_extended": [
+        {
+          "name": "WA3"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/PNET0900.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "bankopaczkomaty",
+      "physical_type_mapped": "008",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "K33",
+      "micro_area_id": "K33A",
+      "agency_code": "WA3",
+      "d2d_courier_area": "C1C",
+      "d2d_courier_micro_area": "C1CG",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "21397",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 1760,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 1760
+  }
+}

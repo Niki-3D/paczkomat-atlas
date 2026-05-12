@@ -1,0 +1,118 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 30871,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 30871,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADA01M",
+      "country": "PL",
+      "name": "ADA01M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.26405,
+        "latitude": 51.73834
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy sklepie Lewiatan",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Kościuszki 27",
+        "line2": "21-412 Adamów"
+      },
+      "address_details": {
+        "city": "Adamów",
+        "province": "lubelskie",
+        "post_code": "21-412",
+        "street": "Kościuszki",
+        "building_number": "27",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADA01N"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "SDL",
+      "agencies_extended": [
+        {
+          "name": "SDL"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADA01M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "OOO",
+      "micro_area_id": "OOOE",
+      "agency_code": "SDL",
+      "d2d_courier_area": "O04",
+      "d2d_courier_micro_area": "O04F",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "00001",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 30871,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 30871
+  }
+}

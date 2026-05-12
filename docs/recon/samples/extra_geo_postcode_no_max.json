@@ -1,0 +1,1283 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 25,
+  "page": 1,
+  "per_page": 10,
+  "total_pages": 3,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-KRA372",
+      "country": "PL",
+      "name": "POP-KRA372",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.94202,
+        "latitude": 50.0756
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "OSIEDLAK SKLEP",
+      "location_description_1": "Punkt",
+      "location_description_2": null,
+      "distance": 113,
+      "opening_hours": "PN-PT 08-22 SB 10-22 ND 12-20",
+      "address": {
+        "line1": "Kamienna 19B",
+        "line2": "30-001 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "30-001",
+        "street": "Kamienna",
+        "building_number": "19B",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność kartą w Paczkomacie",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 480,
+              "end": 1320
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 480,
+              "end": 1320
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 480,
+              "end": 1320
+            }
+          ],
+          "thursday": [
+            {
+              "start": 480,
+              "end": 1320
+            }
+          ],
+          "friday": [
+            {
+              "start": 480,
+              "end": 1320
+            }
+          ],
+          "saturday": [
+            {
+              "start": 600,
+              "end": 1320
+            }
+          ],
+          "sunday": [
+            {
+              "start": 720,
+              "end": 1200
+            }
+          ]
+        }
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-KRA372.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L44",
+      "micro_area_id": "L44B",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L44",
+      "d2d_courier_micro_area": "L44R",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "38653",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/KRA265M",
+      "country": "PL",
+      "name": "KRA265M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.93714,
+        "latitude": 50.07728
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Prywatna posesja",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 296,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Prądnicka 9",
+        "line2": "30-002 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "30-002",
+        "street": "Prądnicka",
+        "building_number": "9",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "KRA09H",
+        "KRA262M",
+        "KRA03HO",
+        "KRA01BAPP",
+        "KRA14H"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/KRA265M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "D86",
+      "micro_area_id": "D86A",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L44",
+      "d2d_courier_micro_area": "L44A",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "16564",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/KRA24HP",
+      "country": "PL",
+      "name": "KRA24HP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.93513,
+        "latitude": 50.07406
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "W sklepie spożywczym AVITA",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 499,
+      "opening_hours": "PN-SB 06-21",
+      "address": {
+        "line1": "Al. Słowackiego 64",
+        "line2": "30-004 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "30-004",
+        "street": "Al. Słowackiego",
+        "building_number": "64",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 360,
+              "end": 1260
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 360,
+              "end": 1260
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 360,
+              "end": 1260
+            }
+          ],
+          "thursday": [
+            {
+              "start": 360,
+              "end": 1260
+            }
+          ],
+          "friday": [
+            {
+              "start": 360,
+              "end": 1260
+            }
+          ],
+          "saturday": [
+            {
+              "start": 360,
+              "end": 1260
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/KRA24HP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "D86",
+      "micro_area_id": "D86B",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L16",
+      "d2d_courier_micro_area": "L16I",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "42806",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-KRA294",
+      "country": "PL",
+      "name": "POP-KRA294",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.93594,
+        "latitude": 50.07278
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "FURGONETKA - AMG GOLD",
+      "location_description_1": "Punkt",
+      "location_description_2": "Punkt",
+      "distance": 546,
+      "opening_hours": "PN-PT 10-18 SB 10-14",
+      "address": {
+        "line1": "Długa 74",
+        "line2": "31-146 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "31-146",
+        "street": "Długa",
+        "building_number": "74",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność internetowa aplikacją InPost Mobile i PayByLink",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 600,
+              "end": 1080
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 600,
+              "end": 1080
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 600,
+              "end": 1080
+            }
+          ],
+          "thursday": [
+            {
+              "start": 600,
+              "end": 1080
+            }
+          ],
+          "friday": [
+            {
+              "start": 600,
+              "end": 1080
+            }
+          ],
+          "saturday": [
+            {
+              "start": 600,
+              "end": 840
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-KRA294.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L21",
+      "micro_area_id": "L21F",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L21",
+      "d2d_courier_micro_area": "L21H",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "22553",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-KRA307",
+      "country": "PL",
+      "name": "POP-KRA307",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.93601,
+        "latitude": 50.07255
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "SKLEP CORLEONE ALKOHOLE",
+      "location_description_1": "Punkt",
+      "location_description_2": "Punkt",
+      "distance": 562,
+      "opening_hours": "PN-PT 06-00 SB 07-00",
+      "address": {
+        "line1": "Długa 67",
+        "line2": "31-147 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "31-147",
+        "street": "Długa",
+        "building_number": "67",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność kartą w Paczkomacie",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 360,
+              "end": 1440
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 360,
+              "end": 1440
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 360,
+              "end": 1440
+            }
+          ],
+          "thursday": [
+            {
+              "start": 360,
+              "end": 1440
+            }
+          ],
+          "friday": [
+            {
+              "start": 360,
+              "end": 1440
+            }
+          ],
+          "saturday": [
+            {
+              "start": 420,
+              "end": 1440
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-KRA307.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L21",
+      "micro_area_id": "L21G",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L21",
+      "d2d_courier_micro_area": "L21H",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "03726",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/KRA01BAPP",
+      "country": "PL",
+      "name": "KRA01BAPP",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.94079,
+        "latitude": 50.07126
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy budynku Politechniki Krakowskiej od ul. Szlak",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 575,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Warszawska 24",
+        "line2": "31-155 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "31-155",
+        "street": "Warszawska",
+        "building_number": "24",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "KRA09H",
+        "KRA152M",
+        "KRA130M",
+        "KRA14H",
+        "KRA80M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/KRA01BAPP.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "screenless",
+      "physical_type_mapped": "006",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "D76",
+      "micro_area_id": "D76A",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L21",
+      "d2d_courier_micro_area": "L21L",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "03511",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-KRA392",
+      "country": "PL",
+      "name": "POP-KRA392",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.94721,
+        "latitude": 50.0805
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "SAKURA BARBERSHOP",
+      "location_description_1": "Punkt",
+      "location_description_2": "Punkt",
+      "distance": 630,
+      "opening_hours": "PN-PT 09-18 SB 09-17",
+      "address": {
+        "line1": "Mariana Langiewicza 28A",
+        "line2": "31-425 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "31-425",
+        "street": "Mariana Langiewicza",
+        "building_number": "28A",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność kartą w Paczkomacie",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "thursday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "friday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "saturday": [
+            {
+              "start": 540,
+              "end": 1020
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "KR3",
+      "agencies_extended": [
+        {
+          "name": "KR3"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-KRA392.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "LAB",
+      "micro_area_id": "LABI",
+      "agency_code": "KR3",
+      "d2d_courier_area": "LAB",
+      "d2d_courier_micro_area": "LABJ",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/KRA130M",
+      "country": "PL",
+      "name": "KRA130M",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.94624,
+        "latitude": 50.07142
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "placyk na terenie  hotelu Ibis po lewej przy wjeżdzie na parking",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 668,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Pawia 11",
+        "line2": "31-154 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "31-154",
+        "street": "Pawia",
+        "building_number": "11",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "KRA19A",
+        "KRA152M",
+        "KRA01BAPP",
+        "KRA80M",
+        "KRA14H"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/KRA130M.jpg",
+      "easy_access_zone": true,
+      "air_index_level": "VERY_GOOD",
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L44",
+      "micro_area_id": "L44Q",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L44",
+      "d2d_courier_micro_area": "L44K",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "16404",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/POP-KRA301",
+      "country": "PL",
+      "name": "POP-KRA301",
+      "type": [
+        "parcel_locker",
+        "parcel_locker_superpop",
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.93129,
+        "latitude": 50.07562
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "ESKOM GSM",
+      "location_description_1": "Punkt",
+      "location_description_2": "Punkt",
+      "distance": 704,
+      "opening_hours": "PN-PT 09-18",
+      "address": {
+        "line1": "Wrocławska 9",
+        "line2": "30-009 Kraków "
+      },
+      "address_details": {
+        "city": "Kraków ",
+        "province": "małopolskie",
+        "post_code": "30-009",
+        "street": "Wrocławska",
+        "building_number": "9",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność internetowa aplikacją InPost Mobile i PayByLink",
+      "functions": [
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_send"
+      ],
+      "partner_id": 33,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "2": "Payment by card in the machine"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "thursday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "friday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "saturday": [],
+          "sunday": []
+        }
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/POP-KRA301.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "L18",
+      "micro_area_id": "L18G",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L18",
+      "d2d_courier_micro_area": "L18J",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "02256",
+      "print_in_store": null
+    },
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/KRA09H",
+      "country": "PL",
+      "name": "KRA09H",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 19.93665,
+        "latitude": 50.07069
+      },
+      "location_type": "Indoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "W lokalu",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": 712,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Długa 49",
+        "line2": "31-147 Kraków"
+      },
+      "address_details": {
+        "city": "Kraków",
+        "province": "małopolskie",
+        "post_code": "31-147",
+        "street": "Długa",
+        "building_number": "49",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "KRA14H",
+        "KRA01BAPP",
+        "KRA265M",
+        "KRA80M",
+        "KRA152M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "KR2",
+      "agencies_extended": [
+        {
+          "name": "KR2"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/KRA09H.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "newfm",
+      "physical_type_mapped": "004",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "D72",
+      "micro_area_id": "D72A",
+      "agency_code": "KR2",
+      "d2d_courier_area": "L21",
+      "d2d_courier_micro_area": "L21M",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "16359",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 25,
+    "page": 1,
+    "per_page": 10,
+    "total_pages": 3
+  }
+}

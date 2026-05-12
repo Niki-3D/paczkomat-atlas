@@ -1,0 +1,4 @@
+{
+  "_comment": "Copy to .claude/settings.local.json for personal overrides. NOT committed.",
+  "permissions": { "allow": [] }
+}

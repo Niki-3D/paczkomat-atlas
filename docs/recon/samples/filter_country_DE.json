@@ -1,0 +1,150 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 17460,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 17460,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/DE/DE000009",
+      "country": "DE",
+      "name": "DE000009",
+      "type": [
+        "pok",
+        "pop"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 13.7596,
+        "latitude": 54.05737
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": null,
+      "location_description_1": "Blumen Blumentritt",
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": null,
+      "address": {
+        "line1": "BauStr. 21a",
+        "line2": "17438 Wolgast"
+      },
+      "address_details": {
+        "city": "Wolgast",
+        "province": null,
+        "post_code": "17438",
+        "street": "BauStr. 21a",
+        "building_number": null,
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Payment unavailable",
+      "functions": [
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_collect",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send",
+        "standard_letter_collect",
+        "standard_letter_send"
+      ],
+      "partner_id": 99,
+      "is_next": false,
+      "payment_available": false,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "3",
+      "recommended_low_interest_box_machines_list": null,
+      "apm_doubled": null,
+      "location_247": false,
+      "operating_hours_extended": {
+        "customer": {
+          "monday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "tuesday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "wednesday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "thursday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "friday": [
+            {
+              "start": 540,
+              "end": 1080
+            }
+          ],
+          "saturday": [
+            {
+              "start": 540,
+              "end": 720
+            }
+          ],
+          "sunday": []
+        }
+      },
+      "agency": "6610",
+      "agencies_extended": [
+        {
+          "name": "6610"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/de/images/DE000009.jpg",
+      "easy_access_zone": false,
+      "air_index_level": null,
+      "physical_type": null,
+      "physical_type_mapped": null,
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": "6610",
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "00009",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 17460,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 17460
+  }
+}

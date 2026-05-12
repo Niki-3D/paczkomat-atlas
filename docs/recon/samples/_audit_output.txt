@@ -1,0 +1,225 @@
+=== AUDIT N=500 (country=PL) ===
+
+--- field presence / null rates ---
+  address                                    present=500/500  null/empty=0  types=dict
+  address_details                            present=500/500  null/empty=0  types=dict
+  agencies_extended                          present=500/500  null/empty=0  types=list
+  agency                                     present=500/500  null/empty=0  types=str
+  agency_code                                present=500/500  null/empty=25  types=NoneType/str
+  air_index_level                            present=500/500  null/empty=432  types=NoneType/str
+  apm_doubled                                present=500/500  null/empty=452  types=NoneType/str
+  country                                    present=500/500  null/empty=0  types=str
+  d2d_courier_area                           present=500/500  null/empty=29  types=NoneType/str
+  d2d_courier_micro_area                     present=500/500  null/empty=31  types=NoneType/str
+  delivery_area_id                           present=500/500  null/empty=25  types=NoneType/str
+  distance                                   present=500/500  null/empty=500  types=NoneType
+  easy_access_zone                           present=500/500  null/empty=0  types=bool
+  express_delivery_collect                   present=500/500  null/empty=0  types=bool
+  express_delivery_send                      present=500/500  null/empty=0  types=bool
+  functions                                  present=500/500  null/empty=0  types=list
+  href                                       present=500/500  null/empty=0  types=str
+  image_url                                  present=500/500  null/empty=0  types=str
+  in_mobile_collect_excluded                 present=500/500  null/empty=471  types=NoneType/bool
+  in_mobile_return_excluded                  present=500/500  null/empty=471  types=NoneType/bool
+  in_mobile_send_excluded                    present=500/500  null/empty=471  types=NoneType/bool
+  is_next                                    present=500/500  null/empty=0  types=bool
+  location                                   present=500/500  null/empty=0  types=dict
+  location_247                               present=500/500  null/empty=0  types=bool
+  location_category                          present=500/500  null/empty=0  types=str
+  location_date                              present=500/500  null/empty=500  types=NoneType
+  location_description                       present=500/500  null/empty=4  types=NoneType/str
+  location_description_1                     present=500/500  null/empty=500  types=NoneType
+  location_description_2                     present=500/500  null/empty=440  types=NoneType/str
+  location_type                              present=500/500  null/empty=0  types=str
+  locker_availability                        present=500/500  null/empty=0  types=dict
+  micro_area_id                              present=500/500  null/empty=25  types=NoneType/str
+  mondial_relay_id                           present=500/500  null/empty=1  types=str
+  name                                       present=500/500  null/empty=0  types=str
+  opening_hours                              present=500/500  null/empty=0  types=str
+  operating_hours_extended                   present=500/500  null/empty=0  types=dict
+  partner_id                                 present=500/500  null/empty=0  types=int
+  payment_available                          present=500/500  null/empty=0  types=bool
+  payment_point_descr                        present=500/500  null/empty=4  types=NoneType/str
+  payment_type                               present=500/500  null/empty=0  types=dict
+  phone_number                               present=500/500  null/empty=500  types=NoneType
+  physical_type                              present=500/500  null/empty=0  types=str
+  physical_type_description                  present=500/500  null/empty=500  types=NoneType
+  physical_type_mapped                       present=500/500  null/empty=0  types=str
+  print_in_store                             present=500/500  null/empty=500  types=NoneType
+  recommended_low_interest_box_machines_list present=500/500  null/empty=108  types=NoneType/list
+  status                                     present=500/500  null/empty=0  types=str
+  supported_locker_temperatures              present=500/500  null/empty=499  types=NoneType/list
+  type                                       present=500/500  null/empty=0  types=list
+  unavailability_periods                     present=500/500  null/empty=500  types=NoneType/list
+  virtual                                    present=500/500  null/empty=0  types=str
+
+--- country ---
+  'PL'                                               500 (100.0%)
+
+--- status ---
+  'Operating'                                        476 (95.2%)
+  'Created'                                          22 (4.4%)
+  'Disabled'                                         2 (0.4%)
+
+--- physical_type ---
+  'newfm'                                            303 (60.6%)
+  'screenless'                                       105 (21.0%)
+  'next'                                             45 (9.0%)
+  'modular'                                          37 (7.4%)
+  'classic'                                          10 (2.0%)
+
+--- physical_type_mapped ---
+  '004'                                              303 (60.6%)
+  '006'                                              105 (21.0%)
+  '005'                                              45 (9.0%)
+  '003'                                              37 (7.4%)
+  '002'                                              10 (2.0%)
+
+--- location_type ---
+  'Outdoor'                                          485 (97.0%)
+  'Indoor'                                           15 (3.0%)
+
+--- location_category ---
+  'Generic'                                          500 (100.0%)
+
+--- payment_available ---
+  True                                               500 (100.0%)
+
+--- easy_access_zone ---
+  True                                               500 (100.0%)
+
+--- location_247 ---
+  True                                               490 (98.0%)
+  False                                              10 (2.0%)
+
+--- air_index_level ---
+  None                                               432 (86.4%)
+  'VERY_GOOD'                                        49 (9.8%)
+  'GOOD'                                             18 (3.6%)
+  'SATISFACTORY'                                     1 (0.2%)
+
+--- opening_hours ---
+  '24/7'                                             489 (97.8%)
+  'PN-SB 06-22'                                      2 (0.4%)
+  '24//7'                                            1 (0.2%)
+  'PN-ND 06-22'                                      1 (0.2%)
+  'PN-SB 09-20'                                      1 (0.2%)
+  'PN-CZ 06-21 PT-SB 06-22'                          1 (0.2%)
+  'PN-CZ 10-23 PT-SB 10-23:30'                       1 (0.2%)
+  'PN-PT 07-20 SB 07-16'                             1 (0.2%)
+  'PN-SB 06-21'                                      1 (0.2%)
+  'PN-SB 07-19:30'                                   1 (0.2%)
+
+--- agency ---
+  'BBA'                                              160 (32.0%)
+  'ELK'                                              30 (6.0%)
+  'OLS'                                              25 (5.0%)
+  'LDZ'                                              22 (4.4%)
+  'RDM'                                              14 (2.8%)
+  'TOR'                                              14 (2.8%)
+  'KR2'                                              13 (2.6%)
+  'BYD'                                              13 (2.6%)
+  'GD3'                                              11 (2.2%)
+  'WR3'                                              11 (2.2%)
+
+--- type (tuple) ---
+  ('parcel_locker',)                                 499
+  ('parcel_locker', 'refrigerated_locker_machine')   1
+
+--- functions (multi-value) ---
+  allegro_courier_collect                          500 (100.0%)
+  allegro_courier_reverse_return_send              500 (100.0%)
+  allegro_courier_send                             500 (100.0%)
+  allegro_letter_send                              500 (100.0%)
+  allegro_parcel_collect                           500 (100.0%)
+  allegro_parcel_reverse_return_send               500 (100.0%)
+  allegro_parcel_send                              500 (100.0%)
+  parcel                                           500 (100.0%)
+  parcel_collect                                   500 (100.0%)
+  parcel_reverse_return_send                       500 (100.0%)
+  parcel_send                                      500 (100.0%)
+  standard_courier_reverse_return_send             500 (100.0%)
+  standard_courier_send                            500 (100.0%)
+  cross_network_parcel_collect                     491 (98.2%)
+  cross_network_parcel_send                        491 (98.2%)
+  allegro_letter_reverse_return_send               479 (95.8%)
+  cool_parcel_collect                              1 (0.2%)
+
+--- supported_locker_temperatures ---
+  __None__: 499
+  4: 1
+
+--- coord bounds (PL) ---
+  lat min=0.0000 max=54.5339
+  lon min=0.0000 max=23.1598
+  outside PL bbox: 7
+    AGS01M: {'longitude': 0.0, 'latitude': 0.0}
+    BAT01APP: {'longitude': 0.0, 'latitude': 0.0}
+    BB011M: {'longitude': 0.0, 'latitude': 0.0}
+    BBAL01G: {'longitude': 0.0, 'latitude': 0.0}
+    BBI01E: {'longitude': 0.0, 'latitude': 0.0}
+
+--- naming prefix -> cities ---
+  BBI: total 141, top city: Bielsko-Biała (139)
+  AUG: total 23, top city: Augustów (23)
+  ALL: total 21, top city: Aleksandrów Łódzki (21)
+  AND: total 19, top city: Andrychów (19)
+  BAR: total 15, top city: Bartoszyce (15)
+  BAN: total 11, top city: Banino (10)
+  ALK: total 10, top city: Aleksandrów Kujawski (10)
+  BDO: total 10, top city: Brzeg Dolny (10)
+  BBG: total 7, top city: Białobrzegi (7)
+  BCN: total 7, top city: Barcin (7)
+  BBC: total 6, top city: Bibice (5)
+  BBT: total 6, top city: Białe Błota (5)
+  ANR: total 5, top city: Andrespol (5)
+  BAB: total 5, top city: Babimost (5)
+  BAC: total 5, top city: Barczewo (5)
+  BBR: total 5, top city: Bobrowniki (4)
+  ADM: total 4, top city: Adamowizna (4)
+  ALB: total 4, top city: Albigowa (4)
+  ALX: total 4, top city: Aleksandrów (4)
+  AKS: total 3, top city: Aleksandria (3)
+  ALW: total 3, top city: Alwernia (3)
+  ANN: total 3, top city: Annopol (3)
+  AOW: total 3, top city: Adamowo (3)
+  BAW: total 3, top city: Bysław (3)
+  BBE: total 3, top city: Bobrek (3)
+
+--- locker_availability examples ---
+  status=NO_DATA: 500
+  detail key shapes: {'["A", "B", "C"]'}
+
+--- opening_hours: 11 unique. samples: ['PN-PT 07-20 SB 07-16', '24//7', '24/7', 'PN-SB 09-20', 'PN-SB 06-22', 'PN-SB 07-19:30']
+
+--- operating_hours_extended dist ---
+  {customer:null}: 490
+  {'customer': {'monday': [{'start': 360, 'end': 1320}], 'tues: 3
+  {'customer': {'monday': [{'start': 360, 'end': 1260}], 'tues: 2
+  {'customer': {'monday': [{'start': 540, 'end': 1200}], 'tues: 1
+  {'customer': {'monday': [{'start': 600, 'end': 1380}], 'tues: 1
+  {'customer': {'monday': [{'start': 420, 'end': 1200}], 'tues: 1
+  {'customer': {'monday': [{'start': 420, 'end': 1170}], 'tues: 1
+  {'customer': {'monday': [{'start': 540, 'end': 1260}], 'tues: 1
+
+--- unique cities in sample: 148
+
+--- province dist ---
+  śląskie: 152
+  małopolskie: 58
+  łódzkie: 41
+  mazowieckie: 37
+  kujawsko-pomorskie: 31
+  warmińsko-mazurskie: 28
+  podlaskie: 27
+  lubelskie: 18
+  podkarpackie: 18
+  pomorskie: 18
+  wielkopolskie: 16
+  dolnośląskie: 13
+  opolskie: 12
+  świętokrzyskie: 9
+  lubuskie: 8
+  zachodniopomorskie: 7
+  test: 4
+  TEST: 3

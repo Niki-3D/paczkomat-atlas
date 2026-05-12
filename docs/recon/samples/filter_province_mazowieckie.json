@@ -1,0 +1,120 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 4776,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 4776,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADM01A",
+      "country": "PL",
+      "name": "ADM01A",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Disabled",
+      "location": {
+        "longitude": 20.63541,
+        "latitude": 52.06923
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy skrzyżowaniu z ulicą Łosią",
+      "location_description_1": null,
+      "location_description_2": null,
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Osowiecka 58",
+        "line2": "05-825 Adamowizna"
+      },
+      "address_details": {
+        "city": "Adamowizna",
+        "province": "mazowieckie",
+        "post_code": "05-825",
+        "street": "Osowiecka",
+        "building_number": "58",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": false,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADM03M",
+        "ADM02M",
+        "ADM01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "WA4",
+      "agencies_extended": [
+        {
+          "name": "WA4"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADM01A.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "modular",
+      "physical_type_mapped": "003",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": false,
+      "in_mobile_send_excluded": false,
+      "in_mobile_return_excluded": false,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": null,
+      "micro_area_id": null,
+      "agency_code": null,
+      "d2d_courier_area": null,
+      "d2d_courier_micro_area": null,
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": [],
+      "mondial_relay_id": "10000",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 4776,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 4776
+  }
+}

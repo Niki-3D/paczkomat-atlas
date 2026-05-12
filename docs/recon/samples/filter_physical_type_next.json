@@ -1,0 +1,118 @@
+{
+  "href": "https://api-global-points.easypack24.net/v1/points",
+  "count": 2497,
+  "page": 1,
+  "per_page": 1,
+  "total_pages": 2497,
+  "items": [
+    {
+      "href": "https://api-global-points.easypack24.net/v1/points/PL/ADA01N",
+      "country": "PL",
+      "name": "ADA01N",
+      "type": [
+        "parcel_locker"
+      ],
+      "status": "Operating",
+      "location": {
+        "longitude": 22.25875,
+        "latitude": 51.7444
+      },
+      "location_type": "Outdoor",
+      "location_category": "Generic",
+      "location_date": null,
+      "location_description": "Przy sklepie Groszek",
+      "location_description_1": null,
+      "location_description_2": "Groszek",
+      "distance": null,
+      "opening_hours": "24/7",
+      "address": {
+        "line1": "Kleeberga 5B",
+        "line2": "21-412 Adamów"
+      },
+      "address_details": {
+        "city": "Adamów",
+        "province": "lubelskie",
+        "post_code": "21-412",
+        "street": "Kleeberga",
+        "building_number": "5B",
+        "flat_number": null
+      },
+      "phone_number": null,
+      "payment_point_descr": "Płatność apką InPost oraz PayByLink",
+      "functions": [
+        "allegro_courier_collect",
+        "allegro_courier_reverse_return_send",
+        "allegro_courier_send",
+        "allegro_letter_reverse_return_send",
+        "allegro_letter_send",
+        "allegro_parcel_collect",
+        "allegro_parcel_reverse_return_send",
+        "allegro_parcel_send",
+        "cross_network_parcel_collect",
+        "cross_network_parcel_send",
+        "parcel",
+        "parcel_collect",
+        "parcel_reverse_return_send",
+        "parcel_send",
+        "standard_courier_reverse_return_send",
+        "standard_courier_send"
+      ],
+      "partner_id": 0,
+      "is_next": true,
+      "payment_available": true,
+      "payment_type": {
+        "0": "Payments are not supported"
+      },
+      "virtual": "0",
+      "recommended_low_interest_box_machines_list": [
+        "ADA01M"
+      ],
+      "apm_doubled": null,
+      "location_247": true,
+      "operating_hours_extended": {
+        "customer": null
+      },
+      "agency": "SDL",
+      "agencies_extended": [
+        {
+          "name": "SDL"
+        }
+      ],
+      "image_url": "https://static.easypack24.net/points/pl/images/ADA01N.jpg",
+      "easy_access_zone": true,
+      "air_index_level": null,
+      "physical_type": "next",
+      "physical_type_mapped": "005",
+      "physical_type_description": null,
+      "in_mobile_collect_excluded": null,
+      "in_mobile_send_excluded": null,
+      "in_mobile_return_excluded": null,
+      "express_delivery_send": false,
+      "express_delivery_collect": false,
+      "delivery_area_id": "OOO",
+      "micro_area_id": "OOOF",
+      "agency_code": "SDL",
+      "d2d_courier_area": "O04",
+      "d2d_courier_micro_area": "O04B",
+      "locker_availability": {
+        "status": "NO_DATA",
+        "details": {
+          "A": "NO_DATA",
+          "B": "NO_DATA",
+          "C": "NO_DATA"
+        }
+      },
+      "supported_locker_temperatures": null,
+      "unavailability_periods": null,
+      "mondial_relay_id": "00010",
+      "print_in_store": null
+    }
+  ],
+  "meta": {
+    "href": "https://api-global-points.easypack24.net/v1/points",
+    "count": 2497,
+    "page": 1,
+    "per_page": 1,
+    "total_pages": 2497
+  }
+}
