@@ -42,6 +42,10 @@ strict = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+# Share one event loop across the session so the global async engine's
+# connection pool isn't orphaned between tests.
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
 
 [dependency-groups]
 dev = [
