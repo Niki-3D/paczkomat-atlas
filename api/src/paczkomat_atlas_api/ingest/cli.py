@@ -31,6 +31,9 @@ def _parse_args() -> argparse.Namespace:
     g.add_argument("--refresh-only", action="store_true", help="Just REFRESH the MVs")
     g.add_argument("--snapshot-only", action="store_true", help="Just snapshot to hypertable")
     g.add_argument("--assign-only", action="store_true", help="Just spatial joins")
+    g.add_argument("--load-prg", action="store_true", help="Load PRG gminy from data/raw/prg/")
+    g.add_argument("--load-nuts2", action="store_true", help="Load Eurostat NUTS-2 from data/raw/eurostat/")
+    g.add_argument("--load-population", action="store_true", help="Load GUS + Eurostat population data")
     p.add_argument("--batch-size", type=int, default=500)
     return p.parse_args()
 
@@ -39,6 +42,42 @@ async def _main() -> None:
     configure_logging()
     log = get_logger("ingest.cli")
     args = _parse_args()
+
+    if args.load_prg:
+        from urllib.parse import urlparse
+
+        from paczkomat_atlas_api.config import settings as _s
+        from paczkomat_atlas_api.ingest.prg_loader import (
+            compute_areas,
+            merge_staging_to_gminy,
+            run_ogr2ogr_to_staging,
+        )
+        url = urlparse(_s.database_url.replace("postgresql+asyncpg", "postgresql"))
+        run_ogr2ogr_to_staging(
+            db_host="db",  # docker network alias inside paczkomat-atlas_default
+            db_port=5432,
+            db_user=url.username or "",
+            db_pass=url.password or "",
+            db_name=(url.path or "/").lstrip("/"),
+        )
+        merged = await merge_staging_to_gminy()
+        areas = await compute_areas()
+        log.info("cli.prg_done", merged=merged, areas=areas)
+        return
+
+    if args.load_nuts2:
+        from paczkomat_atlas_api.ingest.eurostat_loader import load_nuts2_boundaries
+        n = await load_nuts2_boundaries()
+        log.info("cli.nuts2_loaded", rows=n)
+        return
+
+    if args.load_population:
+        from paczkomat_atlas_api.ingest.bdl_loader import load_population_gmina
+        from paczkomat_atlas_api.ingest.eurostat_loader import load_nuts2_population
+        bdl = await load_population_gmina()
+        euro = await load_nuts2_population()
+        log.info("cli.population_loaded", bdl=bdl, eurostat_nuts2=euro)
+        return
 
     if args.refresh_only:
         await refresh_materialized_views()
