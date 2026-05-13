@@ -113,5 +113,23 @@ services:
       retries: 5
       start_period: 20s
 
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: paczkomat-caddy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      api:
+        condition: service_healthy
+      martin:
+        condition: service_healthy
+    restart: unless-stopped
+
 volumes:
   db_data:
+  caddy_data:
+  caddy_config:
