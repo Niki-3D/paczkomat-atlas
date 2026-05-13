@@ -69,6 +69,29 @@ services:
       timeout: 5s
       retries: 10
 
+  martin:
+    image: ghcr.io/maplibre/martin:v0.16.0
+    container_name: paczkomat-martin
+    command:
+      - --listen-addresses=0.0.0.0:3000
+      - --max-feature-count=20000
+      - postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    environment:
+      RUST_LOG: martin=info,actix_web=warn
+    ports:
+      - "3001:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      # `localhost` inside the alpine-base image resolves to ::1 first and
+      # Martin only binds IPv4; use explicit 127.0.0.1.
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
   api:
     build:
       context: ../../api
