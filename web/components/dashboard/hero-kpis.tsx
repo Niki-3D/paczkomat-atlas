@@ -83,11 +83,10 @@ export function HeroKpis({ summary, countryKpis, benchmark }: HeroProps) {
             <span
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: 34,
+                fontSize: 38,
                 color: "var(--accent)",
-                marginLeft: 2,
-                fontWeight: 300,
-                fontStyle: "italic",
+                marginLeft: 4,
+                fontWeight: 500,
                 letterSpacing: "-0.02em",
               }}
             >
@@ -168,16 +167,17 @@ function KpiCard({
         </span>
       </header>
       <div
-        className="mono kpi-hero-value"
+        className="kpi-hero-value"
         style={{
           fontFamily: "var(--font-display)",
           fontSize: 60,
-          fontWeight: 300,
-          letterSpacing: "-0.035em",
-          lineHeight: 0.95,
+          fontWeight: 600,
+          letterSpacing: "-0.04em",
+          lineHeight: 1,
           color: "var(--fg-default)",
           marginBottom: 10,
           fontVariantNumeric: "tabular-nums lining-nums",
+          fontFeatureSettings: '"tnum", "lnum"',
         }}
       >
         {value}
