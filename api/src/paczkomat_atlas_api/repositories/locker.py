@@ -43,7 +43,7 @@ class LockerRepo:
         where_sql = " AND ".join(where_clauses)
 
         # where_sql is hardcoded; user values flow through bound :params.
-        count_sql = text(f"SELECT count(*) FROM lockers WHERE {where_sql}")  # noqa: S608
+        count_sql = text(f"SELECT count(*) FROM lockers WHERE {where_sql}")
         total = (await self._session.execute(count_sql, params)).scalar_one()
 
         list_sql = text(f"""
@@ -54,7 +54,7 @@ class LockerRepo:
             WHERE {where_sql}
             ORDER BY name
             LIMIT :limit OFFSET :offset
-        """)  # noqa: S608
+        """)
         result = await self._session.execute(list_sql, params)
         rows = [
             LockerSummary(

@@ -24,10 +24,11 @@ POP_FILE = Path("data/raw/eurostat/population_nuts2_2024.tsv.gz")
 
 async def load_nuts2_boundaries() -> int:
     """Load NUTS-2 polygons from GeoJSON. SRID 4326 native."""
-    if not NUTS_FILE.exists():
+    # ASYNC230/240 noqas: CLI loader, runs once outside any request handler.
+    if not NUTS_FILE.exists():  # noqa: ASYNC240
         raise FileNotFoundError(f"NUTS-2 file not found at {NUTS_FILE}.")
 
-    with NUTS_FILE.open(encoding="utf-8") as f:
+    with NUTS_FILE.open(encoding="utf-8") as f:  # noqa: ASYNC230
         fc = json.load(f)
 
     rows = []
@@ -74,9 +75,9 @@ async def load_nuts2_population() -> int:
     Composite key column header: 'freq,sex,unit,age,geo\\TIME_PERIOD'.
     The URL's age=TOTAL&sex=T&time=2024 filters are silently ignored by
     the bulk-download endpoint, so the file contains every sex/age combo
-    for all years 2014–2025. We filter in-process.
+    for all years 2014-2025. We filter in-process.
     """
-    if not POP_FILE.exists():
+    if not POP_FILE.exists():  # noqa: ASYNC240  # CLI loader, blocking I/O is fine
         raise FileNotFoundError(f"Eurostat population file not found at {POP_FILE}.")
 
     # Restrict inserts to NUTS-2 codes we actually loaded (avoid FK violations

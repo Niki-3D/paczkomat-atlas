@@ -5,19 +5,20 @@ from __future__ import annotations
 import asyncio
 from logging.config import fileConfig
 
-from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-# Register all models so autogenerate sees them
-from paczkomat_atlas_api.db import Base  # noqa: F401
-from paczkomat_atlas_api.models import *  # noqa: F401, F403
+from alembic import context
 from paczkomat_atlas_api.config import settings
+
+# Register all models so autogenerate sees them
+from paczkomat_atlas_api.db import Base
+from paczkomat_atlas_api.models import *  # noqa: F403  # import-for-side-effects: registers all models on Base.metadata
 
 # Optional: PostgreSQL enum support for autogenerate
 try:
-    import alembic_postgresql_enum  # noqa: F401
+    import alembic_postgresql_enum  # noqa: F401  # import-for-side-effects: patches alembic autogenerate
 except ImportError:
     pass
 
@@ -32,7 +33,17 @@ config.set_main_option("sqlalchemy.url", settings.database_url)
 target_metadata = Base.metadata
 
 
-_EXCLUDED_SCHEMAS = {"tiger", "tiger_data", "topology", "_timescaledb_internal", "_timescaledb_catalog", "_timescaledb_config", "_timescaledb_cache", "timescaledb_information", "timescaledb_experimental"}
+_EXCLUDED_SCHEMAS = {
+    "tiger",
+    "tiger_data",
+    "topology",
+    "_timescaledb_internal",
+    "_timescaledb_catalog",
+    "_timescaledb_config",
+    "_timescaledb_cache",
+    "timescaledb_information",
+    "timescaledb_experimental",
+}
 
 
 def include_object(object_, name, type_, reflected, compare_to):

@@ -40,7 +40,7 @@ class H3Repo:
             WHERE {where_sql}
             ORDER BY n_total DESC
             LIMIT :limit
-        """)  # noqa: S608
+        """)
         result = await self._session.execute(sql, params)
         return [
             H3Cell(
