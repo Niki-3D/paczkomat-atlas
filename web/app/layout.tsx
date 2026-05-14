@@ -1,26 +1,17 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, JetBrains_Mono, Newsreader } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SwrProvider } from "@/lib/swr-provider";
 
-const hanken = Hanken_Grotesk({
-  variable: "--font-hanken",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -37,9 +28,11 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="dark"
-      className={`${hanken.variable} ${jetbrains.variable} ${newsreader.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SwrProvider>{children}</SwrProvider>
+      </body>
     </html>
   );
 }
