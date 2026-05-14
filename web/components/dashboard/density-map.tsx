@@ -143,7 +143,13 @@ export function DensityMap() {
           },
         },
         layers: [
-          { id: "bg", type: "background", paint: { "background-color": "#0A0A0B" } },
+          {
+            id: "bg",
+            type: "background",
+            // Resolved from --bg-canvas via readCssVar so a theme-token edit
+            // updates the map canvas alongside every other surface.
+            paint: { "background-color": readCssVar("--bg-canvas") || "#0A0A0B" },
+          },
           {
             id: "carto",
             type: "raster",

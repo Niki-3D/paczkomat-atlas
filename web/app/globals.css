@@ -44,6 +44,44 @@
   --map-3: #8B6914;
   --map-4: #C29612;
   --map-5: #F5C04E;
+
+  /* Velocity timeline per-country series colors. PL gets the brightest
+     accent (the protagonist); the others use the existing fg/border ramp
+     so the focus stays on PL's curve. */
+  --series-pl: var(--accent-hi);
+  --series-fr: var(--fg-muted);
+  --series-gb: var(--fg-subtle);
+  --series-it: var(--map-3);
+  --series-es: var(--border-strong);
+
+  /* Per-country share colors for the locker vs PUDO mix bar.
+     Locker palette = amber descending by network presence.
+     PUDO palette   = muted neutral descending. */
+  --country-locker-pl: #F5C04E;
+  --country-locker-gb: #E0A82E;
+  --country-locker-fr: #C29612;
+  --country-locker-de: #9E7414;
+  --country-locker-it: #A85A2E;
+  --country-locker-es: #7A3D1E;
+  --country-locker-at: #5C2D18;
+  --country-locker-hu: #8B4A18;
+  --country-locker-pt: #704514;
+  --country-locker-be: #3F3F46;
+  --country-locker-nl: #27272A;
+
+  --country-pudo-de: #A1A1A6;
+  --country-pudo-gb: #8B8B90;
+  --country-pudo-fr: #7A7A80;
+  --country-pudo-es: #6B6B70;
+  --country-pudo-it: #5C5C61;
+  --country-pudo-be: #4F4F55;
+  --country-pudo-pt: #3F3F46;
+  --country-pudo-at: #34343A;
+  --country-pudo-hu: #2F2F35;
+  --country-pudo-nl: #1F1F23;
+
+  /* Hatch swatch used for pre-launch / catalog-only country indicators. */
+  --hatch-stripe: #9E2520;
 }
 
 @theme inline {

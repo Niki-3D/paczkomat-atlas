@@ -17,12 +17,15 @@ import { fmtInt } from "@/lib/format";
 const SERIES = ["PL", "FR", "GB", "IT", "ES"] as const;
 type SeriesCode = (typeof SERIES)[number];
 
+// Series stroke colors reference --series-* tokens defined in globals.css.
+// Recharts resolves CSS vars at paint time, so var() works directly inside the
+// `stroke` prop on <Line>.
 const COLORS: Record<SeriesCode, { stroke: string; width: number }> = {
-  PL: { stroke: "#F5C04E", width: 2.2 },
-  FR: { stroke: "#A1A1A6", width: 1.6 },
-  GB: { stroke: "#6B6B70", width: 1.6 },
-  IT: { stroke: "#8B6914", width: 1.6 },
-  ES: { stroke: "#3F3F46", width: 1.6 },
+  PL: { stroke: "var(--series-pl)", width: 2.2 },
+  FR: { stroke: "var(--series-fr)", width: 1.6 },
+  GB: { stroke: "var(--series-gb)", width: 1.6 },
+  IT: { stroke: "var(--series-it)", width: 1.6 },
+  ES: { stroke: "var(--series-es)", width: 1.6 },
 };
 
 type Wide = { ts: number; date: string } & Partial<Record<SeriesCode, number>>;
