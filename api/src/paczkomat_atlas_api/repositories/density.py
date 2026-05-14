@@ -38,7 +38,7 @@ class DensityRepo:
 
         # where_sql is composed from a closed set of hardcoded predicates;
         # all user values flow through bound :params. Safe from injection.
-        count_sql = text(f"SELECT count(*) FROM mv_density_gmina WHERE {where_sql}")  # noqa: S608
+        count_sql = text(f"SELECT count(*) FROM mv_density_gmina WHERE {where_sql}")
         total = (await self._session.execute(count_sql, params)).scalar_one()
 
         list_sql = text(f"""
@@ -47,7 +47,7 @@ class DensityRepo:
             WHERE {where_sql}
             ORDER BY lockers_per_10k DESC NULLS LAST
             LIMIT :limit OFFSET :offset
-        """)  # noqa: S608
+        """)
         result = await self._session.execute(list_sql, params)
         rows = [
             DensityGmina(
@@ -106,7 +106,7 @@ class DensityRepo:
         where_sql = " AND ".join(where_clauses)
 
         # Same safety as list_gminy: where_sql is hardcoded, params are bound.
-        count_sql = text(f"SELECT count(*) FROM mv_density_nuts2 WHERE {where_sql}")  # noqa: S608
+        count_sql = text(f"SELECT count(*) FROM mv_density_nuts2 WHERE {where_sql}")
         total = (await self._session.execute(count_sql, params)).scalar_one()
 
         list_sql = text(f"""
@@ -115,7 +115,7 @@ class DensityRepo:
             WHERE {where_sql}
             ORDER BY lockers_per_10k DESC NULLS LAST
             LIMIT :limit OFFSET :offset
-        """)  # noqa: S608
+        """)
         result = await self._session.execute(list_sql, params)
         rows = [
             DensityNuts2(

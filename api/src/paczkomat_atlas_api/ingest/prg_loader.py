@@ -68,7 +68,7 @@ def run_ogr2ogr_to_staging(
         "--config", "PG_USE_COPY", "YES",
     ]
     log.info("prg.ogr2ogr_start", file=str(PRG_SHAPEFILE))
-    result = subprocess.run(cmd, capture_output=True, text=True, check=False, env=env)
+    result = subprocess.run(cmd, capture_output=True, text=True, check=False, env=env)  # noqa: S603  # docker run with hardcoded image + literal args; no user input on argv
     if result.returncode != 0:
         log.error("prg.ogr2ogr_failed", stderr=result.stderr[:1000])
         raise RuntimeError(f"ogr2ogr failed: {result.stderr[:200]}")
@@ -114,7 +114,7 @@ async def merge_staging_to_gminy() -> int:
     async with SessionLocal() as session:
         result = await session.execute(sql)
         await session.commit()
-        rowcount = result.rowcount or 0
+        rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("prg.merge_done", rows=rowcount)
     return rowcount
 
@@ -129,6 +129,6 @@ async def compute_areas() -> int:
     async with SessionLocal() as session:
         result = await session.execute(sql)
         await session.commit()
-        rowcount = result.rowcount or 0
+        rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("prg.areas_computed", rows=rowcount)
     return rowcount

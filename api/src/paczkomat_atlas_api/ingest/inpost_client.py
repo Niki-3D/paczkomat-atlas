@@ -91,7 +91,8 @@ class InPostClient:
         if resp.status_code >= 400:
             raise InPostAPIError(f"http {resp.status_code}: {resp.text[:200]}")
 
-        return resp.json()
+        payload: dict[str, Any] = resp.json()
+        return payload
 
     async def fetch_page(
         self,

@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import unicodedata
 from pathlib import Path
+from typing import Any
 
 from sqlalchemy import text
 
@@ -85,7 +86,7 @@ def voivodeship_code_from_bdl_id(bdl_id: str) -> str | None:
     return bdl_id[2:4] if len(bdl_id) >= 4 else None
 
 
-def build_bdl_unit_index(units: list[dict]) -> dict[tuple[str, str, str], str]:
+def build_bdl_unit_index(units: list[dict[str, Any]]) -> dict[tuple[str, str, str], str]:
     """Build (voj, normalized_name, kind) -> bdl_id index from BDL units."""
     index: dict[tuple[str, str, str], str] = {}
     for u in units:
@@ -116,30 +117,32 @@ async def fetch_prg_gminy() -> list[tuple[str, str, str, int]]:
 
 async def load_population_gmina() -> dict[str, float | int]:
     """Load GUS BDL gmina population by PRG-driven name+rodzaj matching."""
-    if not BDL_DATA_FILE.exists():
+    # ASYNC230/240 noqas: this loader runs once via the ingest CLI, not in a request handler.
+    # Brief blocking I/O is acceptable; the function is async for DB-session symmetry with peers.
+    if not BDL_DATA_FILE.exists():  # noqa: ASYNC240
         raise FileNotFoundError(f"BDL data not found at {BDL_DATA_FILE}.")
-    if not BDL_UNITS_FILE.exists():
+    if not BDL_UNITS_FILE.exists():  # noqa: ASYNC240
         raise FileNotFoundError(f"BDL units not found at {BDL_UNITS_FILE}.")
 
-    with BDL_UNITS_FILE.open(encoding="utf-8") as f:
+    with BDL_UNITS_FILE.open(encoding="utf-8") as f:  # noqa: ASYNC230
         units = json.load(f)
 
     bdl_index = build_bdl_unit_index(units)
     log.info("bdl.index_built", entries=len(bdl_index))
 
     # Population values per BDL id
-    with BDL_DATA_FILE.open(encoding="utf-8") as f:
+    with BDL_DATA_FILE.open(encoding="utf-8") as f:  # noqa: ASYNC230
         data = json.load(f)
-    pop_by_bdl_id: dict[str, list[dict]] = {
+    pop_by_bdl_id: dict[str, list[dict[str, Any]]] = {
         e["id"]: e.get("values", []) for e in data if e.get("id")
     }
 
     prg_gminy = await fetch_prg_gminy()
     log.info("bdl.prg_loaded", count=len(prg_gminy))
 
-    rows: list[dict] = []
+    rows: list[dict[str, Any]] = []
     matched = 0
-    unmatched_examples: list[dict] = []
+    unmatched_examples: list[dict[str, Any]] = []
 
     for teryt, voj, name_norm, rodzaj in prg_gminy:
         kind_chain = RODZAJ_TO_KIND_CHAIN.get(rodzaj, ())

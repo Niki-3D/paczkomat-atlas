@@ -6,6 +6,7 @@ import logging
 import sys
 
 import structlog
+from structlog.typing import Processor
 
 from paczkomat_atlas_api.config import settings
 
@@ -21,7 +22,7 @@ def configure_logging() -> None:
     )
 
     is_tty = sys.stderr.isatty()
-    processors: list = [
+    processors: list[Processor] = [
         structlog.contextvars.merge_contextvars,
         structlog.processors.add_log_level,
         structlog.processors.TimeStamper(fmt="iso"),
@@ -42,4 +43,5 @@ def configure_logging() -> None:
 
 def get_logger(name: str | None = None) -> structlog.stdlib.BoundLogger:
     """Get a structlog logger, optionally bound to a name."""
-    return structlog.get_logger(name)
+    logger: structlog.stdlib.BoundLogger = structlog.get_logger(name)
+    return logger

@@ -125,7 +125,7 @@ async def assign_gminy() -> int:
     async with SessionLocal() as session:
         result = await session.execute(sql)
         await session.commit()
-        rowcount = result.rowcount or 0
+        rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("ingest.assign_gminy", updated=rowcount)
     return rowcount
 
@@ -142,7 +142,7 @@ async def assign_nuts2() -> int:
     async with SessionLocal() as session:
         result = await session.execute(sql)
         await session.commit()
-        rowcount = result.rowcount or 0
+        rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("ingest.assign_nuts2", updated=rowcount)
     return rowcount
 
@@ -173,7 +173,7 @@ async def snapshot_to_hypertable() -> int:
     async with SessionLocal() as session:
         result = await session.execute(sql)
         await session.commit()
-        rowcount = result.rowcount or 0
+        rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("ingest.snapshot", rows=rowcount)
     return rowcount
 

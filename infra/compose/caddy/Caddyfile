@@ -1,4 +1,48 @@
-api.paczkomat-atlas.example {
-    reverse_proxy api:8000
+{
+    auto_https off
+    admin off
+}
+
+:8080 {
+    # API routes → FastAPI
+    handle /api/* {
+        reverse_proxy api:8000
+    }
+
+    # OpenAPI doc — hey-api needs it accessible at the same origin
+    handle /openapi.json {
+        reverse_proxy api:8000
+    }
+    handle /docs {
+        reverse_proxy api:8000
+    }
+    handle /docs/* {
+        reverse_proxy api:8000
+    }
+
+    # Vector tiles → Martin
+    handle /tiles/* {
+        uri strip_prefix /tiles
+        reverse_proxy martin:3000
+    }
+    handle /catalog {
+        reverse_proxy martin:3000
+    }
+
+    # Root → simple JSON message
+    handle / {
+        respond `{"service":"paczkomat-atlas","docs":"/docs","tiles":"/catalog"}` 200
+        header Content-Type "application/json"
+    }
+
+    # Everything else → 404
+    handle {
+        respond "Not found" 404
+    }
+
     encode gzip zstd
+    log {
+        output stdout
+        format console
+    }
 }

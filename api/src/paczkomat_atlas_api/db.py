@@ -22,7 +22,7 @@ SRID_WEB_MERCATOR: Final[int] = 3857   # tile generation only
 
 # pgbouncer transaction pooling requires prepared_statement_cache_size=0
 # to avoid "prepared statement does not exist" errors.
-_engine_kwargs: dict = {
+_engine_kwargs: dict[str, object] = {
     "pool_pre_ping": True,
     "pool_size": 5,
     "max_overflow": 10,
