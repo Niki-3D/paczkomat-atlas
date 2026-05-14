@@ -13,7 +13,7 @@ from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from paczkomat_atlas_api.db import SessionLocal
+from paczkomat_atlas_api.db import SRID_PL_PUWG, SRID_WGS84, SessionLocal
 from paczkomat_atlas_api.ingest.inpost_client import (
     COUNTRIES_ACTIVE,
     InPostClient,
@@ -44,7 +44,7 @@ def item_to_row(item: dict[str, Any]) -> dict[str, Any]:
         "physical_type": item.get("physical_type"),
         "location_247": bool(item.get("location_247", False)),
         "is_locker": is_locker_type(item),
-        "geom": f"SRID=4326;POINT({loc['longitude']} {loc['latitude']})",
+        "geom": f"SRID={SRID_WGS84};POINT({loc['longitude']} {loc['latitude']})",
         "raw": item,
         "content_hash": compute_content_hash(item),
     }
@@ -118,12 +118,12 @@ async def assign_gminy() -> int:
         WHERE l.country = 'PL'
           AND l.gmina_teryt IS NULL
           AND ST_Within(
-            ST_Transform(l.geom::geometry, 2180),
+            ST_Transform(l.geom::geometry, :srid_pl),
             g.geom
           )
     """)
     async with SessionLocal() as session:
-        result = await session.execute(sql)
+        result = await session.execute(sql, {"srid_pl": SRID_PL_PUWG})
         await session.commit()
         rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("ingest.assign_gminy", updated=rowcount)
