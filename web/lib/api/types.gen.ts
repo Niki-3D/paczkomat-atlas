@@ -968,16 +968,16 @@ export type GetVelocityResponses = {
 export type GetVelocityResponse =
   GetVelocityResponses[keyof GetVelocityResponses];
 
-export type RootGetData = {
+export type RootData = {
   body?: never;
   path?: never;
   query?: never;
   url: "/";
 };
 
-export type RootGetResponses = {
+export type RootResponses = {
   /**
-   * Response Root  Get
+   * Response Root
    *
    * Successful Response
    */
@@ -986,4 +986,4 @@ export type RootGetResponses = {
   };
 };
 
-export type RootGetResponse = RootGetResponses[keyof RootGetResponses];
+export type RootResponse = RootResponses[keyof RootResponses];
