@@ -41,10 +41,16 @@ async function probeHealth(): Promise<ProbeResult> {
     if (!res.ok) return { ok: false, latencyMs, lockerCount: null };
     const body = (await res.json()) as {
       status?: string;
+      db_ok?: boolean;
       locker_count?: number;
     };
+    // Prefer the granular db_ok flag — the nav badge represents API+DB
+    // health, not whether the tile server is also up. Falls back to the
+    // aggregate `status` string for older deployments.
+    const ok =
+      body.db_ok != null ? body.db_ok : body.status === "ok";
     return {
-      ok: body.status === "ok",
+      ok,
       latencyMs,
       lockerCount: body.locker_count ?? null,
     };
