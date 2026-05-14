@@ -14,7 +14,11 @@ from paczkomat_atlas_api.schemas import ApiResponse, CountryKpi, NetworkSummary
 router = APIRouter(prefix="/kpi", tags=["kpi"])
 
 
-@router.get("/summary", response_model=ApiResponse[NetworkSummary])
+@router.get(
+    "/summary",
+    response_model=ApiResponse[NetworkSummary],
+    operation_id="getNetworkSummary",
+)
 async def get_network_summary(
     session: Annotated[AsyncSession, Depends(get_session)],
 ) -> ApiResponse[NetworkSummary]:
@@ -23,7 +27,11 @@ async def get_network_summary(
     return ApiResponse(data=data, meta={"source": "mv_country_kpi"})
 
 
-@router.get("/countries", response_model=ApiResponse[list[CountryKpi]])
+@router.get(
+    "/countries",
+    response_model=ApiResponse[list[CountryKpi]],
+    operation_id="listCountryKpis",
+)
 async def list_country_kpis(
     session: Annotated[AsyncSession, Depends(get_session)],
 ) -> ApiResponse[list[CountryKpi]]:
@@ -32,7 +40,11 @@ async def list_country_kpis(
     return ApiResponse(data=data, meta={"count": len(data)})
 
 
-@router.get("/countries/{country}", response_model=ApiResponse[CountryKpi])
+@router.get(
+    "/countries/{country}",
+    response_model=ApiResponse[CountryKpi],
+    operation_id="getCountryKpi",
+)
 async def get_country_kpi(
     country: str,
     session: Annotated[AsyncSession, Depends(get_session)],

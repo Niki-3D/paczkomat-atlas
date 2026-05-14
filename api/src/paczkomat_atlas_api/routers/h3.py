@@ -14,7 +14,11 @@ from paczkomat_atlas_api.schemas import ApiResponse, H3Cell
 router = APIRouter(prefix="/h3", tags=["h3"])
 
 
-@router.get("/cells", response_model=ApiResponse[list[H3Cell]])
+@router.get(
+    "/cells",
+    response_model=ApiResponse[list[H3Cell]],
+    operation_id="listH3Cells",
+)
 async def list_h3_cells(
     session: Annotated[AsyncSession, Depends(get_session)],
     country: Annotated[str | None, Query(min_length=2, max_length=2)] = None,

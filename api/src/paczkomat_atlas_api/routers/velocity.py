@@ -50,7 +50,11 @@ HISTORICAL: list[VelocityPoint] = [
 ]
 
 
-@router.get("", response_model=ApiResponse[list[VelocityPoint]])
+@router.get(
+    "",
+    response_model=ApiResponse[list[VelocityPoint]],
+    operation_id="getVelocity",
+)
 async def get_velocity(
     country: str | None = Query(None, min_length=2, max_length=2),
 ) -> ApiResponse[list[VelocityPoint]]:
