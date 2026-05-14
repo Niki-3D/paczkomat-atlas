@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import {
   type CountryKpi,
   type DensityGmina,
@@ -13,16 +12,12 @@ import {
 } from "@/lib/api";
 import { CountryShare } from "@/components/dashboard/country-share";
 import { DensityBars } from "@/components/dashboard/density-bars";
+import { DensityMapIsland } from "@/components/dashboard/density-map-island";
 import { Footer } from "@/components/dashboard/footer";
 import { GminyTable } from "@/components/dashboard/gminy-table";
 import { HeroKpis } from "@/components/dashboard/hero-kpis";
 import { Nav } from "@/components/dashboard/nav";
 import { VelocityTimeline } from "@/components/dashboard/velocity-timeline";
-
-const DensityMap = dynamic(
-  () => import("@/components/dashboard/density-map").then((m) => m.DensityMap),
-  { ssr: false, loading: () => <MapSkeleton /> },
-);
 
 export const revalidate = 300; // refetch at most every 5 minutes
 
@@ -62,6 +57,30 @@ type Bundle = {
   health: ProbeResult;
 };
 
+// Backend hits an asyncpg/pgbouncer prepared-statement collision under
+// concurrent load (a known interaction with pool_pre_ping). Retry the
+// SDK call up to MAX_TRIES times with jittered backoff so transient
+// 500s self-heal before we paint an error panel.
+const MAX_TRIES = 4;
+
+async function withRetry<T>(
+  label: string,
+  fn: () => Promise<T>,
+  ok: (r: T) => boolean,
+): Promise<T> {
+  let result = await fn();
+  for (let attempt = 2; attempt <= MAX_TRIES; attempt++) {
+    if (ok(result)) return result;
+    await new Promise((r) => setTimeout(r, 60 * attempt + Math.random() * 80));
+    result = await fn();
+  }
+  if (!ok(result)) console.warn(`[loadAll] ${label} failed ${MAX_TRIES}x`);
+  return result;
+}
+
+const isOk = <T extends { data?: unknown; error?: unknown }>(r: T): boolean =>
+  Boolean(r?.data) && !r?.error;
+
 async function loadAll(): Promise<Bundle> {
   const [
     healthRes,
@@ -72,12 +91,16 @@ async function loadAll(): Promise<Bundle> {
     gminyRes,
   ] = await Promise.allSettled([
     probeHealth(),
-    getNetworkSummary(),
-    listCountryKpis(),
-    topNuts2({ query: { limit: 15 } }),
-    getVelocity(),
+    withRetry("summary", () => getNetworkSummary(), isOk),
+    withRetry("countries", () => listCountryKpis(), isOk),
+    withRetry("topNuts2", () => topNuts2({ query: { limit: 15 } }), isOk),
+    withRetry("velocity", () => getVelocity(), isOk),
     // 2500 covers all gminy with population matched (~2422)
-    listGminy({ query: { limit: 2500, min_population: 0 } }),
+    withRetry(
+      "gminy",
+      () => listGminy({ query: { limit: 2500, min_population: 0 } }),
+      isOk,
+    ),
   ]);
 
   return {
@@ -135,7 +158,7 @@ export default async function HomePage() {
           className="grid gap-3.5"
           style={{ gridTemplateColumns: "minmax(0, 6fr) minmax(0, 4fr)" }}
         >
-          <DensityMap />
+          <DensityMapIsland />
           {data.topNuts2Rows.length > 0 ? (
             <DensityBars rows={data.topNuts2Rows} />
           ) : (
@@ -176,22 +199,6 @@ export default async function HomePage() {
         <Footer totalRecords={data.health.lockerCount} />
       </main>
     </>
-  );
-}
-
-function MapSkeleton() {
-  return (
-    <div
-      className="panel relative animate-pulse"
-      style={{ minHeight: 540, background: "var(--bg-inset)" }}
-    >
-      <div className="panel-head">
-        <div>
-          <div className="panel-title">Locker density by NUTS-2 region</div>
-          <div className="panel-sub">Loading vector tiles…</div>
-        </div>
-      </div>
-    </div>
   );
 }
 
