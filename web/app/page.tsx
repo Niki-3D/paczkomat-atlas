@@ -111,7 +111,9 @@ async function withRetry<T>(
     await new Promise((r) => setTimeout(r, 60 * attempt + Math.random() * 80));
     result = await fn();
   }
-  if (!ok(result)) console.warn(`[loadAll] ${label} failed ${MAX_TRIES}x`);
+  // Final-attempt failures are surfaced through the ErrorPanel render in the
+  // page body — no console noise. The panel includes the endpoint path so the
+  // user sees which call is degraded.
   return result;
 }
 
