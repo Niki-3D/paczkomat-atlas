@@ -1,13 +1,19 @@
-import type { CountryKpi, NetworkSummary, Nuts2TopList } from "@/lib/api";
+import type { CountryKpi, NetworkSummary } from "@/lib/api";
 import { fmt1, fmt2, fmtInt } from "@/lib/format";
+
+export type DensityBenchmark = {
+  topPl: { name: string; country: string; density: number };
+  topNonPl: { name: string; country: string; density: number };
+  ratio: number;
+} | null;
 
 type HeroProps = {
   summary: NetworkSummary;
   countryKpis: CountryKpi[];
-  topNuts2: Nuts2TopList[];
+  benchmark: DensityBenchmark;
 };
 
-export function HeroKpis({ summary, countryKpis, topNuts2 }: HeroProps) {
+export function HeroKpis({ summary, countryKpis, benchmark }: HeroProps) {
   const lockerShare =
     summary.n_network_total > 0
       ? (summary.n_lockers_total / summary.n_network_total) * 100
@@ -17,12 +23,9 @@ export function HeroKpis({ summary, countryKpis, topNuts2 }: HeroProps) {
   const pl = countryKpis.find((c) => c.country === "PL");
   const pl247 = pl?.n_247 ?? 0;
 
-  const topPl = topNuts2.find((r) => r.country === "PL");
-  const topNonPl = topNuts2.find((r) => r.country !== "PL");
-  const ratio =
-    topPl && topNonPl && topNonPl.lockers_per_10k > 0
-      ? topPl.lockers_per_10k / topNonPl.lockers_per_10k
-      : null;
+  const topPl = benchmark?.topPl ?? null;
+  const topNonPl = benchmark?.topNonPl ?? null;
+  const ratio = benchmark?.ratio ?? null;
 
   return (
     <section className="hero-grid grid gap-3.5 grid-cols-1 lg:grid-cols-3">
@@ -105,14 +108,14 @@ export function HeroKpis({ summary, countryKpis, topNuts2 }: HeroProps) {
         {topPl && topNonPl && (
           <div className="flex flex-col gap-1.5">
             <VsRow
-              label={`${topPl.name_latn} · ${topPl.country}`}
-              value={fmt2(topPl.lockers_per_10k)}
+              label={`${topPl.name} · ${topPl.country}`}
+              value={fmt2(topPl.density)}
               widthPct={100}
             />
             <VsRow
-              label={`${topNonPl.name_latn} · ${topNonPl.country}`}
-              value={fmt2(topNonPl.lockers_per_10k)}
-              widthPct={(topNonPl.lockers_per_10k / topPl.lockers_per_10k) * 100}
+              label={`${topNonPl.name} · ${topNonPl.country}`}
+              value={fmt2(topNonPl.density)}
+              widthPct={(topNonPl.density / topPl.density) * 100}
               muted
             />
           </div>

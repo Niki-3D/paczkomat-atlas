@@ -1,6 +1,7 @@
 import {
   type CountryKpi,
   type DensityGmina,
+  type DensityNuts2,
   type NetworkSummary,
   type Nuts2TopList,
   type VelocityPoint,
@@ -8,6 +9,7 @@ import {
   getVelocity,
   listCountryKpis,
   listGminy,
+  listNuts2,
   topNuts2,
 } from "@/lib/api";
 import { CountryShare } from "@/components/dashboard/country-share";
@@ -15,7 +17,10 @@ import { DensityBars } from "@/components/dashboard/density-bars";
 import { DensityMapIsland } from "@/components/dashboard/density-map-island";
 import { Footer } from "@/components/dashboard/footer";
 import { GminyTable } from "@/components/dashboard/gminy-table";
-import { HeroKpis } from "@/components/dashboard/hero-kpis";
+import {
+  type DensityBenchmark,
+  HeroKpis,
+} from "@/components/dashboard/hero-kpis";
 import { Nav } from "@/components/dashboard/nav";
 import { VelocityTimeline } from "@/components/dashboard/velocity-timeline";
 
@@ -52,10 +57,36 @@ type Bundle = {
   summary: NetworkSummary | null;
   countries: CountryKpi[];
   topNuts2Rows: Nuts2TopList[];
+  benchmark: DensityBenchmark;
   velocity: VelocityPoint[];
   gminy: DensityGmina[];
   health: ProbeResult;
 };
+
+function computeBenchmark(rows: DensityNuts2[]): DensityBenchmark {
+  // Sort the full NUTS-2 set by density and find the highest PL row plus
+  // the highest non-PL row. topNuts2(limit=15) is 100% PL so the
+  // benchmark must come from the wider list.
+  const ranked = rows
+    .filter((r) => r.lockers_per_10k != null && r.lockers_per_10k > 0)
+    .sort((a, b) => (b.lockers_per_10k ?? 0) - (a.lockers_per_10k ?? 0));
+  const topPl = ranked.find((r) => r.country === "PL");
+  const topNonPl = ranked.find((r) => r.country !== "PL");
+  if (!topPl || !topNonPl || topNonPl.lockers_per_10k! <= 0) return null;
+  return {
+    topPl: {
+      name: topPl.name_latn,
+      country: topPl.country,
+      density: topPl.lockers_per_10k!,
+    },
+    topNonPl: {
+      name: topNonPl.name_latn,
+      country: topNonPl.country,
+      density: topNonPl.lockers_per_10k!,
+    },
+    ratio: topPl.lockers_per_10k! / topNonPl.lockers_per_10k!,
+  };
+}
 
 // Backend hits an asyncpg/pgbouncer prepared-statement collision under
 // concurrent load (a known interaction with pool_pre_ping). Retry the
@@ -97,6 +128,9 @@ async function loadAll(): Promise<Bundle> {
   const summaryRes = await seq(withRetry("summary", () => getNetworkSummary(), isOk));
   const countriesRes = await seq(withRetry("countries", () => listCountryKpis(), isOk));
   const topNuts2Res = await seq(withRetry("topNuts2", () => topNuts2({ query: { limit: 15 } }), isOk));
+  // listNuts2 powers the density-ratio benchmark — top 15 is 100% PL so
+  // we need the broader list to find the densest non-PL region.
+  const allNuts2Res = await seq(withRetry("allNuts2", () => listNuts2({ query: { limit: 500 } }), isOk));
   const velocityRes = await seq(withRetry("velocity", () => getVelocity(), isOk));
   const gminyRes = await seq(
     withRetry(
@@ -119,6 +153,10 @@ async function loadAll(): Promise<Bundle> {
       topNuts2Res.status === "fulfilled" && topNuts2Res.value.data
         ? topNuts2Res.value.data.data
         : [],
+    benchmark:
+      allNuts2Res.status === "fulfilled" && allNuts2Res.value.data
+        ? computeBenchmark(allNuts2Res.value.data.data)
+        : null,
     velocity:
       velocityRes.status === "fulfilled" && velocityRes.value.data
         ? velocityRes.value.data.data
@@ -148,7 +186,7 @@ export default async function HomePage() {
           <HeroKpis
             summary={data.summary}
             countryKpis={data.countries}
-            topNuts2={data.topNuts2Rows}
+            benchmark={data.benchmark}
           />
         ) : (
           <ErrorPanel
