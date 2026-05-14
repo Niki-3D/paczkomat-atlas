@@ -215,11 +215,8 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
       <article className="panel overflow-visible">
         {/* Filters */}
         <header
-          className="grid items-end gap-4 px-5 py-3.5"
-          style={{
-            borderBottom: "1px solid var(--border-subtle)",
-            gridTemplateColumns: "240px 1fr 240px auto",
-          }}
+          className="table-filters-row grid items-end gap-4 px-5 py-3.5 grid-cols-1 md:grid-cols-2 lg:[grid-template-columns:240px_1fr_240px_auto]"
+          style={{ borderBottom: "1px solid var(--border-subtle)" }}
         >
           <div className="flex flex-col gap-1 min-w-0 relative" ref={menuRef}>
             <label
@@ -339,12 +336,13 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
               step={POP_STEP}
               value={minPop}
               onChange={(e) => setMinPop(parseInt(e.target.value, 10))}
+              suppressHydrationWarning
               style={{
                 width: "100%",
-                height: 4,
+                height: "4px",
                 background: "var(--bg-inset)",
                 border: "1px solid var(--border-default)",
-                marginTop: 14,
+                marginTop: "14px",
                 accentColor: "var(--accent)",
               }}
             />
@@ -369,11 +367,12 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Gmina name…"
               autoComplete="off"
+              suppressHydrationWarning
               style={{
                 background: "var(--bg-inset)",
                 border: "1px solid var(--border-default)",
                 padding: "7px 10px",
-                fontSize: 12.5,
+                fontSize: "12.5px",
                 color: "var(--fg-default)",
                 outline: "none",
               }}

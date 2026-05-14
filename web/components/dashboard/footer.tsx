@@ -9,10 +9,7 @@ export function Footer({ totalRecords }: FooterProps) {
       className="mt-6 pt-6"
       style={{ borderTop: "1px solid var(--border-subtle)" }}
     >
-      <div
-        className="grid gap-8 mb-6"
-        style={{ gridTemplateColumns: "1.4fr 1fr 1.4fr 0.8fr" }}
-      >
+      <div className="footer-grid-row grid gap-8 mb-6 grid-cols-1 sm:grid-cols-2 lg:[grid-template-columns:1.4fr_1fr_1.4fr_0.8fr]">
         <div>
           <FootTitle>Paczkomat Atlas</FootTitle>
           <p style={{ fontSize: 12, color: "var(--fg-muted)" }}>

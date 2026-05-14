@@ -334,7 +334,7 @@ export function DensityMap() {
 
   return (
     <article
-      className="panel relative flex flex-col"
+      className="panel panel-map relative flex flex-col"
       style={{ minHeight: 540 }}
     >
       <header className="panel-head">

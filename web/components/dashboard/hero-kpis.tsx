@@ -25,7 +25,7 @@ export function HeroKpis({ summary, countryKpis, topNuts2 }: HeroProps) {
       : null;
 
   return (
-    <section className="grid gap-3.5" style={{ gridTemplateColumns: "1fr 1fr 1fr" }}>
+    <section className="hero-grid grid gap-3.5 grid-cols-1 lg:grid-cols-3">
       <KpiCard
         label="Pickup points network"
         tag="live · mv_country_kpi"
@@ -165,7 +165,7 @@ function KpiCard({
         </span>
       </header>
       <div
-        className="mono"
+        className="mono kpi-hero-value"
         style={{
           fontFamily: "var(--font-display)",
           fontSize: 60,

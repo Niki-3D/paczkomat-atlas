@@ -172,11 +172,8 @@ function ShareRow({
 }) {
   const colorMap = kind === "lockers" ? COUNTRY_LOCKER_COLOR : COUNTRY_PUDO_COLOR;
   return (
-    <div
-      className="grid items-center gap-6"
-      style={{ gridTemplateColumns: "220px 1fr" }}
-    >
-      <div className="flex flex-col gap-0.5">
+    <div className="share-row grid items-center gap-3 md:gap-6 grid-cols-1 md:[grid-template-columns:220px_1fr]">
+      <div className="share-label-row flex flex-col gap-0.5">
         <span
           className="uppercase"
           style={{
@@ -188,7 +185,7 @@ function ShareRow({
           {category}
         </span>
         <span
-          className="tnum"
+          className="tnum share-total-num"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: 36,
@@ -297,7 +294,7 @@ function ShareReadout({
   const pudoShare = totalPudo > 0 ? (hoveredKpi.n_pudo / totalPudo) * 100 : 0;
   return (
     <div style={styleBase}>
-      <div className="grid items-center gap-x-5 gap-y-3.5 w-full" style={{ gridTemplateColumns: "28px auto 1fr auto auto auto auto" }}>
+      <div className="share-readout-grid grid items-center gap-x-5 gap-y-3.5 w-full" style={{ gridTemplateColumns: "28px auto 1fr auto auto auto auto" }}>
         <span className="flag" style={{ fontSize: 22 }}>
           {meta?.flag}
         </span>
@@ -377,14 +374,19 @@ function ShareGrid({
   hovered: string | null;
   onHover: (code: string | null) => void;
 }) {
+  // Responsive grid driven by a single --cells var. Mobile shows 4 cols,
+  // tablet 6, desktop the full per-country layout — matches the design's
+  // compact-card density.
   const cols = Math.max(rows.length, 1);
   return (
     <div
-      className="grid pt-3.5"
-      style={{
-        gridTemplateColumns: `repeat(${cols}, 1fr)`,
-        borderTop: "1px solid var(--border-subtle)",
-      }}
+      className="share-cells grid pt-3.5"
+      style={
+        {
+          ["--cells" as string]: cols,
+          borderTop: "1px solid var(--border-subtle)",
+        } as React.CSSProperties
+      }
     >
       {rows.map((c, i) => {
         const lockerPct = c.n_total > 0 ? (c.n_lockers / c.n_total) * 100 : 0;

@@ -9,7 +9,7 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
 
   return (
     <article
-      className="flex flex-col panel"
+      className="flex flex-col panel panel-bars"
       style={{ minHeight: 540 }}
     >
       <header className="panel-head">

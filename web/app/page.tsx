@@ -82,26 +82,29 @@ const isOk = <T extends { data?: unknown; error?: unknown }>(r: T): boolean =>
   Boolean(r?.data) && !r?.error;
 
 async function loadAll(): Promise<Bundle> {
-  const [
-    healthRes,
-    summaryRes,
-    countriesRes,
-    topNuts2Res,
-    velocityRes,
-    gminyRes,
-  ] = await Promise.allSettled([
-    probeHealth(),
-    withRetry("summary", () => getNetworkSummary(), isOk),
-    withRetry("countries", () => listCountryKpis(), isOk),
-    withRetry("topNuts2", () => topNuts2({ query: { limit: 15 } }), isOk),
-    withRetry("velocity", () => getVelocity(), isOk),
-    // 2500 covers all gminy with population matched (~2422)
+  // Sequential — the backend's connection pool is small and gets
+  // intermittent pool-exhaustion 5xx under burst load (especially with
+  // Next dev's HMR double-rendering). All endpoints are sub-15ms so
+  // serial cost is negligible.
+  const seq = async <T,>(p: Promise<T>): Promise<PromiseSettledResult<T>> => {
+    try {
+      return { status: "fulfilled", value: await p };
+    } catch (reason) {
+      return { status: "rejected", reason };
+    }
+  };
+  const healthRes = await seq(probeHealth());
+  const summaryRes = await seq(withRetry("summary", () => getNetworkSummary(), isOk));
+  const countriesRes = await seq(withRetry("countries", () => listCountryKpis(), isOk));
+  const topNuts2Res = await seq(withRetry("topNuts2", () => topNuts2({ query: { limit: 15 } }), isOk));
+  const velocityRes = await seq(withRetry("velocity", () => getVelocity(), isOk));
+  const gminyRes = await seq(
     withRetry(
       "gminy",
       () => listGminy({ query: { limit: 2500, min_population: 0 } }),
       isOk,
     ),
-  ]);
+  );
 
   return {
     summary:
@@ -154,10 +157,7 @@ export default async function HomePage() {
           />
         )}
 
-        <section
-          className="grid gap-3.5"
-          style={{ gridTemplateColumns: "minmax(0, 6fr) minmax(0, 4fr)" }}
-        >
+        <section className="split-grid grid gap-3.5 grid-cols-1 lg:[grid-template-columns:minmax(0,6fr)_minmax(0,4fr)]">
           <DensityMapIsland />
           {data.topNuts2Rows.length > 0 ? (
             <DensityBars rows={data.topNuts2Rows} />
