@@ -88,11 +88,12 @@ export function DensityMap() {
           : 1,
       style: {
         version: 8,
-        glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+        // OpenFreeMap-hosted glyph PBFs — required for the English label
+        // symbol layers we add below. Their default font stack is Noto Sans.
+        glyphs: "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
         sources: {
-          // CartoDB dark-matter basemap. Split into nolabels + labels
-          // sources so country/city labels render ON TOP of the
-          // choropleth fill and stay legible. Tiles requested @2x.
+          // CartoDB dark-matter canvas (no labels). Provides land/water/
+          // country outlines as a raster at @2x.
           carto: {
             type: "raster",
             tiles: [
@@ -105,15 +106,17 @@ export function DensityMap() {
             attribution:
               '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
           },
-          labels: {
-            type: "raster",
-            tiles: [
-              "https://a.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
-              "https://b.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
-              "https://c.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
-              "https://d.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
-            ],
-            tileSize: 256,
+          // English-only labels via OpenFreeMap (OpenMapTiles vector schema).
+          // CartoDB's dark_only_labels raster bakes locale into each tile,
+          // so the Baltic ends up rendered as "Morze Bałtyckie / Itämeri /
+          // Östersjön / Балтийское море" depending on which country slice
+          // the tile covers. A vector source with name:en gives one label
+          // per feature, consistent across borders.
+          openfreemap: {
+            type: "vector",
+            url: "https://tiles.openfreemap.org/planet",
+            attribution:
+              '© <a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openmaptiles.org/">OpenMapTiles</a>',
           },
           nuts2: {
             type: "vector",
@@ -303,13 +306,83 @@ export function DensityMap() {
         layout: { visibility: "none" },
       });
 
-      // Labels overlay above the choropleth fill so country/city names
-      // remain legible when an amber polygon covers a region.
+      // English label overlay — three symbol layers from OpenFreeMap's
+      // OpenMapTiles vector tileset. Each uses coalesce(name:en, name)
+      // so we fall back to local naming only when there's no English
+      // translation (e.g. small Polish villages). Order matters: water
+      // first (lowest visual priority), then countries (always-on at
+      // continental zooms), then cities (top — highest contrast halo).
       map.addLayer({
-        id: "city-labels",
-        type: "raster",
-        source: "labels",
-        paint: { "raster-opacity": 0.85, "raster-resampling": "nearest" },
+        id: "label-water",
+        type: "symbol",
+        source: "openfreemap",
+        "source-layer": "water_name",
+        filter: [
+          "match",
+          ["get", "class"],
+          ["ocean", "sea", "bay", "strait"],
+          true,
+          false,
+        ],
+        layout: {
+          "text-field": ["coalesce", ["get", "name:en"], ["get", "name"]],
+          "text-font": ["Noto Sans Italic"],
+          "text-size": ["interpolate", ["linear"], ["zoom"], 2, 9, 6, 12],
+          "text-letter-spacing": 0.05,
+          "text-max-width": 7,
+        },
+        paint: {
+          "text-color": "#7a8694",
+          "text-halo-color": "rgba(10,10,11,0.75)",
+          "text-halo-width": 1.2,
+        },
+      });
+      map.addLayer({
+        id: "label-country",
+        type: "symbol",
+        source: "openfreemap",
+        "source-layer": "place",
+        filter: ["==", ["get", "class"], "country"],
+        layout: {
+          "text-field": ["coalesce", ["get", "name:en"], ["get", "name"]],
+          "text-font": ["Noto Sans Regular"],
+          "text-size": ["interpolate", ["linear"], ["zoom"], 2, 9, 6, 13],
+          "text-letter-spacing": 0.08,
+          "text-transform": "uppercase",
+          "text-max-width": 8,
+        },
+        paint: {
+          "text-color": "#a8a8ac",
+          "text-halo-color": "rgba(10,10,11,0.85)",
+          "text-halo-width": 1.4,
+        },
+      });
+      map.addLayer({
+        id: "label-city",
+        type: "symbol",
+        source: "openfreemap",
+        "source-layer": "place",
+        minzoom: 4,
+        filter: [
+          "match",
+          ["get", "class"],
+          ["city", "town"],
+          true,
+          false,
+        ],
+        layout: {
+          "text-field": ["coalesce", ["get", "name:en"], ["get", "name"]],
+          "text-font": ["Noto Sans Regular"],
+          "text-size": ["interpolate", ["linear"], ["zoom"], 4, 10, 8, 13],
+          "text-anchor": "top",
+          "text-offset": [0, 0.5],
+          "text-max-width": 8,
+        },
+        paint: {
+          "text-color": "#c4c4c8",
+          "text-halo-color": "rgba(10,10,11,0.9)",
+          "text-halo-width": 1.6,
+        },
       });
 
       attachHover(map);
