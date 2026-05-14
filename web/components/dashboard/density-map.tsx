@@ -68,6 +68,13 @@ export function DensityMap() {
 
     const map = new maplibregl.Map({
       container: containerRef.current,
+      // Use the device's actual DPR (often 1.5-2.5 on Windows laptops)
+      // so the basemap raster does not get upscaled blurry. MapLibre
+      // defaults to 1 if not set, which looks terrible on hi-DPI.
+      pixelRatio:
+        typeof window !== "undefined" && window.devicePixelRatio
+          ? window.devicePixelRatio
+          : 1,
       style: {
         version: 8,
         glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
@@ -391,7 +398,7 @@ export function DensityMap() {
             border: "1px solid var(--border-default)",
             marginBottom: 4,
             background:
-              "linear-gradient(90deg, rgba(15,15,18,1) 0%, rgba(20,16,50,1) 14%, rgba(90,26,69,1) 32%, rgba(158,37,32,1) 56%, rgba(221,88,24,1) 78%, rgba(245,192,78,1) 100%)",
+              "linear-gradient(90deg, var(--map-0) 0%, var(--map-1) 18%, var(--map-2) 38%, var(--map-3) 58%, var(--map-4) 78%, var(--map-5) 100%)",
           }}
         />
         <div

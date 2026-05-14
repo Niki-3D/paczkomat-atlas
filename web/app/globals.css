@@ -34,12 +34,15 @@
   --danger:  #F87171;
   --info:    #60A5FA;
 
-  /* Choropleth ramp — thermal */
-  --map-0: #0F0F12;
-  --map-1: #1F1532;
-  --map-2: #5A1A45;
-  --map-3: #9E2520;
-  --map-4: #DD5818;
+  /* Choropleth ramp — single-hue amber, near-black → bright amber.
+     Matches .claude/rules/design-tokens.md authoritative palette;
+     replaces an earlier thermal (purple→red→yellow) variant that
+     made low-density non-PL regions read as scattered "hot spots". */
+  --map-0: #1A1A1F;
+  --map-1: #2A2F1E;
+  --map-2: #524018;
+  --map-3: #8B6914;
+  --map-4: #C29612;
   --map-5: #F5C04E;
 }
 
