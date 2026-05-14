@@ -14,7 +14,11 @@ from paczkomat_atlas_api.schemas import ApiResponse, LockerDetail, LockerSummary
 router = APIRouter(prefix="/lockers", tags=["lockers"])
 
 
-@router.get("", response_model=ApiResponse[list[LockerSummary]])
+@router.get(
+    "",
+    response_model=ApiResponse[list[LockerSummary]],
+    operation_id="listLockers",
+)
 async def list_lockers(
     session: Annotated[AsyncSession, Depends(get_session)],
     country: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
@@ -32,7 +36,11 @@ async def list_lockers(
     return ApiResponse(data=rows, meta={"total": total, "limit": limit, "offset": offset})
 
 
-@router.get("/{name}", response_model=ApiResponse[LockerDetail])
+@router.get(
+    "/{name}",
+    response_model=ApiResponse[LockerDetail],
+    operation_id="getLocker",
+)
 async def get_locker(
     name: str,
     session: Annotated[AsyncSession, Depends(get_session)],

@@ -41,6 +41,6 @@ app.include_router(h3_router, prefix="/api/v1")
 app.include_router(velocity_router, prefix="/api/v1")
 
 
-@app.get("/")
+@app.get("/", operation_id="root")
 async def root() -> dict[str, str]:
     return {"service": "paczkomat-atlas-api", "version": app.version, "docs": "/docs"}

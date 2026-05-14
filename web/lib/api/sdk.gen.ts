@@ -3,41 +3,41 @@
 import type { Client, Options as Options2, TDataShape } from "./client";
 import { client } from "./client.gen";
 import type {
-  GetCountryKpiApiV1KpiCountriesCountryGetData,
-  GetCountryKpiApiV1KpiCountriesCountryGetErrors,
-  GetCountryKpiApiV1KpiCountriesCountryGetResponses,
-  GetLockerApiV1LockersNameGetData,
-  GetLockerApiV1LockersNameGetErrors,
-  GetLockerApiV1LockersNameGetResponses,
-  GetNetworkSummaryApiV1KpiSummaryGetData,
-  GetNetworkSummaryApiV1KpiSummaryGetResponses,
-  GetVelocityApiV1VelocityGetData,
-  GetVelocityApiV1VelocityGetErrors,
-  GetVelocityApiV1VelocityGetResponses,
-  HealthApiV1HealthGetData,
-  HealthApiV1HealthGetResponses,
-  ListCountryKpisApiV1KpiCountriesGetData,
-  ListCountryKpisApiV1KpiCountriesGetResponses,
-  ListGminyApiV1DensityGminyGetData,
-  ListGminyApiV1DensityGminyGetErrors,
-  ListGminyApiV1DensityGminyGetResponses,
-  ListH3CellsApiV1H3CellsGetData,
-  ListH3CellsApiV1H3CellsGetErrors,
-  ListH3CellsApiV1H3CellsGetResponses,
-  ListLockersApiV1LockersGetData,
-  ListLockersApiV1LockersGetErrors,
-  ListLockersApiV1LockersGetResponses,
-  ListNuts2ApiV1DensityNuts2GetData,
-  ListNuts2ApiV1DensityNuts2GetErrors,
-  ListNuts2ApiV1DensityNuts2GetResponses,
+  GetCountryKpiData,
+  GetCountryKpiErrors,
+  GetCountryKpiResponses,
+  GetLockerData,
+  GetLockerErrors,
+  GetLockerResponses,
+  GetNetworkSummaryData,
+  GetNetworkSummaryResponses,
+  GetVelocityData,
+  GetVelocityErrors,
+  GetVelocityResponses,
+  HealthCheckData,
+  HealthCheckResponses,
+  ListCountryKpisData,
+  ListCountryKpisResponses,
+  ListGminyData,
+  ListGminyErrors,
+  ListGminyResponses,
+  ListH3CellsData,
+  ListH3CellsErrors,
+  ListH3CellsResponses,
+  ListLockersData,
+  ListLockersErrors,
+  ListLockersResponses,
+  ListNuts2Data,
+  ListNuts2Errors,
+  ListNuts2Responses,
   RootGetData,
   RootGetResponses,
-  TopGminyApiV1DensityGminyTopGetData,
-  TopGminyApiV1DensityGminyTopGetErrors,
-  TopGminyApiV1DensityGminyTopGetResponses,
-  TopNuts2ApiV1DensityNuts2TopGetData,
-  TopNuts2ApiV1DensityNuts2TopGetErrors,
-  TopNuts2ApiV1DensityNuts2TopGetResponses,
+  TopGminyData,
+  TopGminyErrors,
+  TopGminyResponses,
+  TopNuts2Data,
+  TopNuts2Errors,
+  TopNuts2Responses,
 } from "./types.gen";
 
 export type Options<
@@ -63,27 +63,24 @@ export type Options<
  *
  * Confirm app + DB + tile server + data freshness.
  */
-export const healthApiV1HealthGet = <ThrowOnError extends boolean = false>(
-  options?: Options<HealthApiV1HealthGetData, ThrowOnError>,
+export const healthCheck = <ThrowOnError extends boolean = false>(
+  options?: Options<HealthCheckData, ThrowOnError>,
 ) =>
-  (options?.client ?? client).get<
-    HealthApiV1HealthGetResponses,
-    unknown,
-    ThrowOnError
-  >({ url: "/api/v1/health", ...options });
+  (options?.client ?? client).get<HealthCheckResponses, unknown, ThrowOnError>({
+    url: "/api/v1/health",
+    ...options,
+  });
 
 /**
  * Get Network Summary
  *
  * Top-line headline numbers for the landing page hero.
  */
-export const getNetworkSummaryApiV1KpiSummaryGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<GetNetworkSummaryApiV1KpiSummaryGetData, ThrowOnError>,
+export const getNetworkSummary = <ThrowOnError extends boolean = false>(
+  options?: Options<GetNetworkSummaryData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    GetNetworkSummaryApiV1KpiSummaryGetResponses,
+    GetNetworkSummaryResponses,
     unknown,
     ThrowOnError
   >({ url: "/api/v1/kpi/summary", ...options });
@@ -93,13 +90,11 @@ export const getNetworkSummaryApiV1KpiSummaryGet = <
  *
  * All 14 active countries with operating counts.
  */
-export const listCountryKpisApiV1KpiCountriesGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<ListCountryKpisApiV1KpiCountriesGetData, ThrowOnError>,
+export const listCountryKpis = <ThrowOnError extends boolean = false>(
+  options?: Options<ListCountryKpisData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    ListCountryKpisApiV1KpiCountriesGetResponses,
+    ListCountryKpisResponses,
     unknown,
     ThrowOnError
   >({ url: "/api/v1/kpi/countries", ...options });
@@ -109,14 +104,12 @@ export const listCountryKpisApiV1KpiCountriesGet = <
  *
  * Single country detail.
  */
-export const getCountryKpiApiV1KpiCountriesCountryGet = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<GetCountryKpiApiV1KpiCountriesCountryGetData, ThrowOnError>,
+export const getCountryKpi = <ThrowOnError extends boolean = false>(
+  options: Options<GetCountryKpiData, ThrowOnError>,
 ) =>
   (options.client ?? client).get<
-    GetCountryKpiApiV1KpiCountriesCountryGetResponses,
-    GetCountryKpiApiV1KpiCountriesCountryGetErrors,
+    GetCountryKpiResponses,
+    GetCountryKpiErrors,
     ThrowOnError
   >({ url: "/api/v1/kpi/countries/{country}", ...options });
 
@@ -125,14 +118,12 @@ export const getCountryKpiApiV1KpiCountriesCountryGet = <
  *
  * Paginated list of gminy with density. Default returns up to 500 of ~2477.
  */
-export const listGminyApiV1DensityGminyGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<ListGminyApiV1DensityGminyGetData, ThrowOnError>,
+export const listGminy = <ThrowOnError extends boolean = false>(
+  options?: Options<ListGminyData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    ListGminyApiV1DensityGminyGetResponses,
-    ListGminyApiV1DensityGminyGetErrors,
+    ListGminyResponses,
+    ListGminyErrors,
     ThrowOnError
   >({ url: "/api/v1/density/gminy", ...options });
 
@@ -141,14 +132,12 @@ export const listGminyApiV1DensityGminyGet = <
  *
  * Top N gminy by lockers per 10k. Filtered to avoid tiny outliers.
  */
-export const topGminyApiV1DensityGminyTopGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<TopGminyApiV1DensityGminyTopGetData, ThrowOnError>,
+export const topGminy = <ThrowOnError extends boolean = false>(
+  options?: Options<TopGminyData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    TopGminyApiV1DensityGminyTopGetResponses,
-    TopGminyApiV1DensityGminyTopGetErrors,
+    TopGminyResponses,
+    TopGminyErrors,
     ThrowOnError
   >({ url: "/api/v1/density/gminy/top", ...options });
 
@@ -157,14 +146,12 @@ export const topGminyApiV1DensityGminyTopGet = <
  *
  * Paginated list of NUTS-2 regions with density.
  */
-export const listNuts2ApiV1DensityNuts2Get = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<ListNuts2ApiV1DensityNuts2GetData, ThrowOnError>,
+export const listNuts2 = <ThrowOnError extends boolean = false>(
+  options?: Options<ListNuts2Data, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    ListNuts2ApiV1DensityNuts2GetResponses,
-    ListNuts2ApiV1DensityNuts2GetErrors,
+    ListNuts2Responses,
+    ListNuts2Errors,
     ThrowOnError
   >({ url: "/api/v1/density/nuts2", ...options });
 
@@ -173,14 +160,12 @@ export const listNuts2ApiV1DensityNuts2Get = <
  *
  * Top N NUTS-2 regions by lockers per 10k.
  */
-export const topNuts2ApiV1DensityNuts2TopGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<TopNuts2ApiV1DensityNuts2TopGetData, ThrowOnError>,
+export const topNuts2 = <ThrowOnError extends boolean = false>(
+  options?: Options<TopNuts2Data, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    TopNuts2ApiV1DensityNuts2TopGetResponses,
-    TopNuts2ApiV1DensityNuts2TopGetErrors,
+    TopNuts2Responses,
+    TopNuts2Errors,
     ThrowOnError
   >({ url: "/api/v1/density/nuts2/top", ...options });
 
@@ -189,14 +174,12 @@ export const topNuts2ApiV1DensityNuts2TopGet = <
  *
  * Filtered locker list. Most callers should hit the tile endpoint instead.
  */
-export const listLockersApiV1LockersGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<ListLockersApiV1LockersGetData, ThrowOnError>,
+export const listLockers = <ThrowOnError extends boolean = false>(
+  options?: Options<ListLockersData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    ListLockersApiV1LockersGetResponses,
-    ListLockersApiV1LockersGetErrors,
+    ListLockersResponses,
+    ListLockersErrors,
     ThrowOnError
   >({ url: "/api/v1/lockers", ...options });
 
@@ -205,14 +188,12 @@ export const listLockersApiV1LockersGet = <
  *
  * Single locker detail by name (e.g. WAW01N).
  */
-export const getLockerApiV1LockersNameGet = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<GetLockerApiV1LockersNameGetData, ThrowOnError>,
+export const getLocker = <ThrowOnError extends boolean = false>(
+  options: Options<GetLockerData, ThrowOnError>,
 ) =>
   (options.client ?? client).get<
-    GetLockerApiV1LockersNameGetResponses,
-    GetLockerApiV1LockersNameGetErrors,
+    GetLockerResponses,
+    GetLockerErrors,
     ThrowOnError
   >({ url: "/api/v1/lockers/{name}", ...options });
 
@@ -221,14 +202,12 @@ export const getLockerApiV1LockersNameGet = <
  *
  * H3 cells at resolution 8 with locker/PUDO counts. For tabular use.
  */
-export const listH3CellsApiV1H3CellsGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<ListH3CellsApiV1H3CellsGetData, ThrowOnError>,
+export const listH3Cells = <ThrowOnError extends boolean = false>(
+  options?: Options<ListH3CellsData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    ListH3CellsApiV1H3CellsGetResponses,
-    ListH3CellsApiV1H3CellsGetErrors,
+    ListH3CellsResponses,
+    ListH3CellsErrors,
     ThrowOnError
   >({ url: "/api/v1/h3/cells", ...options });
 
@@ -237,14 +216,12 @@ export const listH3CellsApiV1H3CellsGet = <
  *
  * Network expansion timeline — static historical data points.
  */
-export const getVelocityApiV1VelocityGet = <
-  ThrowOnError extends boolean = false,
->(
-  options?: Options<GetVelocityApiV1VelocityGetData, ThrowOnError>,
+export const getVelocity = <ThrowOnError extends boolean = false>(
+  options?: Options<GetVelocityData, ThrowOnError>,
 ) =>
   (options?.client ?? client).get<
-    GetVelocityApiV1VelocityGetResponses,
-    GetVelocityApiV1VelocityGetErrors,
+    GetVelocityResponses,
+    GetVelocityErrors,
     ThrowOnError
   >({ url: "/api/v1/velocity", ...options });
 

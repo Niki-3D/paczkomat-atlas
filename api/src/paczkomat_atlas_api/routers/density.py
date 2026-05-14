@@ -20,7 +20,11 @@ from paczkomat_atlas_api.schemas import (
 router = APIRouter(prefix="/density", tags=["density"])
 
 
-@router.get("/gminy", response_model=ApiResponse[list[DensityGmina]])
+@router.get(
+    "/gminy",
+    response_model=ApiResponse[list[DensityGmina]],
+    operation_id="listGminy",
+)
 async def list_gminy(
     session: Annotated[AsyncSession, Depends(get_session)],
     voivodeship: Annotated[str | None, Query(description="Filter by voivodeship name")] = None,
@@ -38,7 +42,11 @@ async def list_gminy(
     return ApiResponse(data=rows, meta={"total": total, "limit": limit, "offset": offset})
 
 
-@router.get("/gminy/top", response_model=ApiResponse[list[GminaTopList]])
+@router.get(
+    "/gminy/top",
+    response_model=ApiResponse[list[GminaTopList]],
+    operation_id="topGminy",
+)
 async def top_gminy(
     session: Annotated[AsyncSession, Depends(get_session)],
     limit: Annotated[int, Query(ge=1, le=100)] = 15,
@@ -52,7 +60,11 @@ async def top_gminy(
     return ApiResponse(data=data, meta={"count": len(data)})
 
 
-@router.get("/nuts2", response_model=ApiResponse[list[DensityNuts2]])
+@router.get(
+    "/nuts2",
+    response_model=ApiResponse[list[DensityNuts2]],
+    operation_id="listNuts2",
+)
 async def list_nuts2(
     session: Annotated[AsyncSession, Depends(get_session)],
     country: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
@@ -67,7 +79,11 @@ async def list_nuts2(
     return ApiResponse(data=rows, meta={"total": total, "limit": limit, "offset": offset})
 
 
-@router.get("/nuts2/top", response_model=ApiResponse[list[Nuts2TopList]])
+@router.get(
+    "/nuts2/top",
+    response_model=ApiResponse[list[Nuts2TopList]],
+    operation_id="topNuts2",
+)
 async def top_nuts2(
     session: Annotated[AsyncSession, Depends(get_session)],
     limit: Annotated[int, Query(ge=1, le=100)] = 15,

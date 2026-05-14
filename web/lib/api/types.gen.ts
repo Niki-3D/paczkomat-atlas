@@ -573,16 +573,16 @@ export type VelocityPoint = {
   source?: string;
 };
 
-export type HealthApiV1HealthGetData = {
+export type HealthCheckData = {
   body?: never;
   path?: never;
   query?: never;
   url: "/api/v1/health";
 };
 
-export type HealthApiV1HealthGetResponses = {
+export type HealthCheckResponses = {
   /**
-   * Response Health Api V1 Health Get
+   * Response Healthcheck
    *
    * Successful Response
    */
@@ -591,44 +591,44 @@ export type HealthApiV1HealthGetResponses = {
   };
 };
 
-export type HealthApiV1HealthGetResponse =
-  HealthApiV1HealthGetResponses[keyof HealthApiV1HealthGetResponses];
+export type HealthCheckResponse =
+  HealthCheckResponses[keyof HealthCheckResponses];
 
-export type GetNetworkSummaryApiV1KpiSummaryGetData = {
+export type GetNetworkSummaryData = {
   body?: never;
   path?: never;
   query?: never;
   url: "/api/v1/kpi/summary";
 };
 
-export type GetNetworkSummaryApiV1KpiSummaryGetResponses = {
+export type GetNetworkSummaryResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseNetworkSummary;
 };
 
-export type GetNetworkSummaryApiV1KpiSummaryGetResponse =
-  GetNetworkSummaryApiV1KpiSummaryGetResponses[keyof GetNetworkSummaryApiV1KpiSummaryGetResponses];
+export type GetNetworkSummaryResponse =
+  GetNetworkSummaryResponses[keyof GetNetworkSummaryResponses];
 
-export type ListCountryKpisApiV1KpiCountriesGetData = {
+export type ListCountryKpisData = {
   body?: never;
   path?: never;
   query?: never;
   url: "/api/v1/kpi/countries";
 };
 
-export type ListCountryKpisApiV1KpiCountriesGetResponses = {
+export type ListCountryKpisResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseListCountryKpi;
 };
 
-export type ListCountryKpisApiV1KpiCountriesGetResponse =
-  ListCountryKpisApiV1KpiCountriesGetResponses[keyof ListCountryKpisApiV1KpiCountriesGetResponses];
+export type ListCountryKpisResponse =
+  ListCountryKpisResponses[keyof ListCountryKpisResponses];
 
-export type GetCountryKpiApiV1KpiCountriesCountryGetData = {
+export type GetCountryKpiData = {
   body?: never;
   path: {
     /**
@@ -640,27 +640,26 @@ export type GetCountryKpiApiV1KpiCountriesCountryGetData = {
   url: "/api/v1/kpi/countries/{country}";
 };
 
-export type GetCountryKpiApiV1KpiCountriesCountryGetErrors = {
+export type GetCountryKpiErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type GetCountryKpiApiV1KpiCountriesCountryGetError =
-  GetCountryKpiApiV1KpiCountriesCountryGetErrors[keyof GetCountryKpiApiV1KpiCountriesCountryGetErrors];
+export type GetCountryKpiError = GetCountryKpiErrors[keyof GetCountryKpiErrors];
 
-export type GetCountryKpiApiV1KpiCountriesCountryGetResponses = {
+export type GetCountryKpiResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseCountryKpi;
 };
 
-export type GetCountryKpiApiV1KpiCountriesCountryGetResponse =
-  GetCountryKpiApiV1KpiCountriesCountryGetResponses[keyof GetCountryKpiApiV1KpiCountriesCountryGetResponses];
+export type GetCountryKpiResponse =
+  GetCountryKpiResponses[keyof GetCountryKpiResponses];
 
-export type ListGminyApiV1DensityGminyGetData = {
+export type ListGminyData = {
   body?: never;
   path?: never;
   query?: {
@@ -686,27 +685,25 @@ export type ListGminyApiV1DensityGminyGetData = {
   url: "/api/v1/density/gminy";
 };
 
-export type ListGminyApiV1DensityGminyGetErrors = {
+export type ListGminyErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type ListGminyApiV1DensityGminyGetError =
-  ListGminyApiV1DensityGminyGetErrors[keyof ListGminyApiV1DensityGminyGetErrors];
+export type ListGminyError = ListGminyErrors[keyof ListGminyErrors];
 
-export type ListGminyApiV1DensityGminyGetResponses = {
+export type ListGminyResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseListDensityGmina;
 };
 
-export type ListGminyApiV1DensityGminyGetResponse =
-  ListGminyApiV1DensityGminyGetResponses[keyof ListGminyApiV1DensityGminyGetResponses];
+export type ListGminyResponse = ListGminyResponses[keyof ListGminyResponses];
 
-export type TopGminyApiV1DensityGminyTopGetData = {
+export type TopGminyData = {
   body?: never;
   path?: never;
   query?: {
@@ -726,27 +723,25 @@ export type TopGminyApiV1DensityGminyTopGetData = {
   url: "/api/v1/density/gminy/top";
 };
 
-export type TopGminyApiV1DensityGminyTopGetErrors = {
+export type TopGminyErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type TopGminyApiV1DensityGminyTopGetError =
-  TopGminyApiV1DensityGminyTopGetErrors[keyof TopGminyApiV1DensityGminyTopGetErrors];
+export type TopGminyError = TopGminyErrors[keyof TopGminyErrors];
 
-export type TopGminyApiV1DensityGminyTopGetResponses = {
+export type TopGminyResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseListGminaTopList;
 };
 
-export type TopGminyApiV1DensityGminyTopGetResponse =
-  TopGminyApiV1DensityGminyTopGetResponses[keyof TopGminyApiV1DensityGminyTopGetResponses];
+export type TopGminyResponse = TopGminyResponses[keyof TopGminyResponses];
 
-export type ListNuts2ApiV1DensityNuts2GetData = {
+export type ListNuts2Data = {
   body?: never;
   path?: never;
   query?: {
@@ -770,27 +765,25 @@ export type ListNuts2ApiV1DensityNuts2GetData = {
   url: "/api/v1/density/nuts2";
 };
 
-export type ListNuts2ApiV1DensityNuts2GetErrors = {
+export type ListNuts2Errors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type ListNuts2ApiV1DensityNuts2GetError =
-  ListNuts2ApiV1DensityNuts2GetErrors[keyof ListNuts2ApiV1DensityNuts2GetErrors];
+export type ListNuts2Error = ListNuts2Errors[keyof ListNuts2Errors];
 
-export type ListNuts2ApiV1DensityNuts2GetResponses = {
+export type ListNuts2Responses = {
   /**
    * Successful Response
    */
   200: ApiResponseListDensityNuts2;
 };
 
-export type ListNuts2ApiV1DensityNuts2GetResponse =
-  ListNuts2ApiV1DensityNuts2GetResponses[keyof ListNuts2ApiV1DensityNuts2GetResponses];
+export type ListNuts2Response = ListNuts2Responses[keyof ListNuts2Responses];
 
-export type TopNuts2ApiV1DensityNuts2TopGetData = {
+export type TopNuts2Data = {
   body?: never;
   path?: never;
   query?: {
@@ -806,27 +799,25 @@ export type TopNuts2ApiV1DensityNuts2TopGetData = {
   url: "/api/v1/density/nuts2/top";
 };
 
-export type TopNuts2ApiV1DensityNuts2TopGetErrors = {
+export type TopNuts2Errors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type TopNuts2ApiV1DensityNuts2TopGetError =
-  TopNuts2ApiV1DensityNuts2TopGetErrors[keyof TopNuts2ApiV1DensityNuts2TopGetErrors];
+export type TopNuts2Error = TopNuts2Errors[keyof TopNuts2Errors];
 
-export type TopNuts2ApiV1DensityNuts2TopGetResponses = {
+export type TopNuts2Responses = {
   /**
    * Successful Response
    */
   200: ApiResponseListNuts2TopList;
 };
 
-export type TopNuts2ApiV1DensityNuts2TopGetResponse =
-  TopNuts2ApiV1DensityNuts2TopGetResponses[keyof TopNuts2ApiV1DensityNuts2TopGetResponses];
+export type TopNuts2Response = TopNuts2Responses[keyof TopNuts2Responses];
 
-export type ListLockersApiV1LockersGetData = {
+export type ListLockersData = {
   body?: never;
   path?: never;
   query?: {
@@ -858,27 +849,26 @@ export type ListLockersApiV1LockersGetData = {
   url: "/api/v1/lockers";
 };
 
-export type ListLockersApiV1LockersGetErrors = {
+export type ListLockersErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type ListLockersApiV1LockersGetError =
-  ListLockersApiV1LockersGetErrors[keyof ListLockersApiV1LockersGetErrors];
+export type ListLockersError = ListLockersErrors[keyof ListLockersErrors];
 
-export type ListLockersApiV1LockersGetResponses = {
+export type ListLockersResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseListLockerSummary;
 };
 
-export type ListLockersApiV1LockersGetResponse =
-  ListLockersApiV1LockersGetResponses[keyof ListLockersApiV1LockersGetResponses];
+export type ListLockersResponse =
+  ListLockersResponses[keyof ListLockersResponses];
 
-export type GetLockerApiV1LockersNameGetData = {
+export type GetLockerData = {
   body?: never;
   path: {
     /**
@@ -890,27 +880,25 @@ export type GetLockerApiV1LockersNameGetData = {
   url: "/api/v1/lockers/{name}";
 };
 
-export type GetLockerApiV1LockersNameGetErrors = {
+export type GetLockerErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type GetLockerApiV1LockersNameGetError =
-  GetLockerApiV1LockersNameGetErrors[keyof GetLockerApiV1LockersNameGetErrors];
+export type GetLockerError = GetLockerErrors[keyof GetLockerErrors];
 
-export type GetLockerApiV1LockersNameGetResponses = {
+export type GetLockerResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseLockerDetail;
 };
 
-export type GetLockerApiV1LockersNameGetResponse =
-  GetLockerApiV1LockersNameGetResponses[keyof GetLockerApiV1LockersNameGetResponses];
+export type GetLockerResponse = GetLockerResponses[keyof GetLockerResponses];
 
-export type ListH3CellsApiV1H3CellsGetData = {
+export type ListH3CellsData = {
   body?: never;
   path?: never;
   query?: {
@@ -930,27 +918,26 @@ export type ListH3CellsApiV1H3CellsGetData = {
   url: "/api/v1/h3/cells";
 };
 
-export type ListH3CellsApiV1H3CellsGetErrors = {
+export type ListH3CellsErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type ListH3CellsApiV1H3CellsGetError =
-  ListH3CellsApiV1H3CellsGetErrors[keyof ListH3CellsApiV1H3CellsGetErrors];
+export type ListH3CellsError = ListH3CellsErrors[keyof ListH3CellsErrors];
 
-export type ListH3CellsApiV1H3CellsGetResponses = {
+export type ListH3CellsResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseListH3Cell;
 };
 
-export type ListH3CellsApiV1H3CellsGetResponse =
-  ListH3CellsApiV1H3CellsGetResponses[keyof ListH3CellsApiV1H3CellsGetResponses];
+export type ListH3CellsResponse =
+  ListH3CellsResponses[keyof ListH3CellsResponses];
 
-export type GetVelocityApiV1VelocityGetData = {
+export type GetVelocityData = {
   body?: never;
   path?: never;
   query?: {
@@ -962,25 +949,24 @@ export type GetVelocityApiV1VelocityGetData = {
   url: "/api/v1/velocity";
 };
 
-export type GetVelocityApiV1VelocityGetErrors = {
+export type GetVelocityErrors = {
   /**
    * Validation Error
    */
   422: HttpValidationError;
 };
 
-export type GetVelocityApiV1VelocityGetError =
-  GetVelocityApiV1VelocityGetErrors[keyof GetVelocityApiV1VelocityGetErrors];
+export type GetVelocityError = GetVelocityErrors[keyof GetVelocityErrors];
 
-export type GetVelocityApiV1VelocityGetResponses = {
+export type GetVelocityResponses = {
   /**
    * Successful Response
    */
   200: ApiResponseListVelocityPoint;
 };
 
-export type GetVelocityApiV1VelocityGetResponse =
-  GetVelocityApiV1VelocityGetResponses[keyof GetVelocityApiV1VelocityGetResponses];
+export type GetVelocityResponse =
+  GetVelocityResponses[keyof GetVelocityResponses];
 
 export type RootGetData = {
   body?: never;

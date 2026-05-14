@@ -14,7 +14,7 @@ from paczkomat_atlas_api.db import get_session
 router = APIRouter(tags=["health"])
 
 
-@router.get("/health")
+@router.get("/health", operation_id="healthCheck")
 async def health(
     session: Annotated[AsyncSession, Depends(get_session)],
 ) -> dict[str, object]:
