@@ -1,9 +1,38 @@
 """create base tables: lockers, gminy, nuts2, population, snapshots
 
 Revision ID: 5d424a72bd30
-Revises: 
+Revises:
 Create Date: 2026-05-12 22:54:49.965590
 
+The schema bedrock. Creates seven tables in dependency order:
+
+- gminy   (Polish gminas, MULTIPOLYGON SRID 2180 — native PUWG 1992)
+- nuts2   (EU NUTS-2 regions, MULTIPOLYGON SRID 4326 from Eurostat)
+- lockers (current snapshot of all InPost pickup points, geography(Point,4326);
+           FKs to gminy.teryt and nuts2.code populated via post-ingest spatial
+           join in ingest/sync.py)
+- population_gmina, population_nuts2 (yearly population values keyed by FK)
+- ingest_snapshots (time-series of locker state — promoted to a TimescaleDB
+                    hypertable in this same migration via create_hypertable())
+
+Two non-obvious details worth understanding before reading the upgrade body:
+
+1. h3 GENERATED columns. lockers has h3_r6 + h3_r8 columns declared as
+   STORED GENERATED from the geom point via h3_lat_lng_to_cell(). Stored
+   (not virtual) so the GIST indexes on them are usable. Migrating off h3
+   later means dropping the column AND the generated expression.
+
+2. Hypertable promotion. ingest_snapshots is a regular table at CREATE TABLE
+   time, then promoted to a TimescaleDB hypertable with a 30-day chunk
+   interval, compress_segmentby='country, is_locker', and add_compression_policy
+   firing after 14 days + add_retention_policy after 730 days. The model in
+   models/snapshot.py only describes the table shape — the hypertable
+   conversion is migration-only state.
+
+GIST indexes on geom columns are created by GeoAlchemy2's default
+spatial_index=True. Don't add explicit op.create_index(..., postgresql_using='gist')
+on those columns — autogenerate emits both and the second one collides at
+apply time with `relation already exists`.
 """
 from typing import Sequence, Union
 

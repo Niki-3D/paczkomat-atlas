@@ -1,3 +1,16 @@
+/**
+ * Top navigation bar — branding, scope toggle (PL/EU), API status pill.
+ *
+ * Scope toggle dispatches a `pa:scope` window CustomEvent that DensityMap
+ * listens to and flies the camera in response. Keeping it event-based
+ * (instead of prop-drilling) avoids forcing the dashboard page into a
+ * client component just to share state with the map.
+ *
+ * Status pill colors come from --success / --danger; the green/red glow
+ * rings around the dot use box-shadow with derived RGBA values
+ * (acceptable per design-tokens.md — boxShadow is allowed on non-card
+ * elements like status indicators).
+ */
 "use client";
 
 import { useState } from "react";

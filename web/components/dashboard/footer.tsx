@@ -1,3 +1,12 @@
+/**
+ * Page footer — data sources, caveats, repo links, build stamp.
+ *
+ * `totalRecords` comes from the /health probe (live count of rows in the
+ * lockers table). Caveats are static disclosures that match what the data
+ * actually supports: GB outside the NUTS-2 view, pre-launch Nordic markets,
+ * PRG boundary vintage. Localhost /docs and /catalog links are dev-only;
+ * deploy step swaps for the production domain.
+ */
 type FooterProps = {
   totalRecords: number | null;
 };

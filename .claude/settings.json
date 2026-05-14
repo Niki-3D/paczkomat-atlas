@@ -68,9 +68,6 @@
           { "type": "command", "command": "bash .claude/hooks/validate-bash.sh", "timeout": 5 }
         ]
       }
-    ],
-    "Stop": [
-      { "type": "command", "command": "afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true", "timeout": 2 }
     ]
   },
   "statusLine": {

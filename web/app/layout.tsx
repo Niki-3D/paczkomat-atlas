@@ -1,3 +1,11 @@
+/**
+ * Root layout — Next.js App Router entrypoint.
+ *
+ * Mounts Geist Sans + Geist Mono via next/font/google, forces
+ * `data-theme="dark"` on <html> so the design-token block in globals.css
+ * always resolves, and wraps the tree in the SWR provider for any client-side
+ * refetches that happen below the page-level server fetch.
+ */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

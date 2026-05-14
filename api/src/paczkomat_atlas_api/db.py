@@ -27,6 +27,14 @@ SRID_WEB_MERCATOR: Final[int] = 3857   # tile generation only
 # on a pooled connection that doesn't have that statement and raises
 # InvalidSQLStatementNameError. Disable pre-ping in that case — pgbouncer
 # already manages connection liveness for us.
+#
+# KNOWN ISSUE (tracked in docs/reviews/architecture-review.md §H1): even
+# with both mitigations above, concurrent SDK calls from the dashboard
+# loader still produce intermittent 5xx in dev — the frontend (web/app/
+# page.tsx) papers over it with serial calls + jittered retries. Suspected
+# root cause is still a prepared-statement reuse against a recycled
+# pgbouncer-pooled backend, but reproduction needs a load-generator we
+# don't have in-tree yet. Revisit before the v1 deploy.
 _via_pgbouncer = (
     "pgbouncer" in settings.database_url or ":6432" in settings.database_url
 )

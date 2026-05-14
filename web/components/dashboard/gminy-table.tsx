@@ -1,3 +1,13 @@
+/**
+ * PL gminy deep-dive table.
+ *
+ * Sortable, filterable list of every Polish gmina with locker density.
+ * Backed by TanStack Table v8 (the only frontend lib pulling its weight
+ * beyond the core stack — it does column sorting, header click handlers,
+ * pagination state). Server returns up to 2,477 rows from listGminy;
+ * pagination is purely client-side. Voivodeship filter is a multi-select
+ * combobox; population/locker filters are range inputs.
+ */
 "use client";
 
 import {

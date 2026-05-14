@@ -23,10 +23,57 @@
 
 ## Deploys
 
-GitHub Actions `deploy.yml`:
-1. Build `api` image, push to GHCR.
-2. SSH to server, `docker compose pull && docker compose up -d`.
-3. Run pending Alembic migrations.
+`.github/workflows/deploy.yml` is currently a placeholder. Until the SSH-deploy
+workflow is wired up (TODO below), deploys are manual. The runbook:
+
+### Manual deploy runbook (run from your laptop)
+
+```bash
+# 1. Pre-flight: confirm CI is green on the commit you're shipping
+gh run list --branch main --limit 1
+# expect status=completed, conclusion=success
+
+# 2. SSH in
+ssh paczkomat@<server_ip>
+cd /opt/paczkomat
+
+# 3. Fetch the new revision (deploys track main)
+git fetch origin
+git reset --hard origin/main
+
+# 4. Rebuild the api image (web is built+served separately via Cloudflare Pages
+#    OR, if served from the same host, rebuild the web image too)
+docker compose -f infra/compose/docker-compose.yml --env-file .env build api
+
+# 5. Bring services up in dependency order — db must be healthy before api
+docker compose -f infra/compose/docker-compose.yml --env-file .env up -d db pgbouncer
+docker compose -f infra/compose/docker-compose.yml --env-file .env up -d martin
+docker compose -f infra/compose/docker-compose.yml --env-file .env up -d api caddy
+
+# 6. Run pending Alembic migrations AGAINST THE DIRECT DB PORT (5432), not
+#    pgbouncer. Migrations need transactional DDL + advisory locks that the
+#    transaction-mode pool breaks. The api container has its env_file pointed
+#    at the direct connection — re-using that exec keeps the surface honest.
+docker compose -f infra/compose/docker-compose.yml --env-file .env exec api alembic upgrade head
+
+# 7. Smoke check
+curl -s https://<domain>/api/v1/health | jq
+# expect db_ok=true, martin_ok=true, locker_count > 100000
+
+# 8. Tail logs for the first 60s in case something paged
+docker compose -f infra/compose/docker-compose.yml --env-file .env logs -f --since=2m api caddy
+```
+
+### Rollback
+
+```bash
+# Same shape, just point at the previous commit hash
+git reset --hard <previous-sha>
+docker compose -f infra/compose/docker-compose.yml --env-file .env build api
+docker compose -f infra/compose/docker-compose.yml --env-file .env up -d api
+# Migrations: only roll back if the previous revision needs an earlier head.
+# `alembic downgrade -1` is reversible for everything in this repo today.
+```
 
 Web auto-deploys to Cloudflare Pages on push to `main` via Cloudflare's GitHub integration.
 

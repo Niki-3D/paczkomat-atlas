@@ -13,7 +13,7 @@ from pathlib import Path
 
 from sqlalchemy import text
 
-from paczkomat_atlas_api.db import SessionLocal
+from paczkomat_atlas_api.db import SRID_WGS84, SessionLocal
 from paczkomat_atlas_api.logging import get_logger
 
 log = get_logger("ingest.eurostat")
@@ -48,17 +48,20 @@ async def load_nuts2_boundaries() -> int:
         log.warning("eurostat.no_nuts2_parsed")
         return 0
 
-    sql = text("""
+    # SRID_WGS84 is a module-level int constant from db.py — safe to interpolate.
+    sql = text(
+        f"""
         INSERT INTO nuts2 (code, name_latn, country, geom)
         VALUES (
             :code, :name_latn, :country,
-            ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON(:geom_geojson), 4326))
+            ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON(:geom_geojson), {SRID_WGS84}))
         )
         ON CONFLICT (code) DO UPDATE SET
             name_latn = EXCLUDED.name_latn,
             country = EXCLUDED.country,
             geom = EXCLUDED.geom
-    """)
+    """  # noqa: S608  # SRID is a module-level int constant, not user input
+    )
     async with SessionLocal() as session:
         for i in range(0, len(rows), 100):
             chunk = rows[i:i + 100]

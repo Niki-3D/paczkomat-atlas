@@ -1,3 +1,16 @@
+/**
+ * Dashboard root — server component, single page for v1.
+ *
+ * This is the canonical data loader: every dashboard panel renders from props
+ * fetched here in `loadAll()`. Endpoints run serially under the retry wrapper
+ * to dodge the pgbouncer prepared-statement race documented in
+ * docs/reviews/architecture-review.md §H1. When that's fixed the loader can
+ * switch back to `Promise.allSettled` parallelism.
+ *
+ * The `revalidate = 300` directive caches the rendered page for 5 minutes —
+ * MVs refresh once daily so this is generous. Health probe and individual
+ * panels handle their own absence with ErrorPanel placeholders.
+ */
 import {
   type CountryKpi,
   type DensityGmina,
@@ -41,10 +54,16 @@ async function probeHealth(): Promise<ProbeResult> {
     if (!res.ok) return { ok: false, latencyMs, lockerCount: null };
     const body = (await res.json()) as {
       status?: string;
+      db_ok?: boolean;
       locker_count?: number;
     };
+    // Prefer the granular db_ok flag — the nav badge represents API+DB
+    // health, not whether the tile server is also up. Falls back to the
+    // aggregate `status` string for older deployments.
+    const ok =
+      body.db_ok != null ? body.db_ok : body.status === "ok";
     return {
-      ok: body.status === "ok",
+      ok,
       latencyMs,
       lockerCount: body.locker_count ?? null,
     };
@@ -105,7 +124,9 @@ async function withRetry<T>(
     await new Promise((r) => setTimeout(r, 60 * attempt + Math.random() * 80));
     result = await fn();
   }
-  if (!ok(result)) console.warn(`[loadAll] ${label} failed ${MAX_TRIES}x`);
+  // Final-attempt failures are surfaced through the ErrorPanel render in the
+  // page body — no console noise. The panel includes the endpoint path so the
+  // user sees which call is degraded.
   return result;
 }
 
@@ -198,7 +219,7 @@ export default async function HomePage() {
         <section className="split-grid grid gap-3.5 grid-cols-1 lg:[grid-template-columns:minmax(0,6fr)_minmax(0,4fr)]">
           <DensityMapIsland />
           {data.topNuts2Rows.length > 0 ? (
-            <DensityBars rows={data.topNuts2Rows} />
+            <DensityBars rows={data.topNuts2Rows} benchmark={data.benchmark} />
           ) : (
             <ErrorPanel
               title="Density bars unavailable"
