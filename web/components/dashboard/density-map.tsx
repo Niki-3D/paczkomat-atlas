@@ -448,9 +448,29 @@ export function DensityMap() {
     >
       <header className="panel-head">
         <div>
-          <div className="panel-title">Locker density by NUTS-2 region</div>
+          <div className="panel-title">
+            {layer === "heatmap"
+              ? "Locker concentration heatmap"
+              : layer === "gminy"
+                ? "Locker density by Polish gmina"
+                : "Locker density by NUTS-2 region"}
+          </div>
           <div className="panel-sub">
-            Lockers per 10,000 inhabitants · quantile 5-bucket · vector tiles via Martin
+            {layer === "nuts2" && (
+              <>Lockers per 10,000 inhabitants · NUTS-2 polygons · quantile 5-bucket</>
+            )}
+            {layer === "gminy" && (
+              <>Lockers per 10,000 inhabitants · gmina granularity · ≥5 lockers, ≥5k pop</>
+            )}
+            {layer === "heatmap" && (
+              <>
+                <span style={{ color: "var(--accent)", fontWeight: 500 }}>
+                  Physical point density
+                </span>
+                {" · "}
+                individual locker locations · zoom in to inspect
+              </>
+            )}
           </div>
         </div>
         <div role="group" aria-label="Map layer" className="flex gap-1">
@@ -499,7 +519,7 @@ export function DensityMap() {
             color: "var(--fg-subtle)",
           }}
         >
-          lockers / 10k
+          {layer === "heatmap" ? "point density" : "lockers / 10k"}
         </div>
         <div
           style={{
@@ -507,21 +527,40 @@ export function DensityMap() {
             border: "1px solid var(--border-default)",
             marginBottom: 4,
             background:
-              "linear-gradient(90deg, var(--map-0) 0%, var(--map-1) 18%, var(--map-2) 38%, var(--map-3) 58%, var(--map-4) 78%, var(--map-5) 100%)",
+              layer === "heatmap"
+                // Heatmap thermal stops mirror the heatmap-color ramp in
+                // the paint expression so the legend matches what the
+                // map actually paints.
+                ? "linear-gradient(90deg, rgba(120,40,60,0.4) 0%, rgba(196,90,42,0.85) 35%, rgba(224,168,46,0.95) 75%, rgba(248,213,107,1) 100%)"
+                : "linear-gradient(90deg, var(--map-0) 0%, var(--map-1) 18%, var(--map-2) 38%, var(--map-3) 58%, var(--map-4) 78%, var(--map-5) 100%)",
           }}
         />
-        <div
-          className="grid mono"
-          style={{
-            gridTemplateColumns: "repeat(5, 1fr)",
-            fontSize: 10,
-            color: "var(--fg-subtle)",
-            marginBottom: 10,
-          }}
-        >
-          <span>0</span><span>1</span><span>2</span><span>5</span>
-          <span className="text-right">10+</span>
-        </div>
+        {layer === "heatmap" ? (
+          <div
+            className="flex justify-between mono"
+            style={{
+              fontSize: 10,
+              color: "var(--fg-subtle)",
+              marginBottom: 10,
+            }}
+          >
+            <span>sparse</span>
+            <span>dense</span>
+          </div>
+        ) : (
+          <div
+            className="grid mono"
+            style={{
+              gridTemplateColumns: "repeat(5, 1fr)",
+              fontSize: 10,
+              color: "var(--fg-subtle)",
+              marginBottom: 10,
+            }}
+          >
+            <span>0</span><span>1</span><span>2</span><span>5</span>
+            <span className="text-right">10+</span>
+          </div>
+        )}
         <div
           className="flex flex-col gap-1 pt-2"
           style={{ borderTop: "1px solid var(--border-subtle)" }}
