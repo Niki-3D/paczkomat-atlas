@@ -1,11 +1,22 @@
 import type { Nuts2TopList } from "@/lib/api";
-import { fmt2 } from "@/lib/format";
+import type { DensityBenchmark } from "./hero-kpis";
+import { fmt1, fmt2 } from "@/lib/format";
 
-const BUDAPEST_BENCHMARK = 2.24;
-
-export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
+export function DensityBars({
+  rows,
+  benchmark,
+}: {
+  rows: Nuts2TopList[];
+  benchmark: DensityBenchmark;
+}) {
   const max = rows.length > 0 ? Math.max(...rows.map((r) => r.lockers_per_10k)) : 1;
-  const annotLeftPct = (BUDAPEST_BENCHMARK / max) * 100;
+  // Benchmark + ratio computed live in page.tsx::computeBenchmark from
+  // listNuts2(limit=500). NEVER hardcode "2.24" / "10.06" / "4.5×" —
+  // those values shift whenever the daily ingest refreshes the MVs.
+  const nonPl = benchmark?.topNonPl;
+  const topPl = benchmark?.topPl;
+  const ratio = benchmark?.ratio ?? null;
+  const annotLeftPct = nonPl ? (nonPl.density / max) * 100 : 0;
 
   return (
     <article
@@ -16,7 +27,7 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
         <div>
           <div className="panel-title">Top 15 NUTS-2 regions by density</div>
           <div className="panel-sub">
-            All 15 are Polish voivodeships. 16th place: <span className="mono">PL Mazowieckie</span> at 7.43.
+            All 15 are Polish voivodeships. The dashed line shows the densest non-PL region for comparison.
           </div>
         </div>
         <div
@@ -86,36 +97,39 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
           );
         })}
 
-        {/* Budapest benchmark line — annotation made unmistakably a comparison
-            reference, not a stray data point. Thicker accent-tinted dash, label
-            spells out the comparison in a single sentence above the line. */}
-        <div
-          className="pointer-events-none absolute"
-          style={{
-            top: 16,
-            bottom: 16,
-            left: `calc(20px + 22px + 10px + 142px + 10px + ((100% - 20px - 22px - 10px - 142px - 10px - 52px - 10px - 20px) * ${(annotLeftPct / 100).toFixed(4)}))`,
-            width: 1,
-            borderLeft: "1.5px dashed var(--accent-lo)",
-            zIndex: 2,
-          }}
-        >
+        {/* Densest-non-PL benchmark line. Label + position pulled from the
+            live benchmark prop (see computeBenchmark in page.tsx). Thicker
+            accent-tinted dash + a single chip above the line communicates
+            "this is the comparison reference, not a data row". */}
+        {nonPl && (
           <div
-            className="mono absolute whitespace-nowrap"
+            className="pointer-events-none absolute"
             style={{
-              top: -12,
-              left: 4,
-              fontSize: 10,
-              color: "var(--accent)",
-              fontWeight: 500,
-              padding: "2px 6px",
-              background: "var(--bg-surface-1)",
-              border: "1px solid var(--accent-lo)",
+              top: 16,
+              bottom: 16,
+              left: `calc(20px + 22px + 10px + 142px + 10px + ((100% - 20px - 22px - 10px - 142px - 10px - 52px - 10px - 20px) * ${(annotLeftPct / 100).toFixed(4)}))`,
+              width: 1,
+              borderLeft: "1.5px dashed var(--accent-lo)",
+              zIndex: 2,
             }}
           >
-            Budapest 2.24 — top non-PL region
+            <div
+              className="mono absolute whitespace-nowrap"
+              style={{
+                top: -12,
+                left: 4,
+                fontSize: 10,
+                color: "var(--accent)",
+                fontWeight: 500,
+                padding: "2px 6px",
+                background: "var(--bg-surface-1)",
+                border: "1px solid var(--accent-lo)",
+              }}
+            >
+              {nonPl.name} {fmt2(nonPl.density)} — top non-PL region
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <footer
@@ -130,9 +144,17 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
         <span style={{ color: "var(--fg-default)", fontWeight: 500 }}>
           all Polish voivodeships
         </span>
-        . The dashed line marks Budapest (HU) at 2.24 — the densest non-PL region.
-        Wielkopolskie at 10.06 is{" "}
-        <span style={{ color: "var(--accent)", fontWeight: 500 }}>4.5× denser</span>.
+        {nonPl && topPl && ratio != null && (
+          <>
+            . The dashed line marks {nonPl.name} ({nonPl.country}) at{" "}
+            <span className="mono">{fmt2(nonPl.density)}</span> — the densest non-PL region.{" "}
+            {topPl.name} at <span className="mono">{fmt2(topPl.density)}</span> is{" "}
+            <span style={{ color: "var(--accent)", fontWeight: 500 }}>
+              {fmt1(ratio)}× denser
+            </span>
+            .
+          </>
+        )}
       </footer>
     </article>
   );

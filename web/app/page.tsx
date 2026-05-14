@@ -198,7 +198,7 @@ export default async function HomePage() {
         <section className="split-grid grid gap-3.5 grid-cols-1 lg:[grid-template-columns:minmax(0,6fr)_minmax(0,4fr)]">
           <DensityMapIsland />
           {data.topNuts2Rows.length > 0 ? (
-            <DensityBars rows={data.topNuts2Rows} />
+            <DensityBars rows={data.topNuts2Rows} benchmark={data.benchmark} />
           ) : (
             <ErrorPanel
               title="Density bars unavailable"
