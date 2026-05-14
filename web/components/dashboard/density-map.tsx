@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { API_BASE_URL } from "@/lib/api";
 import { fmt2, fmtInt } from "@/lib/format";
 
-type TileLayer = "nuts2" | "gminy";
+type TileLayer = "nuts2" | "gminy" | "heatmap";
 
 const THERMAL_BREAKS = [0, 0.5, 1, 2, 5, 10];
 const THERMAL_COLORS = [
@@ -111,6 +111,15 @@ export function DensityMap() {
             maxzoom: 12,
             promoteId: "teryt",
           },
+          // Locker point features for the heatmap mode. Backend
+          // function gates this to status IN (Operating, Overloaded)
+          // so the heatmap reflects the active network footprint.
+          lockers: {
+            type: "vector",
+            tiles: [`${API_BASE_URL}/tiles/lockers_tiles/{z}/{x}/{y}`],
+            minzoom: 0,
+            maxzoom: 14,
+          },
         },
         layers: [
           { id: "bg", type: "background", paint: { "background-color": "#0A0A0B" } },
@@ -199,6 +208,74 @@ export function DensityMap() {
         layout: { visibility: "none" },
       });
 
+      // Heatmap layer — thermal ramp on the locker point cloud.
+      // Deliberately a different visual idiom from the choropleth:
+      // saturation encodes density on the fill, while a heatmap
+      // smooths into a continuous thermal cloud — useful when the
+      // story is "where are lockers concentrated", not "which
+      // admin region is densest".
+      map.addLayer({
+        id: "lockers-heatmap",
+        type: "heatmap",
+        source: "lockers",
+        "source-layer": "lockers",
+        maxzoom: 15,
+        paint: {
+          "heatmap-weight": 0.6,
+          "heatmap-intensity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            3,
+            0.6,
+            6,
+            1.4,
+            9,
+            2.8,
+          ],
+          "heatmap-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            3,
+            6,
+            6,
+            16,
+            9,
+            28,
+          ],
+          "heatmap-opacity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            3,
+            0.9,
+            9,
+            0.75,
+          ],
+          "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0,
+            "rgba(15, 15, 18, 0)",
+            0.1,
+            "rgba(31, 21, 50, 0.55)",
+            0.25,
+            "rgba(90, 26, 69, 0.75)",
+            0.45,
+            "rgba(158, 37, 32, 0.85)",
+            0.65,
+            "rgba(221, 88, 24, 0.92)",
+            0.85,
+            "rgba(245, 192, 78, 0.96)",
+            1,
+            "rgba(255, 230, 140, 1)",
+          ],
+        },
+        layout: { visibility: "none" },
+      });
+
       // Labels above fills
       map.addLayer({
         id: "city-labels",
@@ -233,21 +310,18 @@ export function DensityMap() {
     return () => window.removeEventListener("pa:scope", onScope as EventListener);
   }, []);
 
-  // Toggle visible layer
+  // Toggle visible layer — only one of {nuts2, gminy, heatmap} on at a time.
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !map.isStyleLoaded()) return;
-    const showGminy = layer === "gminy";
-    ["nuts2-fill", "nuts2-line"].forEach((id) => {
-      if (map.getLayer(id)) {
-        map.setLayoutProperty(id, "visibility", showGminy ? "none" : "visible");
-      }
-    });
-    ["gminy-fill", "gminy-line"].forEach((id) => {
-      if (map.getLayer(id)) {
-        map.setLayoutProperty(id, "visibility", showGminy ? "visible" : "none");
-      }
-    });
+    const vis = (on: boolean) => (on ? "visible" : "none");
+    const set = (ids: string[], on: boolean) =>
+      ids.forEach((id) => {
+        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", vis(on));
+      });
+    set(["nuts2-fill", "nuts2-line"], layer === "nuts2");
+    set(["gminy-fill", "gminy-line"], layer === "gminy");
+    set(["lockers-heatmap"], layer === "heatmap");
   }, [layer]);
 
   function attachHover(map: MaplibreMap): void {
@@ -363,6 +437,13 @@ export function DensityMap() {
             }}
           >
             Gminy <span className="mono">z≥5</span>
+          </Chip>
+          <Chip
+            active={layer === "heatmap"}
+            onClick={() => setLayer("heatmap")}
+            title="Thermal heatmap of locker concentrations"
+          >
+            Heatmap
           </Chip>
         </div>
       </header>
@@ -483,15 +564,18 @@ export function DensityMap() {
 function Chip({
   active,
   onClick,
+  title,
   children,
 }: {
   active: boolean;
   onClick: () => void;
+  title?: string;
   children: React.ReactNode;
 }) {
   return (
     <button
       onClick={onClick}
+      title={title}
       className="mono transition-colors"
       style={{
         fontSize: 11,
