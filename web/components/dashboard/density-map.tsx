@@ -8,7 +8,18 @@ import { fmt2, fmtInt } from "@/lib/format";
 
 type TileLayer = "nuts2" | "gminy" | "heatmap";
 
-const THERMAL_BREAKS = [0, 0.5, 1, 2, 5, 10];
+// NUTS-2 distribution is bottom-heavy: most non-PL regions sit at 0-2, all
+// PL voivodeships at 7-10. The [0, 0.5, 1, 2, 5, 10+] breaks differentiate
+// the long tail of low-density EU regions cleanly.
+const NUTS2_BREAKS = [0, 0.5, 1, 2, 5, 10];
+
+// Gminy distribution (PL only) is much more compressed and higher:
+// p25=6.21, median=8.01, p75=9.73, p95=12.63, max=30.44.
+// Using NUTS-2 breaks here would dump everything ≥5 into the top bucket
+// and lose all contrast across Poland. Re-bucketed to spread the visible
+// PL mass across map-3/4/5 with a saturated top tier for the 10+ outliers.
+const GMINY_BREAKS = [0, 1, 3, 6, 10, 15];
+
 const THERMAL_COLORS = [
   "var(--map-0)",
   "var(--map-1)",
@@ -23,7 +34,7 @@ function readCssVar(name: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 }
 
-function densityColorExpr(): maplibregl.ExpressionSpecification {
+function densityColorExpr(breaks: number[]): maplibregl.ExpressionSpecification {
   // Maplibre `step` expression: returns map-0 for null/<= 0, otherwise stepped color.
   // We use the resolved colors so the map paints correctly without var() resolution.
   const colors = THERMAL_COLORS.map((v) => readCssVar(v.replace(/var\((.+)\)/, "$1")));
@@ -39,10 +50,10 @@ function densityColorExpr(): maplibregl.ExpressionSpecification {
       "step",
       ["to-number", ["get", "lockers_per_10k"], 0],
       colors[1],
-      THERMAL_BREAKS[1], colors[2],
-      THERMAL_BREAKS[2], colors[3],
-      THERMAL_BREAKS[3], colors[4],
-      THERMAL_BREAKS[4], colors[5],
+      breaks[1], colors[2],
+      breaks[2], colors[3],
+      breaks[3], colors[4],
+      breaks[4], colors[5],
     ],
   ] as unknown as maplibregl.ExpressionSpecification;
 }
@@ -159,7 +170,7 @@ export function DensityMap() {
         source: "nuts2",
         "source-layer": "nuts2_density",
         paint: {
-          "fill-color": densityColorExpr(),
+          "fill-color": densityColorExpr(NUTS2_BREAKS),
           "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -197,7 +208,7 @@ export function DensityMap() {
         "source-layer": "gminy_density",
         minzoom: 5,
         paint: {
-          "fill-color": densityColorExpr(),
+          "fill-color": densityColorExpr(GMINY_BREAKS),
           "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -535,7 +546,7 @@ export function DensityMap() {
                 : "linear-gradient(90deg, var(--map-0) 0%, var(--map-1) 18%, var(--map-2) 38%, var(--map-3) 58%, var(--map-4) 78%, var(--map-5) 100%)",
           }}
         />
-        {layer === "heatmap" ? (
+        {layer === "heatmap" && (
           <div
             className="flex justify-between mono"
             style={{
@@ -547,7 +558,8 @@ export function DensityMap() {
             <span>sparse</span>
             <span>dense</span>
           </div>
-        ) : (
+        )}
+        {layer === "nuts2" && (
           <div
             className="grid mono"
             style={{
@@ -559,6 +571,20 @@ export function DensityMap() {
           >
             <span>0</span><span>1</span><span>2</span><span>5</span>
             <span className="text-right">10+</span>
+          </div>
+        )}
+        {layer === "gminy" && (
+          <div
+            className="grid mono"
+            style={{
+              gridTemplateColumns: "repeat(6, 1fr)",
+              fontSize: 10,
+              color: "var(--fg-subtle)",
+              marginBottom: 10,
+            }}
+          >
+            <span>0</span><span>1</span><span>3</span><span>6</span><span>10</span>
+            <span className="text-right">15+</span>
           </div>
         )}
         <div
