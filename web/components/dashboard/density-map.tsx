@@ -302,6 +302,17 @@ export function DensityMap() {
       });
 
       attachHover(map);
+
+      // Fullscreen + zoom controls — dark-themed via globals.css.
+      // Compass hidden (rotation disabled, drag-rotate not enabled).
+      map.addControl(new maplibregl.FullscreenControl(), "top-right");
+      map.addControl(
+        new maplibregl.NavigationControl({
+          showCompass: false,
+          showZoom: true,
+        }),
+        "top-right",
+      );
     });
 
     return () => {
