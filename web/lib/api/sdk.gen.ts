@@ -30,8 +30,8 @@ import type {
   ListNuts2Data,
   ListNuts2Errors,
   ListNuts2Responses,
-  RootGetData,
-  RootGetResponses,
+  RootData,
+  RootResponses,
   TopGminyData,
   TopGminyErrors,
   TopGminyResponses,
@@ -228,10 +228,10 @@ export const getVelocity = <ThrowOnError extends boolean = false>(
 /**
  * Root
  */
-export const rootGet = <ThrowOnError extends boolean = false>(
-  options?: Options<RootGetData, ThrowOnError>,
+export const root = <ThrowOnError extends boolean = false>(
+  options?: Options<RootData, ThrowOnError>,
 ) =>
-  (options?.client ?? client).get<RootGetResponses, unknown, ThrowOnError>({
+  (options?.client ?? client).get<RootResponses, unknown, ThrowOnError>({
     url: "/",
     ...options,
   });
