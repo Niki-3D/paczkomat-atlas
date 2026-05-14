@@ -1,3 +1,8 @@
+# Caddy reverse proxy — unifies api + martin + docs under one origin (:8080).
+# This is the surface the frontend talks to so there's no CORS, no port
+# juggling, and a single TLS terminator at deploy time. auto_https is OFF
+# for the dev compose (HTTP only); production override flips it back on.
+
 {
     auto_https off
     admin off

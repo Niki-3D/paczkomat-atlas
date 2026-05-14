@@ -4,6 +4,11 @@ Revision ID: e7db2eafbd0e
 Revises: cb36d9c54133
 Create Date: 2026-05-13 00:01:24.568416
 
+Creates the `staging` namespace where ogr2ogr writes the PRG shapefile
+before prg_loader.py promotes the rows into the canonical public.gminy.
+Keeping the raw load in its own schema means GeoAlchemy2's autogenerate
+ignores it (the env.py include_object filter only sees the public schema)
+and we can iterate on the transformation step without re-running ogr2ogr.
 """
 from typing import Sequence, Union
 

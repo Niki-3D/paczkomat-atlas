@@ -1,3 +1,16 @@
+/**
+ * Per-country metadata and color palettes.
+ *
+ * COUNTRY_META holds the human-readable name, flag emoji, and an optional
+ * caveat note (currently only DE has one — "Mondial Relay network — machines
+ * pending"). The PRE_LAUNCH array identifies SE/DK/FI as catalog-only markets
+ * so components can render them with a distinct visual state.
+ *
+ * COUNTRY_LOCKER_COLOR / COUNTRY_PUDO_COLOR are the per-country accent palettes
+ * for the stacked mix bar in country-share.tsx. Every value resolves to a
+ * --country-* CSS variable registered in app/globals.css — no bare hex
+ * literals here (verified by design-review.md, fix C-2).
+ */
 export type CountryMeta = {
   code: string;
   name: string;

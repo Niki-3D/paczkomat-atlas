@@ -4,6 +4,20 @@ Revision ID: d6af7bb14d60
 Revises: 5d424a72bd30
 Create Date: 2026-05-12 22:57:40.360381
 
+Creates the four MVs that every read-side endpoint hits:
+
+- mv_country_kpi   — one row per country with totals + 24/7 share
+- mv_density_gmina — one row per gmina with lockers_per_10k
+- mv_density_nuts2 — one row per NUTS-2 region with lockers_per_10k
+- mv_h3_density_r8 — one row per (h3_r8, country) bucket for the heatmap
+
+Every MV ships with a UNIQUE index — required so pg_cron's daily refresh
+can use REFRESH MATERIALIZED VIEW CONCURRENTLY. Without the unique index
+refresh blocks readers for seconds.
+
+Each MV's locker filter is `status IN ('Operating', 'Overloaded')`. NEVER
+include Created/Disabled in dashboard-facing MVs (see data-quality-rules.md
+for the status enum semantics).
 """
 from typing import Sequence, Union
 

@@ -1,3 +1,16 @@
+# Local development stack for paczkomat-atlas.
+#
+# Five services in dependency order:
+#   db        — Postgres 16 + PostGIS 3.5 + TimescaleDB 2.17 + pg_cron + h3
+#   pgbouncer — transaction-mode pool in front of db (app reads/writes here)
+#   martin    — vector tile server (talks to db DIRECTLY, not via pgbouncer,
+#               because session-mode prepared statements aren't compatible
+#               with txn pooling)
+#   api       — FastAPI app (talks to pgbouncer:6432)
+#   caddy     — single-port reverse proxy on :8080 unifying api + martin
+#
+# Override file docker-compose.prod.yml flips TLS on, swaps the api image
+# for a pre-built one, and points DATABASE_URL at a managed Postgres.
 name: paczkomat-atlas
 
 services:

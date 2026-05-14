@@ -1,3 +1,16 @@
+/**
+ * Expansion velocity timeline — line chart, one series per country.
+ *
+ * Wide-format Recharts LineChart with PL/FR/GB/IT/ES strokes from
+ * --series-* tokens. Source data is the static InPost press-release set
+ * (see api/src/paczkomat_atlas_api/routers/velocity.py for the citation);
+ * the chart subtitle surfaces "Locker counts from InPost public press
+ * releases · {first date} → {last date}" so users see the disclosure inline.
+ *
+ * Growth multiples shown on the right edge are computed live from the
+ * series (last/first), not hardcoded — adding a new datapoint to the
+ * router updates the multiples automatically.
+ */
 "use client";
 
 import { useMemo } from "react";

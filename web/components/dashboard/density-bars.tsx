@@ -1,3 +1,16 @@
+/**
+ * Top-15 NUTS-2 density bar chart — the headline visual.
+ *
+ * Custom div-based horizontal bar chart, NOT Recharts. The bars themselves
+ * are full-width % of `max`; the layout is a 4-column CSS grid (rank | name
+ * | track | value) replicated per row. The dashed annotation line is
+ * absolute-positioned over the tracks at the benchmark's x-fraction.
+ *
+ * `benchmark` prop is computed live in page.tsx::computeBenchmark over the
+ * full listNuts2(limit=500) result; it carries topPl, topNonPl, and the
+ * live ratio. NO values in this file are hardcoded — the audit at
+ * docs/reviews/data-integrity-audit.md verified.
+ */
 import type { Nuts2TopList } from "@/lib/api";
 import type { DensityBenchmark } from "./hero-kpis";
 import { fmt1, fmt2 } from "@/lib/format";

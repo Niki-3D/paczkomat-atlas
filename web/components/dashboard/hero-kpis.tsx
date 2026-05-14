@@ -1,3 +1,16 @@
+/**
+ * Above-the-fold KPI strip — three large cards.
+ *
+ * Card 1: total network reach (pickup points, with locker vs PUDO split bar).
+ * Card 2: Polish locker count + 24/7 access % (with a 10×10 dot grid as a
+ *         spatial visualization of the fraction).
+ * Card 3: PL density-vs-EU benchmark — a live-computed ratio (Wielkopolskie
+ *         density / topNonPl density). The "X.X×" headline uses the display
+ *         font + tabular-nums for crisp alignment.
+ *
+ * `benchmark` is computed in page.tsx::computeBenchmark over the full
+ * listNuts2 set, NOT hardcoded. Falls back to "—" when the call fails.
+ */
 import type { CountryKpi, NetworkSummary } from "@/lib/api";
 import { fmt1, fmt2, fmtInt } from "@/lib/format";
 

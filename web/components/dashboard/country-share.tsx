@@ -1,3 +1,12 @@
+/**
+ * Country composition panel.
+ *
+ * One stacked horizontal bar per active country with locker vs PUDO share,
+ * a per-country card grid below for 24/7 access %, plus a separate
+ * "pre-launch" section for SE/DK/FI rendered with a hatched swatch so users
+ * see them as catalog-only markets instead of zero-data anomalies.
+ * Client component — hover state syncs segments across the bar and the grid.
+ */
 "use client";
 
 import { useMemo, useState } from "react";

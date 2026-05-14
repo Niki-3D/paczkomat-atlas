@@ -1,3 +1,25 @@
+/**
+ * MapLibre choropleth + heatmap mode toggle.
+ *
+ * The single visual centerpiece of the dashboard. Three modes share one map
+ * instance: NUTS-2 polygon choropleth (zoom 0-7), gmina polygon choropleth
+ * (zoom 5+, gated server-side by the SQL function), and a thermal heatmap
+ * over individual locker points. Vector tiles come from Martin under
+ * /tiles/*; the basemap is CartoDB dark_nolabels with English labels overlaid
+ * from OpenFreeMap's OpenMapTiles vector source so cross-border water-body
+ * stacks (Baltic, North Sea) read as single English names.
+ *
+ * Key implementation choices:
+ *  - NUTS-2 and gminy use SEPARATE break arrays (`NUTS2_BREAKS`,
+ *    `GMINY_BREAKS`) — distributions are materially different (gminy median
+ *    is 8.0 vs NUTS-2 median 0.0), and reusing one ramp washes out PL.
+ *  - All paint colors resolve through `readCssVar` at mount time so the
+ *    --map-* / --bg-canvas tokens are the single source of truth.
+ *  - Hover state is implemented via MapLibre `feature-state`, not layer
+ *    re-render, per design-tokens.md.
+ *  - The component listens to a `pa:scope` window CustomEvent so the nav's
+ *    PL/EU toggle can fly the camera without prop-drilling.
+ */
 "use client";
 
 import "maplibre-gl/dist/maplibre-gl.css";

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Bootstrap a fresh checkout: tooling check → .env scaffold → install deps.
+# Idempotent — runs that succeed once are skipped on the next invocation.
+# Usage: ./scripts/bootstrap.sh
 set -euo pipefail
 echo "→ Checking tooling..."
 for tool in node pnpm uv docker; do

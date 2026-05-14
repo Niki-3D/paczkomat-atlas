@@ -1,3 +1,16 @@
+/**
+ * Dashboard root — server component, single page for v1.
+ *
+ * This is the canonical data loader: every dashboard panel renders from props
+ * fetched here in `loadAll()`. Endpoints run serially under the retry wrapper
+ * to dodge the pgbouncer prepared-statement race documented in
+ * docs/reviews/architecture-review.md §H1. When that's fixed the loader can
+ * switch back to `Promise.allSettled` parallelism.
+ *
+ * The `revalidate = 300` directive caches the rendered page for 5 minutes —
+ * MVs refresh once daily so this is generous. Health probe and individual
+ * panels handle their own absence with ErrorPanel placeholders.
+ */
 import {
   type CountryKpi,
   type DensityGmina,

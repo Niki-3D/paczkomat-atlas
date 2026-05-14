@@ -1,3 +1,12 @@
+/**
+ * Client-island wrapper for the density map.
+ *
+ * MapLibre touches `window` at module-eval time, which blows up under SSR.
+ * Wrapping the real DensityMap component in next/dynamic with ssr:false
+ * keeps the rest of page.tsx server-rendered while deferring the map to the
+ * browser. The skeleton mirrors the panel's outer shape so the layout
+ * doesn't reflow when the map hydrates.
+ */
 "use client";
 
 import dynamic from "next/dynamic";
