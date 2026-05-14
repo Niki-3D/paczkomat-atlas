@@ -37,6 +37,11 @@ export default function RootLayout({
       lang="en"
       data-theme="dark"
       className={`${geistSans.variable} ${geistMono.variable}`}
+      // Browser extensions (e.g. Querybook's `data-qb-installed`) inject
+      // attributes onto <html> before React hydrates, producing a hydration
+      // warning that never has a real fix in user code. Suppressing only on
+      // <html> is the documented Next.js / React pattern.
+      suppressHydrationWarning
     >
       <body>
         <SwrProvider>{children}</SwrProvider>

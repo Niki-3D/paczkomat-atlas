@@ -13,7 +13,7 @@
  */
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   CartesianGrid,
   Line,
@@ -30,16 +30,63 @@ import { fmtInt } from "@/lib/format";
 const SERIES = ["PL", "FR", "GB", "IT", "ES"] as const;
 type SeriesCode = (typeof SERIES)[number];
 
-// Series stroke colors reference --series-* tokens defined in globals.css.
-// Recharts resolves CSS vars at paint time, so var() works directly inside the
-// `stroke` prop on <Line>.
-const COLORS: Record<SeriesCode, { stroke: string; width: number }> = {
-  PL: { stroke: "var(--series-pl)", width: 2.2 },
-  FR: { stroke: "var(--series-fr)", width: 1.6 },
-  GB: { stroke: "var(--series-gb)", width: 1.6 },
-  IT: { stroke: "var(--series-it)", width: 1.6 },
-  ES: { stroke: "var(--series-es)", width: 1.6 },
+// Recharts v3 passes the `stroke` prop straight into the SVG <path>'s stroke
+// attribute. Some browsers/SVG renderers refuse to resolve `var(...)` inside
+// SVG presentation attributes (works in fill on <circle> but not consistently
+// on <path stroke>), and Recharts also runs the value through internal color
+// math that bails on non-literal strings. Net effect: lines render but with
+// no visible stroke. So we keep the --series-* tokens as the source of truth
+// in globals.css and resolve them to hex once on mount via getComputedStyle.
+const SERIES_WIDTHS: Record<SeriesCode, number> = {
+  PL: 2.2,
+  FR: 1.6,
+  GB: 1.6,
+  IT: 1.6,
+  ES: 1.6,
 };
+
+const SERIES_VAR: Record<SeriesCode, string> = {
+  PL: "--series-pl",
+  FR: "--series-fr",
+  GB: "--series-gb",
+  IT: "--series-it",
+  ES: "--series-es",
+};
+
+function resolveSeriesColors(): Record<SeriesCode, string> {
+  if (typeof window === "undefined") {
+    // SSR fallback — colors get re-resolved on the client immediately after
+    // mount, so the actual paint always uses the live token values.
+    return { PL: "#F5C04E", FR: "#A1A1A6", GB: "#6B6B70", IT: "#8B6914", ES: "#3F3F46" };
+  }
+  const root = getComputedStyle(document.documentElement);
+  const read = (cssVar: string): string => {
+    const raw = root.getPropertyValue(cssVar).trim();
+    if (raw.startsWith("var(")) {
+      // Token is itself an alias — e.g. --series-pl: var(--accent-hi). Recurse.
+      const inner = raw.slice(4, -1).split(",")[0].trim();
+      return root.getPropertyValue(inner).trim() || raw;
+    }
+    return raw;
+  };
+  return {
+    PL: read(SERIES_VAR.PL),
+    FR: read(SERIES_VAR.FR),
+    GB: read(SERIES_VAR.GB),
+    IT: read(SERIES_VAR.IT),
+    ES: read(SERIES_VAR.ES),
+  };
+}
+
+function useSeriesColors(): Record<SeriesCode, string> {
+  const [colors, setColors] = useState<Record<SeriesCode, string>>(() =>
+    resolveSeriesColors(),
+  );
+  useEffect(() => {
+    setColors(resolveSeriesColors());
+  }, []);
+  return colors;
+}
 
 type Wide = { ts: number; date: string } & Partial<Record<SeriesCode, number>>;
 
@@ -96,6 +143,7 @@ function formatTooltipDate(ts: number): string {
 
 export function VelocityTimeline({ points }: { points: VelocityPoint[] }) {
   const { data, growth, lastByCountry } = useMemo(() => toWide(points), [points]);
+  const seriesColors = useSeriesColors();
 
   if (data.length === 0) {
     return (
@@ -178,14 +226,14 @@ export function VelocityTimeline({ points }: { points: VelocityPoint[] }) {
                   key={cc}
                   type="monotone"
                   dataKey={cc}
-                  stroke={COLORS[cc].stroke}
-                  strokeWidth={COLORS[cc].width}
+                  stroke={seriesColors[cc]}
+                  strokeWidth={SERIES_WIDTHS[cc]}
                   dot={{
                     r: cc === "PL" ? 2.8 : 2,
-                    fill: COLORS[cc].stroke,
+                    fill: seriesColors[cc],
                     strokeWidth: 0,
                   }}
-                  activeDot={{ r: 4, fill: COLORS[cc].stroke, strokeWidth: 0 }}
+                  activeDot={{ r: 4, fill: seriesColors[cc], strokeWidth: 0 }}
                   isAnimationActive={false}
                   connectNulls
                 />
@@ -208,7 +256,7 @@ export function VelocityTimeline({ points }: { points: VelocityPoint[] }) {
                           <text
                             x={x + 8}
                             y={y + 4}
-                            fill={COLORS[cc].stroke}
+                            fill={seriesColors[cc]}
                             fontFamily="var(--font-sans)"
                             fontSize={11}
                             fontWeight={500}
