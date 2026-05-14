@@ -79,6 +79,9 @@ export function DensityMap() {
         version: 8,
         glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
         sources: {
+          // CartoDB dark-matter basemap. Split into nolabels + labels
+          // sources so country/city labels render ON TOP of the
+          // choropleth fill and stay legible. Tiles requested @2x.
           carto: {
             type: "raster",
             tiles: [
@@ -88,12 +91,16 @@ export function DensityMap() {
               "https://d.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}@2x.png",
             ],
             tileSize: 256,
+            attribution:
+              '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
           },
           labels: {
             type: "raster",
             tiles: [
               "https://a.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
               "https://b.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
+              "https://c.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
+              "https://d.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}@2x.png",
             ],
             tileSize: 256,
           },
@@ -127,7 +134,12 @@ export function DensityMap() {
             id: "carto",
             type: "raster",
             source: "carto",
-            paint: { "raster-opacity": 0.45, "raster-saturation": -0.5 },
+            // raster-opacity 0.45 + raster-saturation -0.5 was the
+            // root of "blurry basemap" complaints — the @2x tiles were
+            // fine but heavy desaturation killed contrast against the
+            // page background. Full opacity + nearest resampling keeps
+            // labels and borders crisp at every zoom.
+            paint: { "raster-opacity": 0.9, "raster-resampling": "nearest" },
           },
         ],
       },
@@ -276,12 +288,13 @@ export function DensityMap() {
         layout: { visibility: "none" },
       });
 
-      // Labels above fills
+      // Labels overlay above the choropleth fill so country/city names
+      // remain legible when an amber polygon covers a region.
       map.addLayer({
         id: "city-labels",
         type: "raster",
         source: "labels",
-        paint: { "raster-opacity": 0.55 },
+        paint: { "raster-opacity": 0.85, "raster-resampling": "nearest" },
       });
 
       attachHover(map);
