@@ -86,7 +86,9 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
           );
         })}
 
-        {/* Budapest annotation line (track area starts at col-3 of the grid) */}
+        {/* Budapest benchmark line — annotation made unmistakably a comparison
+            reference, not a stray data point. Thicker accent-tinted dash, label
+            spells out the comparison in a single sentence above the line. */}
         <div
           className="pointer-events-none absolute"
           style={{
@@ -94,37 +96,24 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
             bottom: 16,
             left: `calc(20px + 22px + 10px + 142px + 10px + ((100% - 20px - 22px - 10px - 142px - 10px - 52px - 10px - 20px) * ${(annotLeftPct / 100).toFixed(4)}))`,
             width: 1,
-            borderLeft: "1px dashed var(--fg-muted)",
+            borderLeft: "1.5px dashed var(--accent-lo)",
             zIndex: 2,
           }}
         >
           <div
             className="mono absolute whitespace-nowrap"
             style={{
-              top: -10,
+              top: -12,
               left: 4,
               fontSize: 10,
-              color: "var(--fg-muted)",
+              color: "var(--accent)",
+              fontWeight: 500,
               padding: "2px 6px",
               background: "var(--bg-surface-1)",
-              border: "1px solid var(--border-default)",
+              border: "1px solid var(--accent-lo)",
             }}
           >
-            Budapest · 2.24
-          </div>
-          <div
-            className="mono absolute whitespace-nowrap"
-            style={{
-              bottom: -10,
-              left: 4,
-              fontSize: 10,
-              color: "var(--fg-subtle)",
-              padding: "2px 6px",
-              background: "var(--bg-surface-1)",
-              border: "1px solid var(--border-subtle)",
-            }}
-          >
-            densest non-PL region
+            Budapest 2.24 — top non-PL region
           </div>
         </div>
       </div>
@@ -134,28 +123,16 @@ export function DensityBars({ rows }: { rows: Nuts2TopList[] }) {
         style={{
           borderTop: "1px solid var(--border-subtle)",
           fontSize: 11,
-          color: "var(--fg-subtle)",
+          color: "var(--fg-muted)",
         }}
       >
-        <span
-          className="inline-block"
-          style={{
-            width: 8,
-            height: 8,
-            borderRadius: "50%",
-            background: "var(--accent)",
-          }}
-        />{" "}
-        Polish voivodeship
-        <span style={{ color: "var(--border-strong)", margin: "0 0.25em" }}>·</span>
-        <span
-          className="inline-block align-middle mr-0.5"
-          style={{
-            width: 18,
-            borderTop: "1px dashed var(--fg-muted)",
-          }}
-        />{" "}
-        non-PL benchmark
+        Top 15 by density are{" "}
+        <span style={{ color: "var(--fg-default)", fontWeight: 500 }}>
+          all Polish voivodeships
+        </span>
+        . The dashed line marks Budapest (HU) at 2.24 — the densest non-PL region.
+        Wielkopolskie at 10.06 is{" "}
+        <span style={{ color: "var(--accent)", fontWeight: 500 }}>4.5× denser</span>.
       </footer>
     </article>
   );
