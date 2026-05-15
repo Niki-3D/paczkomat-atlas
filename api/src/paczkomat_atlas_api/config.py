@@ -1,6 +1,8 @@
 """App configuration via pydantic-settings."""
+from typing import Annotated
+
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -15,8 +17,15 @@ class Settings(BaseSettings):
 
     # Comma-separated list of allowed CORS origins. Dev default permits the
     # Next.js dev server only. Production MUST set this explicitly to the
-    # public hostname; "*" is rejected by the validator below.
-    cors_origins: list[str] = ["http://localhost:3000", "http://localhost:8080"]
+    # public hostname.
+    #
+    # NoDecode is required: pydantic-settings tries to JSON-parse list-typed
+    # env vars before any validator runs, so `CORS_ORIGINS=http://a,http://b`
+    # would error out. NoDecode hands the raw string to _parse_cors_origins.
+    cors_origins: Annotated[list[str], NoDecode] = [
+        "http://localhost:3000",
+        "http://localhost:8080",
+    ]
 
     @field_validator("cors_origins", mode="before")
     @classmethod
