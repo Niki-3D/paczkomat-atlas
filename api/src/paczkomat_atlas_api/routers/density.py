@@ -27,7 +27,10 @@ router = APIRouter(prefix="/density", tags=["density"])
 )
 async def list_gminy(
     session: Annotated[AsyncSession, Depends(get_session)],
-    voivodeship: Annotated[str | None, Query(description="Filter by voivodeship name")] = None,
+    voivodeship: Annotated[
+        str | None,
+        Query(description="Filter by voivodeship name", max_length=64),
+    ] = None,
     min_population: Annotated[int, Query(ge=0)] = 0,
     limit: Annotated[int, Query(ge=1, le=2500)] = 500,
     offset: Annotated[int, Query(ge=0)] = 0,
@@ -67,7 +70,7 @@ async def top_gminy(
 )
 async def list_nuts2(
     session: Annotated[AsyncSession, Depends(get_session)],
-    country: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
+    country: Annotated[str | None, Query(min_length=2, max_length=2, pattern=r"^[A-Za-z]{2}$")] = None,
     min_population: Annotated[int, Query(ge=0)] = 0,
     limit: Annotated[int, Query(ge=1, le=500)] = 500,
     offset: Annotated[int, Query(ge=0)] = 0,
