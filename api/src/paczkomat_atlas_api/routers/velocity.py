@@ -56,7 +56,7 @@ HISTORICAL: list[VelocityPoint] = [
     operation_id="getVelocity",
 )
 async def get_velocity(
-    country: str | None = Query(None, min_length=2, max_length=2),
+    country: str | None = Query(None, min_length=2, max_length=2, pattern=r"^[A-Za-z]{2}$"),
 ) -> ApiResponse[list[VelocityPoint]]:
     """Network expansion timeline — static historical data points."""
     data = [p for p in HISTORICAL if country is None or p.country == country.upper()]

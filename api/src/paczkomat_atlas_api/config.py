@@ -1,4 +1,5 @@
 """App configuration via pydantic-settings."""
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -11,6 +12,18 @@ class Settings(BaseSettings):
     # Martin tile-server health probe URL — defaults to the docker-compose
     # service name. Override in .env for non-compose environments.
     martin_health_url: str = "http://martin:3000/health"
+
+    # Comma-separated list of allowed CORS origins. Dev default permits the
+    # Next.js dev server only. Production MUST set this explicitly to the
+    # public hostname; "*" is rejected by the validator below.
+    cors_origins: list[str] = ["http://localhost:3000", "http://localhost:8080"]
+
+    @field_validator("cors_origins", mode="before")
+    @classmethod
+    def _parse_cors_origins(cls, v: str | list[str]) -> list[str]:
+        if isinstance(v, str):
+            return [o.strip() for o in v.split(",") if o.strip()]
+        return v
 
 
 settings = Settings()

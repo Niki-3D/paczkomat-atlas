@@ -77,6 +77,60 @@ docker compose -f infra/compose/docker-compose.yml --env-file .env up -d api
 
 Web auto-deploys to Cloudflare Pages on push to `main` via Cloudflare's GitHub integration.
 
+## Production compose override
+
+The base `docker-compose.yml` is configured for local dev — it publishes db,
+pgbouncer, martin, and api ports to the host so you can attach `psql` or hit
+`/api/v1/*` directly. **In production those ports must not be reachable from
+the public internet.** Use the override file to lock everything except Caddy:
+
+```bash
+docker compose \
+  -f infra/compose/docker-compose.yml \
+  -f infra/compose/docker-compose.prod.yml \
+  --env-file .env up -d
+```
+
+Verify only Caddy publishes host ports:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml config \
+  | grep published
+# Expect: caddy 80, caddy 443. Nothing else.
+```
+
+## First-time DB role setup on prod
+
+After `alembic upgrade head` runs on production:
+
+1. Generate a strong password:
+   ```bash
+   openssl rand -base64 32
+   ```
+2. Rotate the placeholder password the migration set:
+   ```bash
+   docker exec paczkomat-db psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" \
+     -c "ALTER ROLE paczkomat_app PASSWORD '<password>';"
+   ```
+3. Put the value in production `.env` as `POSTGRES_APP_PASSWORD`.
+4. Switch the API's `DATABASE_URL` over to the `paczkomat_app` role:
+   ```
+   DATABASE_URL=postgresql+asyncpg://paczkomat_app:${POSTGRES_APP_PASSWORD}@pgbouncer:5432/${POSTGRES_DB}
+   ```
+5. Restart so the api picks up the new connection string:
+   ```bash
+   docker compose ... restart api
+   ```
+6. Sanity-check the role's privileges:
+   ```bash
+   docker exec paczkomat-db psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "\du paczkomat_app"
+   # Expect: no Superuser, no Create role, no Create DB.
+   ```
+
+The migration leaves the placeholder password in place so a fresh dev DB
+also gets the role (handy for testing prod connection strings locally).
+Production deploys MUST rotate it before the API connects with the role.
+
 ## Backups
 
 `pg_dump` daily → R2. Retain 14 days.

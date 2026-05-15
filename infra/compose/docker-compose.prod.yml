@@ -1,18 +1,51 @@
+# Production override — apply ON TOP of docker-compose.yml.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# Goal: only Caddy is exposed on the host. Every other service (db, pgbouncer,
+# martin, api) reaches its neighbours over the internal docker network and is
+# unreachable from the public internet. Caddy terminates TLS on 443 and is the
+# single ingress point.
+
 services:
   db:
     restart: unless-stopped
-    ports: []
+    # !reset (compose ≥2.24) clears the dev port mapping. `ports: []` is
+    # ignored by the merger because list-typed fields are appended, not
+    # replaced. DB must NOT be reachable from the host.
+    ports: !reset []
+    expose:
+      - "5432"
     volumes:
       - /opt/paczkomat/db:/var/lib/postgresql/data
 
+  pgbouncer:
+    restart: unless-stopped
+    ports: !reset []
+    expose:
+      - "5432"
+
+  martin:
+    restart: unless-stopped
+    ports: !reset []
+    expose:
+      - "3000"
+
   api:
     restart: unless-stopped
-    ports: []
+    ports: !reset []
+    expose:
+      - "8000"
 
   caddy:
+    # Pin to 2-alpine — same version family as dev compose (2.8-alpine).
+    # If rate-limit module is needed (see Area 4 docs/reviews/security-audit.md)
+    # swap to a custom build via xcaddy.
     image: caddy:2-alpine
     restart: unless-stopped
-    ports:
+    # Caddy is the ONLY service exposed to the public internet.
+    # Replace the dev :8080 mapping with standard HTTP/HTTPS.
+    ports: !override
       - "80:80"
       - "443:443"
     volumes:
@@ -21,3 +54,4 @@ services:
       - /opt/paczkomat/caddy-config:/config
     depends_on:
       - api
+      - martin
