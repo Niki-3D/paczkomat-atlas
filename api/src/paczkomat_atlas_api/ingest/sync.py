@@ -111,19 +111,24 @@ async def sync_all() -> dict[str, dict[str, int]]:
 
 async def assign_gminy() -> int:
     """Populate lockers.gmina_teryt via spatial join. Returns rows updated."""
-    sql = text("""
+    # SRID is a constant — inline it in the SQL string. The previous
+    # `:srid_pl` bind triggered asyncpg's "expected str, got int" because
+    # the bind param had no column context for type inference, and
+    # `:srid_pl::integer` collides with SQLAlchemy's bind-name parser
+    # (it reads `:srid_pl::integer` as the bind name).
+    sql = text(f"""
         UPDATE lockers l
         SET gmina_teryt = g.teryt
         FROM gminy g
         WHERE l.country = 'PL'
           AND l.gmina_teryt IS NULL
           AND ST_Within(
-            ST_Transform(l.geom::geometry, :srid_pl),
+            ST_Transform(l.geom::geometry, {SRID_PL_PUWG}),
             g.geom
           )
-    """)
+    """)  # noqa: S608 — SRID is an int Final constant from db.py, not user input
     async with SessionLocal() as session:
-        result = await session.execute(sql, {"srid_pl": SRID_PL_PUWG})
+        result = await session.execute(sql)
         await session.commit()
         rowcount = result.rowcount or 0  # type: ignore[attr-defined]  # SQLAlchemy Result stubs lack rowcount; CursorResult has it at runtime
     log.info("ingest.assign_gminy", updated=rowcount)
