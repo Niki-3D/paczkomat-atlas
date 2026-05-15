@@ -1,7 +1,10 @@
 # Env / secrets
 .env
 .env.*
+.env.production
+**/.env.production
 !.env.example
+!.env.production.example
 **/secrets/
 
 # Claude
