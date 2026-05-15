@@ -1,143 +1,202 @@
 # Deploy
 
-> Single-server Hetzner deployment. Target ~4€/month.
+Production runs on a shared Hetzner CX22 (4 vCPU, 8 GB, Ubuntu 24.04) at
+`62.238.7.125`. SSH user `doppler`. Another project (Doppler) shares the host
+with 8 containers on its own docker network — never touch `/home/doppler/doppler/`.
 
-## Topology
+Architecture:
 
-- 1× Hetzner CX22 (2 vCPU, 4 GB RAM, 40 GB disk) in `fsn1`
-- Docker Compose: `db` + `api` + `caddy`
-- Caddy terminates TLS via Let's Encrypt
-- Web (static export) served from Cloudflare Pages
-- PMTiles + raw geo artifacts in Cloudflare R2
+- Caddy bound to `0.0.0.0:80` and `0.0.0.0:443` is the ONLY public surface.
+- All other services (db / pgbouncer / martin / api / web) live on the
+  isolated `paczkomat_net` docker network, reachable only from inside.
+- Postgres data bind-mounted at `/home/doppler/paczkomat-atlas/data/db`
+  so `pg_dump` and rsync work from the host.
 
-## One-time provisioning
+## Live URL
 
-1. `cd infra/terraform && terraform init && terraform apply`
-2. Note the `server_ip` output.
-3. SSH in, install Docker:
-   ```bash
-   curl -fsSL https://get.docker.com | sh
-   usermod -aG docker $USER
-   ```
-4. Clone repo, copy `.env`, mount data volumes at `/opt/paczkomat/`.
+Until Niki points DNS, the dashboard is reachable directly at:
 
-## Deploys
+- http://62.238.7.125/ — dashboard (Next.js)
+- http://62.238.7.125/api/v1/health — API health JSON
+- http://62.238.7.125/docs — Swagger UI
+- http://62.238.7.125/catalog — Martin tile catalog
+- http://62.238.7.125/tiles/{layer}/{z}/{x}/{y} — MVT tiles
 
-`.github/workflows/deploy.yml` is currently a placeholder. Until the SSH-deploy
-workflow is wired up (TODO below), deploys are manual. The runbook:
+DNS record to set when ready:
 
-### Manual deploy runbook (run from your laptop)
-
-```bash
-# 1. Pre-flight: confirm CI is green on the commit you're shipping
-gh run list --branch main --limit 1
-# expect status=completed, conclusion=success
-
-# 2. SSH in
-ssh paczkomat@<server_ip>
-cd /opt/paczkomat
-
-# 3. Fetch the new revision (deploys track main)
-git fetch origin
-git reset --hard origin/main
-
-# 4. Rebuild the api image (web is built+served separately via Cloudflare Pages
-#    OR, if served from the same host, rebuild the web image too)
-docker compose -f infra/compose/docker-compose.yml --env-file .env build api
-
-# 5. Bring services up in dependency order — db must be healthy before api
-docker compose -f infra/compose/docker-compose.yml --env-file .env up -d db pgbouncer
-docker compose -f infra/compose/docker-compose.yml --env-file .env up -d martin
-docker compose -f infra/compose/docker-compose.yml --env-file .env up -d api caddy
-
-# 6. Run pending Alembic migrations AGAINST THE DIRECT DB PORT (5432), not
-#    pgbouncer. Migrations need transactional DDL + advisory locks that the
-#    transaction-mode pool breaks. The api container has its env_file pointed
-#    at the direct connection — re-using that exec keeps the surface honest.
-docker compose -f infra/compose/docker-compose.yml --env-file .env exec api alembic upgrade head
-
-# 7. Smoke check
-curl -s https://<domain>/api/v1/health | jq
-# expect db_ok=true, martin_ok=true, locker_count > 100000
-
-# 8. Tail logs for the first 60s in case something paged
-docker compose -f infra/compose/docker-compose.yml --env-file .env logs -f --since=2m api caddy
+```
+A    <hostname>    →    62.238.7.125    (TTL 300)
 ```
 
-### Rollback
+After DNS propagates, update `.env.production` on the server:
 
 ```bash
-# Same shape, just point at the previous commit hash
-git reset --hard <previous-sha>
-docker compose -f infra/compose/docker-compose.yml --env-file .env build api
-docker compose -f infra/compose/docker-compose.yml --env-file .env up -d api
-# Migrations: only roll back if the previous revision needs an earlier head.
-# `alembic downgrade -1` is reversible for everything in this repo today.
-```
-
-Web auto-deploys to Cloudflare Pages on push to `main` via Cloudflare's GitHub integration.
-
-## Production compose override
-
-The base `docker-compose.yml` is configured for local dev — it publishes db,
-pgbouncer, martin, and api ports to the host so you can attach `psql` or hit
-`/api/v1/*` directly. **In production those ports must not be reachable from
-the public internet.** Use the override file to lock everything except Caddy:
-
-```bash
-docker compose \
+ssh doppler@62.238.7.125
+cd /home/doppler/paczkomat-atlas
+# Edit .env.production:
+#   PUBLIC_HOSTNAME=<hostname>             (drop the http:// prefix)
+#   NEXT_PUBLIC_API_BASE_URL=https://<hostname>
+#   CORS_ORIGINS=https://<hostname>
+docker compose -p paczkomat \
   -f infra/compose/docker-compose.yml \
   -f infra/compose/docker-compose.prod.yml \
-  --env-file .env up -d
+  --env-file .env.production up -d --build web caddy
 ```
 
-Verify only Caddy publishes host ports:
+Caddy will auto-provision the Let's Encrypt cert on first request. TLS
+should be live within ~60 seconds.
+
+## First deploy (already done — for reference)
+
+`scripts/deploy.sh` automates the flow. It assumes the server already has
+Docker, `git`, `openssl` (Ubuntu 24.04 default).
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.prod.yml config \
-  | grep published
-# Expect: caddy 80, caddy 443. Nothing else.
+./scripts/deploy.sh                  # full deploy of current branch
+./scripts/deploy.sh --skip-build     # no image rebuild
+./scripts/deploy.sh --skip-migrate   # no alembic
+./scripts/deploy.sh --branch main    # deploy a different branch
+
+# One-off: push gitignored static data (PRG/Eurostat/GUS) to the server.
+./scripts/deploy_data.sh
 ```
 
-## First-time DB role setup on prod
+The first run generated `.env.production` on the server with fresh
+`openssl rand -base64 32` passwords. Subsequent runs don't touch it.
 
-After `alembic upgrade head` runs on production:
+## What lives where on the server
 
-1. Generate a strong password:
-   ```bash
-   openssl rand -base64 32
-   ```
-2. Rotate the placeholder password the migration set:
-   ```bash
-   docker exec paczkomat-db psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" \
-     -c "ALTER ROLE paczkomat_app PASSWORD '<password>';"
-   ```
-3. Put the value in production `.env` as `POSTGRES_APP_PASSWORD`.
-4. Switch the API's `DATABASE_URL` over to the `paczkomat_app` role:
-   ```
-   DATABASE_URL=postgresql+asyncpg://paczkomat_app:${POSTGRES_APP_PASSWORD}@pgbouncer:5432/${POSTGRES_DB}
-   ```
-5. Restart so the api picks up the new connection string:
-   ```bash
-   docker compose ... restart api
-   ```
-6. Sanity-check the role's privileges:
-   ```bash
-   docker exec paczkomat-db psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "\du paczkomat_app"
-   # Expect: no Superuser, no Create role, no Create DB.
-   ```
+```
+/home/doppler/paczkomat-atlas/
+├── .env.production              # ← secrets, 0600, NEVER committed
+├── data/
+│   ├── db/                      # ← Postgres data dir (bind mount)
+│   └── raw/                     # ← Eurostat/GUS/PRG, mounted ro into api
+├── infra/compose/...
+├── scripts/...
+└── ...                          # rest is the repo
+```
 
-The migration leaves the placeholder password in place so a fresh dev DB
-also gets the role (handy for testing prod connection strings locally).
-Production deploys MUST rotate it before the API connects with the role.
+`docker volume ls --filter name=paczkomat`:
+- `paczkomat_caddy_data`  — Caddy's Let's Encrypt certs
+- `paczkomat_caddy_config`
 
-## Backups
+## Ingest data on first deploy
 
-`pg_dump` daily → R2. Retain 14 days.
+The ingest CLI lives in the api container. Run from the host:
 
-## TODO
+```bash
+ssh doppler@62.238.7.125
+cd /home/doppler/paczkomat-atlas
+set -a; . ./.env.production; set +a
 
-- [ ] Wire up GHCR push in `deploy.yml`
-- [ ] Backup cron
-- [ ] Monitoring (Uptime Kuma on same host? or external)
-- [ ] DNS + Cloudflare proxy config
+# Helper alias for the rest of this section
+DC="docker compose -p paczkomat \
+    -f infra/compose/docker-compose.yml \
+    -f infra/compose/docker-compose.prod.yml \
+    --env-file .env.production"
+
+# Ingest uses the ADMIN role via the direct DB connection (asyncpg+pgbouncer
+# has an open prepared-statement issue under transaction-mode pooling).
+INGEST_DB="postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}"
+
+# 1. InPost lockers + PUDOs (~150k records, all 14 active countries)
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api \
+    uv run python -m paczkomat_atlas_api.ingest.cli --all
+
+# 2. Eurostat NUTS-2 boundaries
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api \
+    uv run python -m paczkomat_atlas_api.ingest.cli --load-nuts2
+
+# 3. NUTS-2 spatial assignment
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api \
+    uv run python -m paczkomat_atlas_api.ingest.cli --assign-only
+
+# 4. Eurostat NUTS-2 population (skips gmina population — needs PRG)
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api uv run python -c "
+import asyncio
+from paczkomat_atlas_api.ingest.eurostat_loader import load_nuts2_population
+from paczkomat_atlas_api.logging import configure_logging
+configure_logging()
+print(asyncio.run(load_nuts2_population()))
+"
+
+# 5. Refresh all MVs
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api \
+    uv run python -m paczkomat_atlas_api.ingest.cli --refresh-only
+```
+
+## Rollback
+
+```bash
+ssh doppler@62.238.7.125 'cd /home/doppler/paczkomat-atlas && \
+  git fetch origin && \
+  git reset --hard <previous-sha> && \
+  docker compose -p paczkomat -f infra/compose/docker-compose.yml \
+    -f infra/compose/docker-compose.prod.yml --env-file .env.production \
+    up -d --build api web caddy'
+```
+
+For migration rollback, run `alembic downgrade -1` via the same
+`compose run --rm` pattern deploy.sh uses.
+
+## Backups (TODO)
+
+Daily `pg_dump` + rsync `data/db` to R2. Cron not wired yet. Manual:
+
+```bash
+ssh doppler@62.238.7.125 'docker exec -t paczkomat-db pg_dump -U paczkomat \
+  -d paczkomat_atlas -F c -f /tmp/dump.pgcustom && \
+  docker cp paczkomat-db:/tmp/dump.pgcustom -' > /tmp/paczkomat-$(date -I).pgcustom
+```
+
+## Gotchas hit during first deploy
+
+1. **`ports: []` doesn't clear inherited ports in compose**. Use `!reset
+   []` for ports and volumes, `!override` for ports you want to replace.
+2. **alembic in container needs `alembic.ini` + `alembic/`**. Original
+   Dockerfile only copied `src/` — fixed in api/Dockerfile.
+3. **pydantic-settings JSON-decodes list fields BEFORE validators run**.
+   `CORS_ORIGINS=http://a,http://b` blew up until we wrapped the field as
+   `Annotated[list[str], NoDecode]`.
+4. **Next.js `pnpm build` pre-renders static pages**. The landing page
+   fetches the API at build time → hangs because the API isn't running
+   inside the builder. Fix: `export const dynamic = "force-dynamic"`.
+5. **`NEXT_PUBLIC_*` env vars are inlined into the SERVER bundle at
+   BUILD time**, not just the client bundle. Setting `NEXT_PUBLIC_API_
+   BASE_URL=http://api:8000` at runtime did nothing — server fetches
+   still went out to the public URL and looped back. Fix: separate
+   `INTERNAL_API_BASE_URL` read at runtime.
+6. **asyncpg can't infer bind type for `:param` in `ST_Transform(geom,
+   :srid)`**. Hardcode constants in SQL or cast explicitly (`::integer`,
+   but watch for SQLAlchemy's bind-name parser collision).
+7. **doppler user has NO passwordless sudo**. Anything needing root
+   (e.g., opening UFW ports) is on Niki. Docker port-binding bypasses
+   UFW anyway, so this only matters for non-docker access.
+8. **PRG load needs Docker CLI / docker.sock inside the api container**
+   (it shells out to `docker run gdal/ogr2ogr`). Skipped on first
+   deploy — gmina-level features will be empty until we either bind
+   docker.sock or run ogr2ogr from the host.
+
+## Server recon snapshot (2026-05-15)
+
+```
+8 doppler containers running, all healthy
+ports 80/443: FREE — own Caddy claims them
+docker version 29.1.3, compose 2.40.3
+RAM: 7.6 Gi total, ~3.9 Gi free
+Disk: 75 Gi, 38 Gi free
+swap: 4 Gi
+no nginx/caddy systemd unit on host
+existing docker networks: bridge, doppler_default, host, none
+```
+
+## Pre-deploy checklist (next time)
+
+- [ ] Branch off main with the latest deploy/* changes merged.
+- [ ] `./scripts/deploy.sh` from the dev laptop.
+- [ ] If hostname / TLS change: edit `/home/doppler/paczkomat-atlas/.env.production`,
+      then `docker compose ... up -d --build web caddy`.
+- [ ] After first run, verify with:
+  - `curl http://62.238.7.125/api/v1/health | jq` (or hostname after DNS)
+  - `docker ps --filter name=paczkomat` — all healthy.
