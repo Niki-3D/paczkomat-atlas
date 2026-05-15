@@ -5,6 +5,7 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from paczkomat_atlas_api.config import settings
 from paczkomat_atlas_api.logging import configure_logging
 from paczkomat_atlas_api.middleware import CacheControlMiddleware, RequestLoggingMiddleware
 from paczkomat_atlas_api.routers import (
@@ -26,9 +27,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # public read-only API; tighten if hostname is known
-    allow_methods=["GET"],
+    allow_origins=settings.cors_origins,
+    allow_methods=["GET", "OPTIONS"],
     allow_headers=["*"],
+    max_age=3600,
 )
 app.add_middleware(CacheControlMiddleware)
 app.add_middleware(RequestLoggingMiddleware)
