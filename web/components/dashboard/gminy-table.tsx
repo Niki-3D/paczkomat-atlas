@@ -397,7 +397,11 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
           </div>
         </header>
 
-        <div className="overflow-x-auto" style={{ maxHeight: 540 }}>
+        {/* No maxHeight — table scrolls with the page, not internally.
+            overflow-x-auto stays for narrow viewports where the column set
+            doesn't fit. Sticky header (below, top:0) anchors to the page's
+            scrolling viewport because no ancestor has overflow:scroll on Y. */}
+        <div className="overflow-x-auto">
           <table
             className="w-full"
             style={{ borderCollapse: "collapse", fontSize: 12.5 }}
