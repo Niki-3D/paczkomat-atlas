@@ -12,5 +12,10 @@ RUN uv sync --no-dev --no-install-project
 COPY src ./src
 RUN uv sync --no-dev
 
+# Migration tooling — alembic.ini lives at /app, migrations under /app/alembic.
+# Required so `alembic upgrade head` works inside the container during deploy.
+COPY alembic.ini ./
+COPY alembic ./alembic
+
 EXPOSE 8000
 CMD ["uv", "run", "fastapi", "run", "src/paczkomat_atlas_api/main.py", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,69 @@
+# Production reverse proxy — TLS via Let's Encrypt, hostname-based routing.
+#
+# Caddy provisions ACME certs automatically when given a domain. Needs:
+#   - PUBLIC_HOSTNAME env var set to the public DNS name
+#   - DNS A record pointing to this server
+#   - Ports 80 + 443 reachable from the public internet
+#
+# If DNS hasn't propagated, the first request will return Caddy's
+# self-signed fallback on HTTPS. Restart this container after DNS is live.
+
+{
+	email {$TLS_EMAIL}
+	# Production: disable the admin API surface entirely.
+	admin off
+}
+
+{$PUBLIC_HOSTNAME} {
+	# Security headers — applied uniformly to every response.
+	# Matches what PR #16 (security audit) wired into the dev Caddyfile.
+	header {
+		-Server
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		# CSP scoped to self + CartoCDN basemap + OpenFreeMap vector tiles +
+		# MapLibre worker (needs blob: + unsafe-eval). Same shape as the
+		# dev policy in infra/compose/caddy/Caddyfile.
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.basemaps.cartocdn.com https://*.openfreemap.org; connect-src 'self' https://*.basemaps.cartocdn.com https://*.openfreemap.org; font-src 'self' data: https://*.openfreemap.org; frame-ancestors 'none'"
+	}
+
+	# API routes → FastAPI
+	handle /api/* {
+		reverse_proxy api:8000
+	}
+
+	# OpenAPI doc — kept reachable so Niki can show /docs to recruiters.
+	handle /openapi.json {
+		reverse_proxy api:8000
+	}
+	handle /docs {
+		reverse_proxy api:8000
+	}
+	handle /docs/* {
+		reverse_proxy api:8000
+	}
+
+	# Vector tiles → Martin
+	handle /tiles/* {
+		uri strip_prefix /tiles
+		reverse_proxy martin:3000
+	}
+	handle /catalog {
+		reverse_proxy martin:3000
+	}
+
+	# Everything else → Next.js (App Router serves both / and /app/*).
+	handle {
+		reverse_proxy web:3000
+	}
+
+	encode gzip zstd
+	log {
+		output stdout
+		format console
+		level INFO
+	}
+}

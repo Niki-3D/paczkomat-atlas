@@ -1,57 +1,127 @@
 # Production override — apply ON TOP of docker-compose.yml.
 #
-#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml \
+#     --env-file ../../.env.production up -d
 #
-# Goal: only Caddy is exposed on the host. Every other service (db, pgbouncer,
-# martin, api) reaches its neighbours over the internal docker network and is
-# unreachable from the public internet. Caddy terminates TLS on 443 and is the
-# single ingress point.
+# Goal: only Caddy reaches the host network (80/443). Every other service
+# stays on the internal docker network `paczkomat_net` and is unreachable
+# from outside. Network name is explicit so it never collides with another
+# project on the same host (see deploy target: Doppler server already runs
+# 8 containers on `doppler_default`).
+#
+# `!reset []` (compose ≥2.24) clears port mappings inherited from the base
+# file. `ports: []` is not enough — list-typed fields merge, they don't
+# replace. `!override` on caddy.ports replaces the dev :8080 mapping
+# cleanly with the standard 80/443.
 
 services:
   db:
     restart: unless-stopped
-    # !reset (compose ≥2.24) clears the dev port mapping. `ports: []` is
-    # ignored by the merger because list-typed fields are appended, not
-    # replaced. DB must NOT be reachable from the host.
     ports: !reset []
     expose:
       - "5432"
-    volumes:
-      - /opt/paczkomat/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    # !override on volumes because compose merges volume lists (append, not
+    # replace). Without it the named db_data volume from the base file would
+    # stay attached alongside the bind mount, creating two mounts at the same
+    # path. The bind keeps data outside any docker volume so Niki can back
+    # it up with rsync/pg_dump from the host.
+    volumes: !override
+      - /home/doppler/paczkomat-atlas/data/db:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
 
   pgbouncer:
     restart: unless-stopped
     ports: !reset []
     expose:
       - "5432"
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
+      AUTH_TYPE: scram-sha-256
 
   martin:
     restart: unless-stopped
     ports: !reset []
     expose:
       - "3000"
+    command:
+      - --listen-addresses=0.0.0.0:3000
+      - --max-feature-count=20000
+      - postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
 
   api:
     restart: unless-stopped
     ports: !reset []
     expose:
       - "8000"
+    environment:
+      # Production API connects as the least-privilege role
+      # (migration 72d896bb1f4e) THROUGH pgbouncer. Alembic still uses the
+      # admin role via direct :5432 — see deploy.sh.
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_APP_USER}:${POSTGRES_APP_PASSWORD}@pgbouncer:5432/${POSTGRES_DB}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      MARTIN_HEALTH_URL: http://martin:3000/health
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+  web:
+    image: paczkomat-web:latest
+    build:
+      # Build context is the repo root because pnpm-lock.yaml lives there
+      # (pnpm workspace). web/Dockerfile uses paths relative to repo root.
+      context: ../..
+      dockerfile: web/Dockerfile
+      target: production
+      args:
+        # Inlined into the client bundle by Next.js — must be the public
+        # origin Caddy serves (same as PUBLIC_HOSTNAME).
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
+    restart: unless-stopped
+    expose:
+      - "3000"
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
+    depends_on:
+      api:
+        condition: service_healthy
 
   caddy:
-    # Pin to 2-alpine — same version family as dev compose (2.8-alpine).
-    # If rate-limit module is needed (see Area 4 docs/reviews/security-audit.md)
-    # swap to a custom build via xcaddy.
     image: caddy:2-alpine
     restart: unless-stopped
     # Caddy is the ONLY service exposed to the public internet.
-    # Replace the dev :8080 mapping with standard HTTP/HTTPS.
+    # EDGE_HTTP_PORT/EDGE_HTTPS_PORT default to 80/443 (Case A on the deploy
+    # target: no other edge on the host). If a future host already has nginx
+    # on 80/443, override these to high-numbered ports and proxy upstream.
     ports: !override
-      - "80:80"
-      - "443:443"
+      - "${EDGE_HTTP_PORT:-80}:80"
+      - "${EDGE_HTTPS_PORT:-443}:443"
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - /opt/paczkomat/caddy-data:/data
-      - /opt/paczkomat/caddy-config:/config
+      - ./caddy/Caddyfile.prod:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      PUBLIC_HOSTNAME: ${PUBLIC_HOSTNAME}
+      TLS_EMAIL: ${TLS_EMAIL:-internal}
     depends_on:
-      - api
-      - martin
+      api:
+        condition: service_healthy
+      martin:
+        condition: service_healthy
+      web:
+        condition: service_started
+
+networks:
+  default:
+    name: paczkomat_net
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
