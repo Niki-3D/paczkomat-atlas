@@ -117,7 +117,7 @@ curl -s "http://62.238.7.125/api/v1/density/gminy/top?limit=5" | jq
 curl -sI "http://62.238.7.125/tiles/nuts2_density_tiles/6/35/21"
 ```
 
-Full OpenAPI: http://62.238.7.125/docs · Martin tile catalog: http://62.238.7.125/catalog.
+Full OpenAPI: http://62.238.7.125/docs.
 
 ## Known limitations
 
