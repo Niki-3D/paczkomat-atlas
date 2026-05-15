@@ -52,7 +52,6 @@ export function Footer({ totalRecords }: FooterProps) {
           <FootList>
             <li><FootLink href="https://github.com/Niki-3D/paczkomat-atlas">GitHub repository →</FootLink></li>
             <li><FootLink href="https://github.com/Niki-3D/paczkomat-atlas/blob/main/JOURNEY.md">Build journey →</FootLink></li>
-            <li><FootLink href="/docs">API documentation →</FootLink></li>
           </FootList>
         </div>
       </div>
