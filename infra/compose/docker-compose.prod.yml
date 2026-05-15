@@ -87,7 +87,15 @@ services:
       - "3000"
     environment:
       NODE_ENV: production
-      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL}
+      # Runtime env for the Next.js server process. Server components read
+      # process.env.NEXT_PUBLIC_API_BASE_URL when rendering — point them at
+      # the internal docker hostname so SSR fetches stay on the docker
+      # network instead of looping back out through Caddy.
+      #
+      # The browser bundle is unaffected: NEXT_PUBLIC_* is INLINED at BUILD
+      # time using the build arg above (NEXT_PUBLIC_API_BASE_URL from env),
+      # so client-side fetches still use the public URL.
+      NEXT_PUBLIC_API_BASE_URL: http://api:8000
     depends_on:
       api:
         condition: service_healthy
