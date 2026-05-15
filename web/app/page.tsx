@@ -37,6 +37,11 @@ import {
 import { Nav } from "@/components/dashboard/nav";
 import { VelocityTimeline } from "@/components/dashboard/velocity-timeline";
 
+// Render at request time, not at build time. Pre-rendering would block the
+// `pnpm build` step inside the Docker image waiting on an API that isn't
+// running yet during the build. ISR on `revalidate` still kicks in once
+// the server is up.
+export const dynamic = "force-dynamic";
 export const revalidate = 300; // refetch at most every 5 minutes
 
 type ProbeResult = {
