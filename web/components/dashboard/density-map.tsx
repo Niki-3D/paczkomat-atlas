@@ -80,9 +80,40 @@ function densityColorExpr(breaks: number[]): maplibregl.ExpressionSpecification 
   ] as unknown as maplibregl.ExpressionSpecification;
 }
 
+// Single source of truth for which MapLibre layers are visible per mode.
+// Every layer for every mode is mentioned so a rapid toggle (NUTS-2 →
+// Heatmap → Gminy) can never leave a stale visibility on the layer the
+// user is leaving. Touch this when adding a new map mode or layer.
+const LAYER_VISIBILITY: Record<TileLayer, Record<string, "visible" | "none">> = {
+  nuts2: {
+    "nuts2-fill": "visible",
+    "nuts2-line": "visible",
+    "gminy-fill": "none",
+    "gminy-line": "none",
+    "lockers-heatmap": "none",
+  },
+  gminy: {
+    "nuts2-fill": "none",
+    "nuts2-line": "none",
+    "gminy-fill": "visible",
+    "gminy-line": "visible",
+    "lockers-heatmap": "none",
+  },
+  heatmap: {
+    "nuts2-fill": "none",
+    "nuts2-line": "none",
+    "gminy-fill": "none",
+    "gminy-line": "none",
+    "lockers-heatmap": "visible",
+  },
+};
+
 export function DensityMap() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
+  // attachHover() populates this ref so the layer-toggle effect below can
+  // clear hover residue on mode switch without poking at closure-local state.
+  const clearHoverRef = useRef<(() => void) | null>(null);
   const [layer, setLayer] = useState<TileLayer>("nuts2");
   const [hover, setHover] = useState<{
     name: string;
@@ -450,18 +481,26 @@ export function DensityMap() {
     return () => window.removeEventListener("pa:scope", onScope as EventListener);
   }, []);
 
-  // Toggle visible layer — only one of {nuts2, gminy, heatmap} on at a time.
+  // Toggle visible layer — only one of {nuts2, gminy, heatmap} is "visible"
+  // at a time. Drives every layer ID via LAYER_VISIBILITY so rapid toggles
+  // (NUTS-2 → Heatmap → Gminy) can't leave a stale visibility flag and
+  // render two choropleths on top of each other.
+  //
+  // Also clears the hover feature-state from the layer we're leaving —
+  // otherwise the previously hovered polygon stays highlighted under the
+  // new mode's fill (visually subtle, but noticeable on dark theme).
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !map.isStyleLoaded()) return;
-    const vis = (on: boolean) => (on ? "visible" : "none");
-    const set = (ids: string[], on: boolean) =>
-      ids.forEach((id) => {
-        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", vis(on));
-      });
-    set(["nuts2-fill", "nuts2-line"], layer === "nuts2");
-    set(["gminy-fill", "gminy-line"], layer === "gminy");
-    set(["lockers-heatmap"], layer === "heatmap");
+
+    clearHoverRef.current?.();
+
+    const targets = LAYER_VISIBILITY[layer];
+    for (const [layerId, visibility] of Object.entries(targets)) {
+      if (map.getLayer(layerId)) {
+        map.setLayoutProperty(layerId, "visibility", visibility);
+      }
+    }
   }, [layer]);
 
   function attachHover(map: MaplibreMap): void {
@@ -489,6 +528,11 @@ export function DensityMap() {
       map.getCanvas().style.cursor = "";
       setHover(null);
     }
+
+    // Expose clearHover so the mode-toggle effect can clear hover residue
+    // when switching layers (otherwise the previously hovered polygon
+    // stays highlighted under the new mode's fill).
+    clearHoverRef.current = clearHover;
 
     function makeHandler(
       source: "nuts2" | "gminy",
