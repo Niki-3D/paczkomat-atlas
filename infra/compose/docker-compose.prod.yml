@@ -61,6 +61,11 @@ services:
     ports: !reset []
     expose:
       - "8000"
+    # Mount the static-data tree read-only so ingest CLI inside the api
+    # container can find the Eurostat / GUS / PRG files that scripts/
+    # deploy_data.sh pushed from the developer's laptop.
+    volumes:
+      - /home/doppler/paczkomat-atlas/data/raw:/app/data/raw:ro
     environment:
       # Production API connects as the least-privilege role
       # (migration 72d896bb1f4e) THROUGH pgbouncer. Alembic still uses the
