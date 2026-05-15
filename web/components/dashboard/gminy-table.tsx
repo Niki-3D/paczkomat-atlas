@@ -13,9 +13,11 @@
 import {
   type ColumnDef,
   type SortingState,
+  type Table,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -184,7 +186,18 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    initialState: { pagination: { pageSize: 25 } },
   });
+
+  // Reset to page 1 whenever the filter inputs change. TanStack doesn't
+  // do this automatically because `filtered` (the data prop) changes
+  // identity, not the table's own column filter state. Without this
+  // effect, narrowing voivodeships at page 5 leaves the table stuck
+  // showing rows 101–125 of a now-shorter result set.
+  useEffect(() => {
+    table.setPageIndex(0);
+  }, [table, selectedVoivs, minPop, search]);
 
   const voivSummary = (() => {
     const n = selectedVoivs.size;
@@ -497,6 +510,8 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
           </table>
         </div>
 
+        <PaginationBar table={table} />
+
         <footer
           className="px-5 py-2.5"
           style={{
@@ -510,5 +525,134 @@ export function GminyTable({ rows }: { rows: DensityGmina[] }) {
         </footer>
       </article>
     </section>
+  );
+}
+
+// Pagination controls — reuses the .mode-toggle-chip CSS from the map
+// toggle (Fix 2) so cursor/hover/disabled behavior stays consistent
+// across the dashboard.
+function PaginationBar({ table }: { table: Table<Row> }) {
+  const pageIndex = table.getState().pagination.pageIndex;
+  const pageSize = table.getState().pagination.pageSize;
+  const total = table.getFilteredRowModel().rows.length;
+  const pageCount = Math.max(1, table.getPageCount());
+  const start = total === 0 ? 0 : pageIndex * pageSize + 1;
+  const end = Math.min((pageIndex + 1) * pageSize, total);
+  const canPrev = table.getCanPreviousPage();
+  const canNext = table.getCanNextPage();
+
+  return (
+    <div
+      className="flex flex-wrap items-center justify-between gap-3 px-5 py-3"
+      style={{
+        borderTop: "1px solid var(--border-subtle)",
+        fontSize: 12,
+        color: "var(--fg-muted)",
+      }}
+    >
+      <div>
+        Showing{" "}
+        <span className="mono" style={{ color: "var(--fg-default)" }}>
+          {fmtInt(start)}–{fmtInt(end)}
+        </span>{" "}
+        of{" "}
+        <span className="mono" style={{ color: "var(--fg-default)" }}>
+          {fmtInt(total)}
+        </span>{" "}
+        rows
+      </div>
+
+      <div className="flex items-center gap-1.5">
+        <PageButton
+          onClick={() => table.setPageIndex(0)}
+          disabled={!canPrev}
+          label="First page"
+        >
+          ⟪
+        </PageButton>
+        <PageButton
+          onClick={() => table.previousPage()}
+          disabled={!canPrev}
+          label="Previous page"
+        >
+          ←
+        </PageButton>
+
+        <span className="mono px-2" style={{ fontSize: 11 }}>
+          page{" "}
+          <span style={{ color: "var(--fg-default)" }}>{pageIndex + 1}</span>
+          {" / "}
+          <span style={{ color: "var(--fg-default)" }}>{pageCount}</span>
+        </span>
+
+        <PageButton
+          onClick={() => table.nextPage()}
+          disabled={!canNext}
+          label="Next page"
+        >
+          →
+        </PageButton>
+        <PageButton
+          onClick={() => table.setPageIndex(pageCount - 1)}
+          disabled={!canNext}
+          label="Last page"
+        >
+          ⟫
+        </PageButton>
+
+        <select
+          value={pageSize}
+          onChange={(e) => table.setPageSize(Number(e.target.value))}
+          aria-label="Rows per page"
+          className="mono ml-2"
+          style={{
+            padding: "4px 6px",
+            background: "var(--bg-surface-2)",
+            border: "1px solid var(--border-default)",
+            color: "var(--fg-default)",
+            fontSize: 11,
+            cursor: "pointer",
+            borderRadius: 4,
+          }}
+        >
+          {[10, 25, 50, 100].map((size) => (
+            <option key={size} value={size}>
+              {size} / page
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+}
+
+function PageButton({
+  onClick,
+  disabled,
+  label,
+  children,
+}: {
+  onClick: () => void;
+  disabled: boolean;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      className="mono mode-toggle-chip"
+      style={{
+        fontSize: 11,
+        padding: "3px 9px",
+        minWidth: 28,
+        opacity: disabled ? 0.35 : 1,
+        cursor: disabled ? "not-allowed" : "pointer",
+      }}
+    >
+      {children}
+    </button>
   );
 }
