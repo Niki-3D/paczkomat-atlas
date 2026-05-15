@@ -27,7 +27,7 @@ function MapSkeleton() {
   return (
     <div
       className="panel relative animate-pulse"
-      style={{ minHeight: 540, background: "var(--bg-inset)" }}
+      style={{ minHeight: 720, background: "var(--bg-inset)" }}
     >
       <div className="panel-head">
         <div>
