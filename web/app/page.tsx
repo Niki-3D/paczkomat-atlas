@@ -51,7 +51,12 @@ type ProbeResult = {
 };
 
 async function probeHealth(): Promise<ProbeResult> {
-  const base = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
+  // Server-only call — use the internal docker hostname when available.
+  // See web/lib/api.ts for the same pattern + rationale.
+  const base =
+    process.env.INTERNAL_API_BASE_URL ??
+    process.env.NEXT_PUBLIC_API_BASE_URL ??
+    "http://localhost:8080";
   const start = Date.now();
   try {
     const res = await fetch(`${base}/api/v1/health`, { cache: "no-store" });
