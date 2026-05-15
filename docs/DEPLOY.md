@@ -126,6 +126,61 @@ $DC exec -T -e DATABASE_URL="$INGEST_DB" api \
     uv run python -m paczkomat_atlas_api.ingest.cli --refresh-only
 ```
 
+## PRG (gmina boundaries) ingest
+
+`prg_loader.py` shells out to `docker run gdal` — that needs the docker
+socket inside the api container, which we won't mount. Instead, a separate
+one-shot compose service `prg-loader` runs ogr2ogr once and exits.
+
+```bash
+# 0. One-time: ship the PRG shapefile from your laptop. ~85 MB shp + 4 MB dbf.
+tar -czf - data/raw/prg/A03_Granice_gmin.{shp,shx,dbf,prj} | \
+  ssh doppler@62.238.7.125 'cd /home/doppler/paczkomat-atlas && tar -xzf -'
+
+# 1. Load shapefile into staging.gminy_prg (SRID 2180, PROMOTE_TO_MULTI).
+$DC --profile loader run --rm prg-loader
+
+# 2. Merge staging → gminy + compute areas. Lives in prg_loader.py.
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api uv run python -c "
+import asyncio
+from paczkomat_atlas_api.ingest.prg_loader import merge_staging_to_gminy, compute_areas
+from paczkomat_atlas_api.logging import configure_logging
+configure_logging()
+async def main():
+    print('merged:', await merge_staging_to_gminy())
+    print('areas:', await compute_areas())
+asyncio.run(main())
+"
+
+# 3. Spatial-join PL lockers to gminy.
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api \
+    uv run python -m paczkomat_atlas_api.ingest.cli --assign-only
+
+# 4. GUS BDL gmina population (needs PRG loaded first — joins on teryt/name).
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api uv run python -c "
+import asyncio
+from paczkomat_atlas_api.ingest.bdl_loader import load_population_gmina
+from paczkomat_atlas_api.logging import configure_logging
+configure_logging()
+print(asyncio.run(load_population_gmina()))
+"
+
+# 5. Refresh all MVs.
+$DC exec -T -e DATABASE_URL="$INGEST_DB" api \
+    uv run python -m paczkomat_atlas_api.ingest.cli --refresh-only
+
+# 6. Bust Martin's tile cache so the new gminy_density tiles render.
+ssh doppler@62.238.7.125 'docker restart paczkomat-martin'
+```
+
+Verification: ~2477 rows in `gminy`, ~2422 in `population_gmina`,
+~2417 nonzero in `mv_density_gmina`. API smoke test:
+
+```bash
+curl -s http://62.238.7.125/api/v1/density/gminy/top?limit=3 | jq .data
+# Expect: Kuślin / Rudziniec / Manowo with lockers_per_10k > 15.
+```
+
 ## Rollback
 
 ```bash
@@ -174,9 +229,15 @@ ssh doppler@62.238.7.125 'docker exec -t paczkomat-db pg_dump -U paczkomat \
    (e.g., opening UFW ports) is on Niki. Docker port-binding bypasses
    UFW anyway, so this only matters for non-docker access.
 8. **PRG load needs Docker CLI / docker.sock inside the api container**
-   (it shells out to `docker run gdal/ogr2ogr`). Skipped on first
-   deploy — gmina-level features will be empty until we either bind
-   docker.sock or run ogr2ogr from the host.
+   (it shells out to `docker run gdal/ogr2ogr`). Solved with a separate
+   `prg-loader` compose service behind `profiles: ["loader"]`. See "PRG
+   (gmina boundaries) ingest" above.
+9. **Martin caches tiles per-process**. After bulk-loading data behind
+   tile-source functions (gminy, lockers, etc.), `docker restart
+   paczkomat-martin` — otherwise stale 204 responses linger until the
+   process recycles. Caught when the gminy choropleth still rendered
+   empty after the PRG load even though the SQL function returned
+   1.1 MB of MVT bytes.
 
 ## Server recon snapshot (2026-05-15)
 
