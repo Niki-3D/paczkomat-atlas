@@ -35,7 +35,7 @@
 		reverse_proxy api:8000
 	}
 
-	# OpenAPI doc — kept reachable so Niki can show /docs to recruiters.
+	# OpenAPI doc — kept reachable so Nikodem can show /docs to recruiters.
 	handle /openapi.json {
 		reverse_proxy api:8000
 	}

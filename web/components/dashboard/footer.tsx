@@ -64,7 +64,7 @@ export function Footer({ totalRecords }: FooterProps) {
           borderTop: "1px solid var(--border-subtle)",
         }}
       >
-        InPost Technology Internship 2026 submission · Built by Niki Brożyniak
+        InPost Technology Internship 2026 submission · Built by Nikodem Brożyniak
       </div>
     </footer>
   );

@@ -1044,7 +1044,7 @@ From `.claude/rules/design-tokens.md` (authoritative — never deviate):
 - Any hex not in the tokens file
 - Tailwind color classes that bypass tokens (`bg-zinc-900`, `text-amber-500`, etc.)
 - `box-shadow` on cards
-- Emojis in UI (allowed only if Niki explicitly asks)
+- Emojis in UI (allowed only if Nikodem explicitly asks)
 - Inline `style={{}}` — use Tailwind utilities + CSS vars
 
 ---
@@ -1150,7 +1150,7 @@ web/
 ## 16. Deploy plan (Phase 9+)
 
 - **Target:** Hetzner CX22 (~4€/month), Ubuntu 22.04, single-host docker-compose
-- **DNS:** subdomain on Niki's existing domain
+- **DNS:** subdomain on Nikodem's existing domain
 - **TLS:** Caddy automatic via Let's Encrypt
 - **CD:** GitHub Actions SSH deploy on push to main
 - **No Cloudflare / no CDN for v1** — Caddy handles compression; Postgres + Martin handle their own cache

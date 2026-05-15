@@ -147,4 +147,4 @@ MIT.
 
 ## Contact
 
-Niki Brożyniak — [nbrozyniak@gmail.com](mailto:nbrozyniak@gmail.com) · [github.com/Niki-3D](https://github.com/Niki-3D)
+Nikodem Brożyniak — [nbrozyniak@gmail.com](mailto:nbrozyniak@gmail.com) · [github.com/Niki-3D](https://github.com/Niki-3D)

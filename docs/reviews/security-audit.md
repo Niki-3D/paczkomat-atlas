@@ -170,7 +170,7 @@ All numeric Query params already had `ge=` / `le=` bounds.
   to confirm the merged config actually starts and Caddy routes everything
   via the internal docker network.
 
-## Pre-deploy checklist (for Niki to verify on the live server)
+## Pre-deploy checklist (for Nikodem to verify on the live server)
 
 - [ ] `.env` on the server has unique values for `POSTGRES_PASSWORD`
       and `POSTGRES_APP_PASSWORD` (`openssl rand -base64 32`).

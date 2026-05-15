@@ -27,7 +27,7 @@ services:
     # !override on volumes because compose merges volume lists (append, not
     # replace). Without it the named db_data volume from the base file would
     # stay attached alongside the bind mount, creating two mounts at the same
-    # path. The bind keeps data outside any docker volume so Niki can back
+    # path. The bind keeps data outside any docker volume so Nikodem can back
     # it up with rsync/pg_dump from the host.
     volumes: !override
       - /home/doppler/paczkomat-atlas/data/db:/var/lib/postgresql/data

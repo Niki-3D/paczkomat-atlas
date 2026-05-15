@@ -14,7 +14,7 @@ Architecture:
 
 ## Live URL
 
-Until Niki points DNS, the dashboard is reachable directly at:
+Until Nikodem points DNS, the dashboard is reachable directly at:
 
 - http://62.238.7.125/ — dashboard (Next.js)
 - http://62.238.7.125/api/v1/health — API health JSON
@@ -226,7 +226,7 @@ ssh doppler@62.238.7.125 'docker exec -t paczkomat-db pg_dump -U paczkomat \
    :srid)`**. Hardcode constants in SQL or cast explicitly (`::integer`,
    but watch for SQLAlchemy's bind-name parser collision).
 7. **doppler user has NO passwordless sudo**. Anything needing root
-   (e.g., opening UFW ports) is on Niki. Docker port-binding bypasses
+   (e.g., opening UFW ports) is on Nikodem. Docker port-binding bypasses
    UFW anyway, so this only matters for non-docker access.
 8. **PRG load needs Docker CLI / docker.sock inside the api container**
    (it shells out to `docker run gdal/ogr2ogr`). Solved with a separate
