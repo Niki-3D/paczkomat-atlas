@@ -1,18 +1,18 @@
 /**
- * Page footer — data sources, caveats, repo links, build stamp.
+ * Page footer — data sources, caveats, repo links.
  *
  * `totalRecords` comes from the /health probe (live count of rows in the
  * lockers table). Caveats are static disclosures that match what the data
  * actually supports: GB outside the NUTS-2 view, pre-launch Nordic markets,
- * PRG boundary vintage. Localhost /docs and /catalog links are dev-only;
- * deploy step swaps for the production domain.
+ * PRG boundary vintage. Operational links use same-origin relative paths so
+ * they resolve to whichever host Caddy is serving from (localhost in dev,
+ * the public IP / hostname in prod).
  */
 type FooterProps = {
   totalRecords: number | null;
 };
 
 export function Footer({ totalRecords }: FooterProps) {
-  const buildDate = new Date().toISOString().slice(0, 10);
   return (
     <footer
       className="mt-6 pt-6"
@@ -50,21 +50,22 @@ export function Footer({ totalRecords }: FooterProps) {
         <div>
           <FootTitle>Links</FootTitle>
           <FootList>
-            <li><FootLink href="https://github.com/Niki-3D/paczkomat-atlas">GitHub repo</FootLink></li>
-            <li><FootLink href="http://localhost:8080/docs">/api/v1/docs</FootLink></li>
-            <li><FootLink href="http://localhost:8080/catalog">/catalog (Martin)</FootLink></li>
+            <li><FootLink href="https://github.com/Niki-3D/paczkomat-atlas">GitHub repository →</FootLink></li>
+            <li><FootLink href="https://github.com/Niki-3D/paczkomat-atlas/blob/main/JOURNEY.md">Build journey →</FootLink></li>
+            <li><FootLink href="/docs">API documentation →</FootLink></li>
+            <li><FootLink href="/catalog">Tile catalog →</FootLink></li>
           </FootList>
         </div>
       </div>
       <div
-        className="mono py-3"
+        className="py-3"
         style={{
-          fontSize: 10.5,
+          fontSize: 11,
           color: "var(--fg-subtle)",
           borderTop: "1px solid var(--border-subtle)",
         }}
       >
-        build · feat/frontend-dashboard · refreshed {buildDate}
+        InPost Technology Internship 2026 submission · Built by Niki Brożyniak
       </div>
     </footer>
   );

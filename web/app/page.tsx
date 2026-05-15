@@ -226,17 +226,20 @@ export default async function HomePage() {
           />
         )}
 
-        <section className="split-grid grid gap-3.5 grid-cols-1 lg:[grid-template-columns:minmax(0,6fr)_minmax(0,4fr)]">
-          <DensityMapIsland />
-          {data.topNuts2Rows.length > 0 ? (
-            <DensityBars rows={data.topNuts2Rows} benchmark={data.benchmark} />
-          ) : (
-            <ErrorPanel
-              title="Density bars unavailable"
-              detail="Could not load /api/v1/density/nuts2/top."
-            />
-          )}
-        </section>
+        {/* Map is the headline visualization — full width, dominant height.
+            The Top-15 NUTS-2 bars stack as a separate full-width section
+            below; the previous 6:4 split made the map too small for the
+            choropleth to read at a glance. */}
+        <DensityMapIsland />
+
+        {data.topNuts2Rows.length > 0 ? (
+          <DensityBars rows={data.topNuts2Rows} benchmark={data.benchmark} />
+        ) : (
+          <ErrorPanel
+            title="Density bars unavailable"
+            detail="Could not load /api/v1/density/nuts2/top."
+          />
+        )}
 
         {data.countries.length > 0 ? (
           <CountryShare rows={data.countries} />
