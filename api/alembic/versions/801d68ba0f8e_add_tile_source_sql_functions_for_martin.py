@@ -4,8 +4,30 @@ Revision ID: 801d68ba0f8e
 Revises: e7db2eafbd0e
 Create Date: 2026-05-13 23:33:47.614518
 
-asyncpg can't run multiple statements in a single prepared statement, so each
-CREATE FUNCTION / COMMENT is its own op.execute call.
+Defines three plpgsql functions that Martin auto-discovers as vector tile
+sources: lockers_tiles, nuts2_density_tiles, gminy_density_tiles. Each
+returns bytea (MVT-encoded) for a (z, x, y, query_params) triple and is
+declared as:
+
+    IMMUTABLE STRICT PARALLEL SAFE
+
+Why:
+- IMMUTABLE — the function output is a pure function of its inputs (no
+  reads outside the call). Lets Martin's HTTP cache + Postgres planner cache
+  results aggressively. Daily MV refresh invalidates downstream layers, not
+  the function definition itself.
+- STRICT — returns NULL if any argument is NULL. Avoids defensive null
+  checks inside the body.
+- PARALLEL SAFE — Postgres may execute the function in a parallel query
+  worker. Our functions only touch normal tables + already-refreshed MVs,
+  so parallelism is fine.
+
+asyncpg refuses multiple statements in a single prepared statement, so each
+CREATE FUNCTION and each COMMENT lives in its own op.execute() call.
+
+gminy_density_tiles gates on z >= 5 by RETURNing NULL otherwise — at lower
+zooms a single tile would contain thousands of tiny polygons, blowing the
+default 1 MB tile budget.
 """
 from typing import Sequence, Union
 

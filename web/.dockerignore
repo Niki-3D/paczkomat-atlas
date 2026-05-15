@@ -1,0 +1,11 @@
+node_modules
+.next
+.turbo
+.git
+*.log
+.DS_Store
+coverage
+.vscode
+README.md
+.env*
+!.env.example

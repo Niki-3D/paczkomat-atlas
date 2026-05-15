@@ -21,7 +21,7 @@ router = APIRouter(prefix="/h3", tags=["h3"])
 )
 async def list_h3_cells(
     session: Annotated[AsyncSession, Depends(get_session)],
-    country: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
+    country: Annotated[str | None, Query(min_length=2, max_length=2, pattern=r"^[A-Za-z]{2}$")] = None,
     min_count: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=10_000)] = 5_000,
 ) -> ApiResponse[list[H3Cell]]:

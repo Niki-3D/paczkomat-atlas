@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from paczkomat_atlas_api.db import get_session
@@ -46,7 +46,7 @@ async def list_country_kpis(
     operation_id="getCountryKpi",
 )
 async def get_country_kpi(
-    country: str,
+    country: Annotated[str, Path(min_length=2, max_length=2, pattern=r"^[A-Za-z]{2}$")],
     session: Annotated[AsyncSession, Depends(get_session)],
 ) -> ApiResponse[CountryKpi]:
     """Single country detail."""

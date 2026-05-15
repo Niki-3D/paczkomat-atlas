@@ -2,7 +2,7 @@
 
 > InPost parcel locker network analytics — Polish gmina detail + European NUTS-2 overview. Built for the InPost Technology Internship 2026 submission.
 
-🗺️  **Live:** _(coming soon)_
+🗺️  **Live:** http://62.238.7.125 — DNS hostname coming soon. See [docs/DEPLOY.md](./docs/DEPLOY.md).
 
 ## What
 

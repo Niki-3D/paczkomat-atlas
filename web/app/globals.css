@@ -1,130 +1,236 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* =========================================================
+   Paczkomat Atlas — design tokens (from .claude/rules/design-tokens.md)
+   ========================================================= */
+:root[data-theme="dark"] {
+  /* Surfaces */
+  --bg-canvas:    #0A0A0B;
+  --bg-surface-1: #111113;
+  --bg-surface-2: #18181B;
+  --bg-surface-3: #1F1F23;
+  --bg-inset:     #08080A;
+
+  /* Borders */
+  --border-subtle:  #1F1F23;
+  --border-default: #27272A;
+  --border-strong:  #3F3F46;
+
+  /* Text */
+  --fg-default:  #EDEDEE;
+  --fg-muted:    #A1A1A6;
+  --fg-subtle:   #6B6B70;
+  --fg-disabled: #3F3F46;
+
+  /* Accent */
+  --accent:    #E0A82E;
+  --accent-hi: #F5C04E;
+  --accent-lo: #6B4F14;
+  --accent-fg: #0A0A0B;
+
+  /* Semantic */
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger:  #F87171;
+  --info:    #60A5FA;
+
+  /* Choropleth ramp — single-hue amber, near-black → bright amber.
+     Matches .claude/rules/design-tokens.md authoritative palette;
+     replaces an earlier thermal (purple→red→yellow) variant that
+     made low-density non-PL regions read as scattered "hot spots". */
+  --map-0: #1A1A1F;
+  --map-1: #2A2F1E;
+  --map-2: #524018;
+  --map-3: #8B6914;
+  --map-4: #C29612;
+  --map-5: #F5C04E;
+
+  /* Velocity timeline per-country series colors. PL gets the brightest
+     accent (the protagonist); the others use the existing fg/border ramp
+     so the focus stays on PL's curve. */
+  --series-pl: var(--accent-hi);
+  --series-fr: var(--fg-muted);
+  --series-gb: var(--fg-subtle);
+  --series-it: var(--map-3);
+  --series-es: var(--border-strong);
+
+  /* Per-country share colors for the locker vs PUDO mix bar.
+     Locker palette = amber descending by network presence.
+     PUDO palette   = muted neutral descending. */
+  --country-locker-pl: #F5C04E;
+  --country-locker-gb: #E0A82E;
+  --country-locker-fr: #C29612;
+  --country-locker-de: #9E7414;
+  --country-locker-it: #A85A2E;
+  --country-locker-es: #7A3D1E;
+  --country-locker-at: #5C2D18;
+  --country-locker-hu: #8B4A18;
+  --country-locker-pt: #704514;
+  --country-locker-be: #3F3F46;
+  --country-locker-nl: #27272A;
+
+  --country-pudo-de: #A1A1A6;
+  --country-pudo-gb: #8B8B90;
+  --country-pudo-fr: #7A7A80;
+  --country-pudo-es: #6B6B70;
+  --country-pudo-it: #5C5C61;
+  --country-pudo-be: #4F4F55;
+  --country-pudo-pt: #3F3F46;
+  --country-pudo-at: #34343A;
+  --country-pudo-hu: #2F2F35;
+  --country-pudo-nl: #1F1F23;
+
+  /* Hatch swatch used for pre-launch / catalog-only country indicators. */
+  --hatch-stripe: #9E2520;
+}
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-bg-canvas:    var(--bg-canvas);
+  --color-bg-surface-1: var(--bg-surface-1);
+  --color-bg-surface-2: var(--bg-surface-2);
+  --color-bg-surface-3: var(--bg-surface-3);
+  --color-bg-inset:     var(--bg-inset);
+  --color-border-subtle:  var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong:  var(--border-strong);
+  --color-fg-default: var(--fg-default);
+  --color-fg-muted:   var(--fg-muted);
+  --color-fg-subtle:  var(--fg-subtle);
+  --color-accent:     var(--accent);
+  --color-accent-hi:  var(--accent-hi);
+  --color-accent-lo:  var(--accent-lo);
+  --color-accent-fg:  var(--accent-fg);
+  --color-success:    var(--success);
+  --color-warning:    var(--warning);
+  --color-danger:     var(--danger);
+  --color-info:       var(--info);
+  --font-sans:    var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 1px;
 }
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+/* Twemoji country flag glyphs (Windows lacks them by default) */
+@font-face {
+  font-family: "Twemoji Country Flags";
+  unicode-range: U+1F1E6-1F1FF, U+1F3F3, U+E0062-E007F;
+  src: url("https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1.8/dist/TwemojiCountryFlags.woff2") format("woff2");
+  font-display: swap;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg-canvas); color: var(--fg-default); }
+body {
+  background: var(--bg-canvas);
+  color: var(--fg-default);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+.mono { font-family: var(--font-mono); font-feature-settings: "tnum", "zero"; font-variant-numeric: tabular-nums; }
+.tnum { font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum", "lnum"; }
+.flag { font-family: "Twemoji Country Flags", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", system-ui, sans-serif; }
+
+/* Hairline-only data UI */
+.panel {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+}
+.panel-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.panel-sub { font-size: 11.5px; color: var(--fg-muted); margin-top: 4px; }
+
+/* Share cells: 4-col mobile → 6-col tablet → full per-country at desktop */
+.share-cells { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (min-width: 768px) {
+  .share-cells { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .share-cells {
+    grid-template-columns: repeat(var(--cells, 11), minmax(0, 1fr));
   }
-  body {
-    @apply bg-background text-foreground;
+}
+
+/* Maplibre overrides */
+.maplibregl-canvas { outline: none !important; }
+.maplibregl-ctrl-bottom-left,
+.maplibregl-ctrl-bottom-right { display: none !important; }
+
+/* Dark theme for the top-right fullscreen + zoom controls */
+.maplibregl-ctrl-group {
+  background: var(--bg-surface-1) !important;
+  border: 1px solid var(--border-default) !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  overflow: hidden;
+}
+.maplibregl-ctrl-group button {
+  background: transparent !important;
+  border: none !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top: 1px solid var(--border-subtle) !important;
+}
+.maplibregl-ctrl-group button:hover:not(:disabled) {
+  background: var(--bg-surface-3) !important;
+}
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(0.82) brightness(1.05);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
-  html {
-    @apply font-sans;
-  }
+}
+
+/* =========================================================
+   Responsive — reflow grids and bars at narrower viewports
+   ========================================================= */
+@media (max-width: 1100px) {
+  .hero-grid { grid-template-columns: 1fr 1fr !important; }
+  .hero-grid > article:last-child { grid-column: 1 / -1; }
+  .split-grid { grid-template-columns: 1fr !important; }
+  .panel-map { min-height: 460px !important; }
+  .panel-bars { min-height: 0 !important; }
+  .share-row { grid-template-columns: 1fr !important; gap: 8px !important; }
+  .share-label-row { flex-direction: row !important; align-items: baseline !important; gap: 12px; }
+  .share-total-num { font-size: 22px !important; margin-top: 0 !important; }
+  .share-cells { grid-template-columns: repeat(6, 1fr) !important; }
+  .share-cells > div:nth-child(6n) { border-right: none !important; }
+  .table-filters-row { grid-template-columns: 1fr 1fr !important; }
+  .footer-grid-row { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 720px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-grid > article:last-child { grid-column: auto; }
+  .kpi-hero-value { font-size: 40px !important; }
+  .share-cells { grid-template-columns: repeat(4, 1fr) !important; }
+  .share-cells > div { border-right: 1px solid var(--border-subtle) !important; }
+  .share-readout-grid { grid-template-columns: 28px 1fr !important; gap: 8px 12px !important; }
+  .table-filters-row { grid-template-columns: 1fr !important; }
+  .footer-grid-row { grid-template-columns: 1fr !important; }
+  .density-bars-name-col { display: none !important; }
+  .density-bar-row { grid-template-columns: 22px 1fr 56px !important; }
 }

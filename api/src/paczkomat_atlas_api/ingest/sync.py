@@ -13,7 +13,7 @@ from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from paczkomat_atlas_api.db import SessionLocal
+from paczkomat_atlas_api.db import SRID_PL_PUWG, SRID_WGS84, SessionLocal
 from paczkomat_atlas_api.ingest.inpost_client import (
     COUNTRIES_ACTIVE,
     InPostClient,
@@ -44,7 +44,7 @@ def item_to_row(item: dict[str, Any]) -> dict[str, Any]:
         "physical_type": item.get("physical_type"),
         "location_247": bool(item.get("location_247", False)),
         "is_locker": is_locker_type(item),
-        "geom": f"SRID=4326;POINT({loc['longitude']} {loc['latitude']})",
+        "geom": f"SRID={SRID_WGS84};POINT({loc['longitude']} {loc['latitude']})",
         "raw": item,
         "content_hash": compute_content_hash(item),
     }
@@ -111,17 +111,22 @@ async def sync_all() -> dict[str, dict[str, int]]:
 
 async def assign_gminy() -> int:
     """Populate lockers.gmina_teryt via spatial join. Returns rows updated."""
-    sql = text("""
+    # SRID is a constant — inline it in the SQL string. The previous
+    # `:srid_pl` bind triggered asyncpg's "expected str, got int" because
+    # the bind param had no column context for type inference, and
+    # `:srid_pl::integer` collides with SQLAlchemy's bind-name parser
+    # (it reads `:srid_pl::integer` as the bind name).
+    sql = text(f"""
         UPDATE lockers l
         SET gmina_teryt = g.teryt
         FROM gminy g
         WHERE l.country = 'PL'
           AND l.gmina_teryt IS NULL
           AND ST_Within(
-            ST_Transform(l.geom::geometry, 2180),
+            ST_Transform(l.geom::geometry, {SRID_PL_PUWG}),
             g.geom
           )
-    """)
+    """)  # noqa: S608 — SRID is an int Final constant from db.py, not user input
     async with SessionLocal() as session:
         result = await session.execute(sql)
         await session.commit()

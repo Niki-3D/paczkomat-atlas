@@ -1,12 +1,16 @@
 # Env / secrets
 .env
 .env.*
+.env.production
+**/.env.production
 !.env.example
+!.env.production.example
 **/secrets/
 
 # Claude
 .claude/settings.local.json
 .claude/.cache/
+.playwright-mcp/
 
 # Node
 node_modules/

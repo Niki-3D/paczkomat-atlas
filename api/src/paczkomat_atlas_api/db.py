@@ -21,13 +21,29 @@ SRID_EU_LAEA: Final[int] = 3035        # LAEA Europe — metric ops pan-EU
 SRID_WEB_MERCATOR: Final[int] = 3857   # tile generation only
 
 # pgbouncer transaction pooling requires prepared_statement_cache_size=0
-# to avoid "prepared statement does not exist" errors.
+# to avoid "prepared statement does not exist" errors. It is ALSO
+# incompatible with SQLAlchemy's pool_pre_ping: the asyncpg dialect
+# implements ping via a prepared `SELECT 1`, which intermittently lands
+# on a pooled connection that doesn't have that statement and raises
+# InvalidSQLStatementNameError. Disable pre-ping in that case — pgbouncer
+# already manages connection liveness for us.
+#
+# KNOWN ISSUE (tracked in docs/reviews/architecture-review.md §H1): even
+# with both mitigations above, concurrent SDK calls from the dashboard
+# loader still produce intermittent 5xx in dev — the frontend (web/app/
+# page.tsx) papers over it with serial calls + jittered retries. Suspected
+# root cause is still a prepared-statement reuse against a recycled
+# pgbouncer-pooled backend, but reproduction needs a load-generator we
+# don't have in-tree yet. Revisit before the v1 deploy.
+_via_pgbouncer = (
+    "pgbouncer" in settings.database_url or ":6432" in settings.database_url
+)
 _engine_kwargs: dict[str, object] = {
-    "pool_pre_ping": True,
+    "pool_pre_ping": not _via_pgbouncer,
     "pool_size": 5,
     "max_overflow": 10,
 }
-if "pgbouncer" in settings.database_url or ":6432" in settings.database_url:
+if _via_pgbouncer:
     _engine_kwargs["connect_args"] = {"prepared_statement_cache_size": 0}
 
 

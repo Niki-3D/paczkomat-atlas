@@ -4,6 +4,14 @@ Revision ID: 2a08cc2a0894
 Revises: d6af7bb14d60
 Create Date: 2026-05-12 22:58:38.234402
 
+Registers five pg_cron jobs to refresh the dashboard MVs daily at 04:15-04:45
+Europe/Warsaw, plus a final ANALYZE on lockers at 04:45. Jobs are spaced 5
+minutes apart to avoid lock contention — REFRESH MATERIALIZED VIEW
+CONCURRENTLY still takes a strong-enough lock that two concurrent refreshes
+could serialize on shared dependencies.
+
+Cluster timezone is set globally; the schedules use 5-field cron syntax
+("15 4 * * *") not the extended pg_cron variants.
 """
 from typing import Sequence, Union
 

@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Paczkomat Atlas — web/
 
-## Getting Started
+Single-page dashboard on the InPost public network. Loads every number from
+the live backend at `http://localhost:8080` via the typed hey-api SDK in
+`lib/api/`. Backend stays the source of truth for KPIs, density rankings,
+country composition, velocity, and the per-gmina deep dive; tiles come from
+the Martin vector tile server alongside the API.
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Bring the backend up first (api, db, martin, caddy, pgbouncer)
+docker compose -f ../infra/compose/docker-compose.yml --env-file ../.env up -d
+
+# Then this app
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/page.tsx (Server Component)
+├── probeHealth() ────────────────► /api/v1/health
+├── getNetworkSummary() ──────────► /api/v1/kpi/summary
+├── listCountryKpis() ────────────► /api/v1/kpi/countries
+├── topNuts2({limit: 15}) ────────► /api/v1/density/nuts2/top
+├── getVelocity() ────────────────► /api/v1/velocity
+└── listGminy({limit: 2500}) ─────► /api/v1/density/gminy
 
-## Learn More
+  ↓ props ↓
 
-To learn more about Next.js, take a look at the following resources:
+components/dashboard/
+├── nav.tsx                 — sticky chrome, scope toggle, health pulse
+├── hero-kpis.tsx           — three KPI cards (server-rendered markup)
+├── density-map-island.tsx  — client island, dynamic-imports density-map
+├── density-map.tsx         — MapLibre choropleth, Martin vector tiles
+├── density-bars.tsx        — Top 15 NUTS-2 (server-rendered markup)
+├── country-share.tsx       — locker + PUDO stacked bars, 11-cell grid
+├── velocity-timeline.tsx   — Recharts multi-line, growth-multiple labels
+├── gminy-table.tsx         — TanStack Table v8 with filters
+└── footer.tsx              — data sources, caveats, links
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Page is a Server Component that fans out the API calls serially (one at a
+time) before rendering. Anything interactive — map, charts, table filters,
+country-share hover — is split into client islands.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design tokens
 
-## Deploy on Vercel
+The dashboard is dark-only, warm-neutral surfaces, single amber accent. All
+colours, radii, fonts come from CSS custom properties on
+`:root[data-theme="dark"]` in `app/globals.css`, lifted verbatim from
+`.claude/rules/design-tokens.md`. No hex literals appear in component code.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Choropleth ramp is the thermal palette (`--map-0` deep purple → `--map-5`
+saturated amber); the legend in the map overlay shows it explicitly.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech notes
+
+- **Server Components by default.** Only the map and the interactive
+  panels (`country-share`, `velocity-timeline`, `gminy-table`,
+  `density-map`, `nav`) are `"use client"`.
+- **Map** uses MapLibre GL JS 5.x and connects to the backend's Martin
+  function tile sources (`/tiles/nuts2_density_tiles`,
+  `/tiles/gminy_density_tiles`). Hover state uses `feature-state` — the
+  layer never re-renders per move.
+- **Charts** use Recharts 3 (already in shadcn's chart wrapper space).
+- **Table** uses TanStack Table v8 with custom filter UI (voivodeship
+  multiselect, population slider, name search). All filtering happens
+  client-side over the full 2.4k-row dataset.
+- **Data fetching** in client islands could use SWR (configured in
+  `lib/swr-provider.tsx`) but the dashboard is fully server-rendered
+  for the initial paint, so SWR currently sits unused on the client.
+- **API base URL** comes from `NEXT_PUBLIC_API_BASE_URL`, falling back
+  to `http://localhost:8080`. `lib/api.ts` runs `client.setConfig()`
+  at import time so every SDK call uses the right host.
+
+## Known quirks
+
+- The dev server occasionally pre-warms during HMR and the parallel-fetch
+  pattern under that load used to tip the backend pool over. We
+  intentionally fetch the six endpoints serially in page.tsx and fixed the
+  underlying pre-ping incompatibility in `api/src/paczkomat_atlas_api/db.py`.
+- Range/text inputs in the gminy filter trigger a benign hydration
+  mismatch on Chromium (caret-color and background shorthands get added
+  to the DOM before React hydrates). `suppressHydrationWarning` is set
+  on those inputs.
+
+## Scripts
+
+```bash
+pnpm dev               # dev server, port 3000
+pnpm build             # production build
+pnpm start             # serve production build
+pnpm typecheck         # tsc --noEmit, must be clean
+pnpm codegen           # regenerate lib/api from OpenAPI at :8080/openapi.json
+pnpm codegen:check     # CI guard — fail if codegen diff is non-empty
+```
+
+## Screenshots
+
+See `docs/screenshots/` in the repo root for the desktop and mobile
+captures used in the PR.

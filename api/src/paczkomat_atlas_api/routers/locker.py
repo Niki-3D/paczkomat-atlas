@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Path, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from paczkomat_atlas_api.db import get_session
@@ -21,9 +21,9 @@ router = APIRouter(prefix="/lockers", tags=["lockers"])
 )
 async def list_lockers(
     session: Annotated[AsyncSession, Depends(get_session)],
-    country: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
+    country: Annotated[str | None, Query(min_length=2, max_length=2, pattern=r"^[A-Za-z]{2}$")] = None,
     is_locker: Annotated[bool | None, Query()] = None,
-    status: Annotated[str | None, Query()] = None,
+    status: Annotated[str | None, Query(max_length=32, pattern=r"^[A-Za-z]+$")] = None,
     location_247: Annotated[bool | None, Query()] = None,
     limit: Annotated[int, Query(ge=1, le=1000)] = 500,
     offset: Annotated[int, Query(ge=0)] = 0,
@@ -42,7 +42,7 @@ async def list_lockers(
     operation_id="getLocker",
 )
 async def get_locker(
-    name: str,
+    name: Annotated[str, Path(min_length=1, max_length=64, pattern=r"^[A-Za-z0-9_\-]+$")],
     session: Annotated[AsyncSession, Depends(get_session)],
 ) -> ApiResponse[LockerDetail]:
     """Single locker detail by name (e.g. WAW01N)."""

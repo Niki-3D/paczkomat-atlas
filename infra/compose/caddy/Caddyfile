@@ -1,11 +1,63 @@
+# Caddy reverse proxy — unifies api + martin + docs under one origin (:8080).
+# This is the surface the frontend talks to so there's no CORS, no port
+# juggling, and a single TLS terminator at deploy time. auto_https is OFF
+# for the dev compose (HTTP only); production override flips it back on.
+#
+# Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy,
+# Strict-Transport-Security, Content-Security-Policy) are applied uniformly
+# to every response below. HSTS is harmless over HTTP (browsers ignore it
+# unless served over HTTPS) so it stays in the dev config too.
+#
+# Rate limiting: caddy:2.8-alpine does NOT include the rate-limit module,
+# so :8080 currently relies on the application-level constraints. To enable,
+# rebuild Caddy via xcaddy with mholt/caddy-ratelimit and uncomment the
+# `rate_limit` directives in the /api/* handler. See
+# docs/reviews/security-audit.md for the rationale and build steps.
+
 {
     auto_https off
     admin off
+
+    # ----- Rate limit zone (commented until caddy is rebuilt with the module) -----
+    # order rate_limit before reverse_proxy
 }
 
 :8080 {
+    # Standard security headers — applied to every response from this site.
+    # Override per-handler if needed (e.g. /tiles/* may need CSP relaxations).
+    header {
+        # Don't reveal the proxy software.
+        -Server
+        # Disable MIME sniffing — clients must respect declared Content-Type.
+        X-Content-Type-Options "nosniff"
+        # Prevent the site from being framed (clickjacking).
+        X-Frame-Options "DENY"
+        # Don't leak full URLs to third parties (e.g. when loading basemap tiles).
+        Referrer-Policy "strict-origin-when-cross-origin"
+        # Force HTTPS for 1 year once the prod TLS cert is in place. Caddy
+        # serves this header over HTTP too; browsers will only act on it if
+        # the response also came over HTTPS, so it's safe in dev.
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        # CSP — strict-ish for an analytics dashboard. Tuned for:
+        #   - Next.js inline scripts (requires unsafe-inline + unsafe-eval)
+        #   - CartoCDN raster basemap fallback
+        #   - OpenFreeMap vector basemap (tiles + fonts)
+        #   - MapLibre worker URLs
+        Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.basemaps.cartocdn.com https://*.openfreemap.org; connect-src 'self' https://*.basemaps.cartocdn.com https://*.openfreemap.org; font-src 'self' data: https://*.openfreemap.org; frame-ancestors 'none'"
+        # Don't expose detailed permissions API to embedded content.
+        Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    }
+
     # API routes → FastAPI
     handle /api/* {
+        # When the rate-limit module is built into Caddy, uncomment:
+        # rate_limit {
+        #     zone api {
+        #         key {remote_ip}
+        #         events 60
+        #         window 1m
+        #     }
+        # }
         reverse_proxy api:8000
     }
 
