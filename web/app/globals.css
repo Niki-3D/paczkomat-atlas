@@ -157,6 +157,35 @@ body {
 }
 .panel-sub { font-size: 11.5px; color: var(--fg-muted); margin-top: 4px; }
 
+/* Map-mode toggle chips — three buttons that look like buttons. The Chip
+   component in density-map.tsx sets data-active="true|false" and we pick
+   inactive/hover/active state from CSS so the rules stay in one place. */
+.mode-toggle-chip {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  color: var(--fg-muted);
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--radius-md, 6px);
+}
+.mode-toggle-chip:hover {
+  background: var(--bg-surface-3);
+  border-color: var(--border-strong);
+  color: var(--fg-default);
+}
+.mode-toggle-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.mode-toggle-chip[data-active="true"] {
+  background: rgba(224, 168, 46, 0.10); /* accent at 10% alpha */
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.mode-toggle-chip[data-active="true"]:hover {
+  background: rgba(224, 168, 46, 0.16);
+}
+
 /* Share cells: 4-col mobile → 6-col tablet → full per-country at desktop */
 .share-cells { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (min-width: 768px) {

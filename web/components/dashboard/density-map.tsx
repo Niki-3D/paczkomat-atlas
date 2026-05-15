@@ -768,15 +768,18 @@ function Chip({
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
       title={title}
-      className="mono transition-colors"
+      aria-pressed={active}
+      // mode-toggle-chip pairs with hover/focus rules in globals.css so the
+      // chip reads as a real interactive control: cursor, hover lift, focus
+      // ring. Active state takes precedence via aria-pressed.
+      className="mono mode-toggle-chip transition-colors"
+      data-active={active ? "true" : "false"}
       style={{
         fontSize: 11,
         padding: "4px 10px",
-        background: active ? "rgba(224, 168, 46, 0.06)" : "var(--bg-surface-2)",
-        border: `1px solid ${active ? "var(--accent-lo)" : "var(--border-default)"}`,
-        color: active ? "var(--accent)" : "var(--fg-muted)",
       }}
     >
       {children}
